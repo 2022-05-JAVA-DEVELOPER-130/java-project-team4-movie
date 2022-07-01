@@ -32,7 +32,6 @@ DROP SEQUENCE customer_info_cus_no_SEQ;
 
 CREATE SEQUENCE customer_info_cus_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
-
 CREATE TABLE credit_card(
 		card_name                     		VARCHAR2(10)		 NULL 
 );
@@ -66,7 +65,6 @@ DROP SEQUENCE seat_seat_no_SEQ;
 
 CREATE SEQUENCE seat_seat_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
-
 CREATE TABLE price_info(
 		price_no                      		NUMBER(10)		 NULL ,
 		adult_price                   		NUMBER(10)		 NULL ,
@@ -86,7 +84,6 @@ CREATE TABLE payment(
 
 CREATE TABLE reservation_info(ticket)(
 		reservation_no                		NUMBER(10)		 NULL ,
-		seat_no                       		NUMBER(2)		 NULL ,
 		payment_no                    		NUMBER(10)		 NULL ,
 		cus_id                        		VARCHAR2(12)		 NULL 
 );
