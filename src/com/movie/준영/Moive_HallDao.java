@@ -1,5 +1,5 @@
 package com.movie.준영;
 
-public class A {
+public class Moive_HallDao {
 
 }
