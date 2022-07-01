@@ -1,4 +1,4 @@
-package com.movie.common;
+package com.movie.dao;
 
 
 public class CusSQL {

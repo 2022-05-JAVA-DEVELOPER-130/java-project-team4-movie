@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.movie.common.CusSQL;
 import com.movie.common.DataSource;
 import com.movie.dto.Cus;
 
