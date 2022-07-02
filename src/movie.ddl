@@ -1,5 +1,5 @@
 DROP TABLE seat CASCADE CONSTRAINTS;
-DROP TABLE movie_hall CASCADE CONSTRAINTS;
+DROP TABLE moive_hall CASCADE CONSTRAINTS;
 DROP TABLE price_info CASCADE CONSTRAINTS;
 DROP TABLE reservation_info CASCADE CONSTRAINTS;
 DROP TABLE payment CASCADE CONSTRAINTS;
@@ -63,11 +63,10 @@ CREATE TABLE price_info(
 );
 
 
-CREATE TABLE movie_hall(
+CREATE TABLE moive_hall(
 		hall_name                     		VARCHAR2(10)		 NULL ,
 		total_seat_count              		NUMBER(10)		 NULL ,
 		remain_seat                   		NUMBER(10)		 NULL ,
-		m_no                          		NUMBER(10)		 NULL ,
 		m_name                        		VARCHAR2(20)		 NULL ,
 		m_genre                       		VARCHAR2(10)		 NULL ,
 		m_positive_age                		NUMBER(10)		 NULL ,
@@ -87,13 +86,9 @@ CREATE TABLE seat(
 		payment_no                    		NUMBER(10)		 NULL 
 );
 
-DROP SEQUENCE seat_seat_no_seq;
+DROP SEQUENCE seat_seat_no_SEQ;
 
-CREATE SEQUENCE seat_seat_no_seq MINVALUE 1 
-								MAXVALUE 50 
-								INCREMENT BY 1 
-								START WITH 1 
-								NOCACHE NOORDER NOCYCLE;
+CREATE SEQUENCE seat_seat_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 
 ALTER TABLE coupon_info ADD CONSTRAINT IDX_coupon_info_PK PRIMARY KEY (coupon_no);
@@ -113,8 +108,8 @@ ALTER TABLE reservation_info ADD CONSTRAINT IDX_reservation_info_FK1 FOREIGN KEY
 
 ALTER TABLE price_info ADD CONSTRAINT IDX_price_info_PK PRIMARY KEY (price_no);
 
-ALTER TABLE movie_hall ADD CONSTRAINT IDX_moive_hall_PK PRIMARY KEY (hall_name);
-ALTER TABLE movie_hall ADD CONSTRAINT IDX_moive_hall_FK0 FOREIGN KEY (price_no) REFERENCES price_info (price_no);
+ALTER TABLE moive_hall ADD CONSTRAINT IDX_moive_hall_PK PRIMARY KEY (hall_name);
+ALTER TABLE moive_hall ADD CONSTRAINT IDX_moive_hall_FK0 FOREIGN KEY (price_no) REFERENCES price_info (price_no);
 
 ALTER TABLE seat ADD CONSTRAINT IDX_seat_PK PRIMARY KEY (seat_no);
 ALTER TABLE seat ADD CONSTRAINT IDX_seat_FK0 FOREIGN KEY (hall_name) REFERENCES moive_hall (hall_name);

@@ -5,8 +5,7 @@ public class SeatDaoTestMain {
 	public static void main(String[] args) throws Exception {
 		
 		SeatDao seatDao = new SeatDao();
-	
-	
+		
 		System.out.println("1.update좌석예매");
 		int rowCount=seatDao.update(1,1,"1회차");
 		System.out.println(">> "+rowCount);
