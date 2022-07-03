@@ -6,7 +6,7 @@ values(to_number(to_char(sysdate, 'yymmddHH24MI')),null,null,null,null);
 
 --
 select * from reservation_info;
-select * from reservation_info order by reservation_no;
+select * from reservation_info order by cus_reservation_no;
 
 delete from reservation_info where RESERVATION_NO=?;
 
