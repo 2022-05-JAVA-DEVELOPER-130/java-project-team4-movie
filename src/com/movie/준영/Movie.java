@@ -2,10 +2,9 @@ package com.movie.준영;
 
 public class Movie {
 
-	private String hallName;
+	private String hall_name;
 	private int totalSeatCount;
 	private int remainSeat;
-	private int m_No;
 	private String m_Name;
 	private String m_Genre;
 	private int m_Positive_Age;
@@ -13,18 +12,18 @@ public class Movie {
 	private String m_End_Time;
 	private String m_Image;
 	private String m_Introduce;
+	private int price_no;
 	
 	public Movie() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Movie(String hallName, int totalSeatCount, int remainSeat, int m_No, String m_Name, String m_Genre,
-			int m_Positive_Age, String m_Start_Time, String m_End_Time, String m_Image, String m_Introduce) {
+	public Movie(String hallName, int totalSeatCount, int remainSeat, String m_Name, String m_Genre, int m_Positive_Age,
+			String m_Start_Time, String m_End_Time, String m_Image, String m_Introduce, int price_no) {
 		super();
-		this.hallName = hallName;
+		this.hall_name = hallName;
 		this.totalSeatCount = totalSeatCount;
 		this.remainSeat = remainSeat;
-		this.m_No = m_No;
 		this.m_Name = m_Name;
 		this.m_Genre = m_Genre;
 		this.m_Positive_Age = m_Positive_Age;
@@ -32,14 +31,15 @@ public class Movie {
 		this.m_End_Time = m_End_Time;
 		this.m_Image = m_Image;
 		this.m_Introduce = m_Introduce;
+		this.price_no = price_no;
 	}
 
 	public String getHallName() {
-		return hallName;
+		return hall_name;
 	}
 
 	public void setHallName(String hallName) {
-		this.hallName = hallName;
+		this.hall_name = hallName;
 	}
 
 	public int getTotalSeatCount() {
@@ -56,14 +56,6 @@ public class Movie {
 
 	public void setRemainSeat(int remainSeat) {
 		this.remainSeat = remainSeat;
-	}
-
-	public int getM_No() {
-		return m_No;
-	}
-
-	public void setM_No(int m_No) {
-		this.m_No = m_No;
 	}
 
 	public String getM_Name() {
@@ -122,13 +114,23 @@ public class Movie {
 		this.m_Introduce = m_Introduce;
 	}
 
+	public int getPrice_no() {
+		return price_no;
+	}
+
+	public void setPrice_no(int price_no) {
+		this.price_no = price_no;
+	}
+
 	@Override
 	public String toString() {
-		return "Movie [hallName=" + hallName + ", totalSeatCount=" + totalSeatCount + ", remainSeat=" + remainSeat
-				+ ", m_No=" + m_No + ", m_Name=" + m_Name + ", m_Genre=" + m_Genre + ", m_Positive_Age="
-				+ m_Positive_Age + ", m_Start_Time=" + m_Start_Time + ", m_End_Time=" + m_End_Time + ", m_Image="
-				+ m_Image + ", m_Introduce=" + m_Introduce + "]";
+		return "Movie [hallName=" + hall_name + ", totalSeatCount=" + totalSeatCount + ", remainSeat=" + remainSeat
+				+ ", m_Name=" + m_Name + ", m_Genre=" + m_Genre + ", m_Positive_Age=" + m_Positive_Age
+				+ ", m_Start_Time=" + m_Start_Time + ", m_End_Time=" + m_End_Time + ", m_Image=" + m_Image
+				+ ", m_Introduce=" + m_Introduce + ", price_no=" + price_no + "]";
 	}
 	
+	
+
 	
 }
