@@ -9,6 +9,7 @@ public class Reservation {
 		this.cus_reservation_no = cus_reservation_no;
 		this.adult_count = adult_count;
 		this.child_count = child_count;
+		
 	}
 	public int getCus_reservation_no() {
 		return cus_reservation_no;

@@ -6,8 +6,11 @@ public class ReservationDaoTest {
 
 	public static void main(String[] args) throws Exception {
 		ReservationDao reservationDao=new ReservationDao();
+		
 			System.out.println("1.예매번호 부여");
-			System.out.println(">> "+reservationDao.insertReservationNo(null));
+			//int rowcount=reservationDao.insertReservationNo();
+			//System.out.println(">> "+rowcount);
+			
 			
 			System.out.println("2.예매내역 확인");
 			System.out.println(">>"+reservationDao.selectAll());

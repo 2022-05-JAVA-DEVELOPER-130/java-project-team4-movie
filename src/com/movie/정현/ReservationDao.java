@@ -44,9 +44,8 @@ public List<Reservation> selectAll() throws Exception{
 		PreparedStatement pstmt=con.prepareStatement(ReservationSQL.Reservation_SELECT_ALL);
 		ResultSet rs=pstmt.executeQuery();
 		while(rs.next()) {
-			ReservationList.add(new Reservation(rs.getInt("reservation_no"), 
-					rs.getInt("adult_count"), 
-					rs.getInt("child_count")
+			ReservationList.add(new Reservation(rs.getInt("cus_reservation_no"), 
+					rs.getInt("adult_count"),rs.getInt("child_count")
 					)
 					);
 		}
@@ -61,11 +60,11 @@ public List<Reservation> selectAll() throws Exception{
 /*
  * 예매내역 취소?
  */
-public int deleteReservation(int reservation_no) throws Exception {
+public int deleteReservation(int cus_reservation_no) throws Exception {
 	
 	Connection con=dataSource.getConnection();
 	PreparedStatement pstmt=con.prepareStatement(ReservationSQL.Reservation_DELETE);
-	pstmt.setInt(1, reservation_no);
+	pstmt.setInt(1, cus_reservation_no);
 	int rowCount=pstmt.executeUpdate();
 	pstmt.close();
 	con.close();

@@ -8,6 +8,6 @@ public class ReservationSQL {
 	="select * from reservation_info";
 	
 	public static final String Reservation_DELETE
-	="delete from reservation_info where RESERVATION_NO=?";
+	="delete from reservation_info where cus_RESERVATION_NO=?";
 ;
 }
