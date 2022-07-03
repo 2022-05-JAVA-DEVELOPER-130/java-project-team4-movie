@@ -6,6 +6,6 @@ public class MovieSQL {
 	= "select * from movie_hall where hall_name = ?";
 	
 	public static final String MOIVE_SELECT_ALL
-	= "select * from moive_hall";
+	= "select * from movie_hall";
 	
 }

@@ -54,7 +54,7 @@ public class MovieDao {
 		rs.close();
 		pstmt.close();
 		con.close();
-		return null;
+		return movieList;
 	}
 
 }
