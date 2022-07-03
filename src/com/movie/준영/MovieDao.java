@@ -41,7 +41,7 @@ public class MovieDao {
 
 	public List<Movie> selectAll() throws Exception {
 
-		List<Movie> movieList = new ArrayList<>();
+		ArrayList<Movie> movieList = new ArrayList<Movie>();
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(MovieSQL.MOIVE_SELECT_ALL);
 		ResultSet rs = pstmt.executeQuery();
