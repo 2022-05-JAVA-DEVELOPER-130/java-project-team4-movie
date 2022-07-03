@@ -8,14 +8,14 @@ public class Cus {
 	private String cus_name;
 	private String cus_id;
 	private String cus_password;
-	private Date cus_birthday;
+	private String cus_birthday;
 	private String cus_gender;
 	private String cus_phone;
 	private String cus_email;
 	private int cus_point;
 	
 	public Cus(int cus_no, String cus_nickname, String cus_name, String cus_id, String cus_password,
-			Date cus_birthday, String cus_gender, String cus_phone, String cus_eamil, int cus_point) {
+			String cus_birthday, String cus_gender, String cus_phone, String cus_eamil, int cus_point) {
 		super();
 		this.cus_no = cus_no;
 		this.cus_nickname = cus_nickname;
@@ -58,10 +58,10 @@ public class Cus {
 	public void setCus_password(String cus_password) {
 		this.cus_password = cus_password;
 	}
-	public Date getCus_birthday() {
+	public String getCus_birthday() {
 		return cus_birthday;
 	}
-	public void setCus_birthday(Date cus_birthday) {
+	public void setCus_birthday(String cus_birthday) {
 		this.cus_birthday = cus_birthday;
 	}
 	public String getCus_gender() {

@@ -6,6 +6,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/2022-05-JAVA-DEVELOPER/03.JDBC/4.JDBC드라이버/ojdbc6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -83,7 +83,7 @@ public class CusDao {
 							  rs.getString("cus_gender"),
 							  rs.getString("cus_phone"),
 							  rs.getString("cus_email"),
-							  rs.getInt("cu_point")
+							  rs.getInt("cus_point")
 							  );
 		}
 		rs.close();
