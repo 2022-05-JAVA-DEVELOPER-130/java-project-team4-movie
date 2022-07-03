@@ -1,14 +1,16 @@
---reservation_info_예매내역 정보
+--reservation_info
 
 insert into reservation_info
 values(to_number(to_char(sysdate, 'yymmddHH24MI')),null,null,null,null);
 
 
---검색
+--
 select * from reservation_info;
 select * from reservation_info order by reservation_no;
 
---조인? 
+delete from reservation_info where RESERVATION_NO=?;
+
+--
 select cus_reservation_no re_no,re_info.payment_no pay_no,cus_info.cus_id cus_id
 from reservation_info re_info left outer join payment paym
 on  re_info.payment_no= paym.payment_no
