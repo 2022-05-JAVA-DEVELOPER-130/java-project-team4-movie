@@ -2,7 +2,7 @@ package com.movie.dao;
 
 public class CusSQL {
 	public static final String CUS_INSERT
-	= "insert into customer_info values(?, cus_cus_no_seq.nextval,?,?,?,?,?,?,?,?,?)";
+	= "insert into customer_info values(?, cus_no_seq.nextval,?,?,?,?,?,?,?,?,?)";
 	public static final String CUS_UPDATE
 	= "update customer_info set cus_no=?,cus_nickname=?,cus_name=?,cus_password=?,cus_birthday=?,cus_gender=?,cus_phone=?,cus_email=?,cus_point=?,coupon_no=? where cus_id=? and cus_password=?";
 	public static final String CUS_UPDATE2 //회원정보수정용
