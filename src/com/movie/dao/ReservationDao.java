@@ -18,19 +18,18 @@ public class ReservationDao {
   * 예매번호 부여?
  */
 	
-public int insertReservationNo(Reservation Reservation) throws Exception{
+public int insertReservationNo(String id) throws Exception{
 		
 		Connection con= dataSource.getConnection();
 		PreparedStatement pstmt= con.prepareStatement(ReservationSQL.Reservation_INSERT);
-		pstmt.setInt(1, Reservation.getReservation_no());
-		pstmt.setString(2, Reservation.getCus_id());
-		pstmt.setInt(3, Reservation.getPayment_no());
+		
+		pstmt.setString(1, id);
 		//pstmt.setString(4,Reservation.getPayment()); payment?
 		
-		pstmt.executeUpdate();
+		int rowCount = pstmt.executeUpdate();
 		pstmt.close();
 		con.close();
-		return 0;
+		return rowCount;
 	}
 /*
  * 예매내역 확인2
@@ -97,7 +96,7 @@ public int deleteReservation(int reservation_no) throws Exception {
 	int rowCount=pstmt.executeUpdate();
 	pstmt.close();
 	con.close();
-	return 0;
+	return rowCount;
 	
 }
 	

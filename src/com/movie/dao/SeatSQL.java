@@ -10,5 +10,8 @@ public class SeatSQL {
 			"select * from seat where seat_no=?";
 	public final static String SEAT_SELECT_ALL=
 			"select * from seat where hall_name=?";
+	
+	public final static String SEAT_PAYMENT_NO_UPDATE = "update seat set payment_no = (select max(payment_no) from payment) where hall_name = ? and seat_arrange = ?";
+	
 
 }

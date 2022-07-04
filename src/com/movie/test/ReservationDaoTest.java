@@ -14,7 +14,7 @@ public class ReservationDaoTest {
 			
 			Reservation r=new Reservation(0,"yeji",0,null);
 			//payment 적용 전 
-			System.out.println(">> "+reservationDao.insertReservationNo(r));
+			System.out.println(">> "+reservationDao.insertReservationNo("aa"));
 			
 			
 			System.out.println("2.예매내역 확인");
