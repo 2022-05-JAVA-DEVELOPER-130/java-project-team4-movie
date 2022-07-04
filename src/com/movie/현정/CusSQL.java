@@ -15,5 +15,8 @@ public class CusSQL {
 	= "select * from cus";
 	public static final String CUS_SELECT_BY_NAME_PHONE
 	= "select * from cus where cus_name=? and cus_phone=?";
+	public static final String CUS_SELECT_BY_ID_NAME
+	= "select * from cus where cus_id=? and cus_name=?";
+
 
 }
