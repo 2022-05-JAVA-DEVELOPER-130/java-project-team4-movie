@@ -96,7 +96,22 @@ insert into customer_info values('hunjung', cus_no_seq.nextval, '자두현정', 
 commit;
 
 ------------------------여기까지 기본데이터 ------------------------------------
+insert into credit_card values('국민');
+insert into credit_card values('신한');
+insert into credit_card values('농협');
+insert into credit_card values('우리');
+insert into credit_card values('기업');
+insert into credit_card values('IBK');
 
 
+insert into payment values(payment_no_seq.nextval, sysdate, 1, '신한' ,2,0);
+insert into payment values(payment_no_seq.nextval, sysdate, 2, '국민' ,0,3);
+insert into payment values(payment_no_seq.nextval, sysdate, 1, '농협' ,1,1);
+insert into payment values(payment_no_seq.nextval, sysdate, 1, '우리' ,2,1);
+insert into payment values(payment_no_seq.nextval, sysdate, 3, '신한' ,2,3);
+insert into payment values(payment_no_seq.nextval, sysdate, 2, '기업' ,0,1);
+
+
+commit;
 
 

@@ -27,6 +27,7 @@ public class PaymentDao {
 		pstmt.setInt(3, payment.getAdult_member_count());
 		pstmt.setInt(4, payment.getChild_member_count());
 		
+		
 		int rowCount = pstmt.executeUpdate();
 		pstmt.close();
 		con.close();
