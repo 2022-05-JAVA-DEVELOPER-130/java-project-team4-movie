@@ -1,4 +1,4 @@
-package com.movie.정현;
+package com.movie.dao;
 
 public class ReservationSQL {
 	public static final String Reservation_INSERT

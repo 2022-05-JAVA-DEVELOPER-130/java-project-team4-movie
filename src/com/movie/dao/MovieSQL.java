@@ -1,4 +1,4 @@
-package com.movie.준영;
+package com.movie.dao;
 
 public class MovieSQL {
 

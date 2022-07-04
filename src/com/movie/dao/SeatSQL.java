@@ -1,4 +1,4 @@
-package com.movie.예지;
+package com.movie.dao;
 
 public class SeatSQL {
 

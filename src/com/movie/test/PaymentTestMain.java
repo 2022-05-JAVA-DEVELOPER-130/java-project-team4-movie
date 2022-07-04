@@ -1,4 +1,6 @@
-package com.movie.우혁;
+package com.movie.test;
+
+import com.movie.dao.PaymentDao;
 
 public class PaymentTestMain {
 	

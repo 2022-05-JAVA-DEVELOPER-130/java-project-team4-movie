@@ -1,4 +1,4 @@
-package com.movie.dao;
+package com.movie.성민;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.List;
 
 import com.movie.common.DataSource;
-import com.movie.dto.Cus;
 
 public class CusDao {
 	DataSource dataSource = new DataSource();

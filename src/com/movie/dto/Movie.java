@@ -1,47 +1,136 @@
 package com.movie.dto;
 
 public class Movie {
-	private int m_no;
-	private String m_name;
-	private String m_genre;
-	private int positive_age;
-	public Movie(int m_no, String m_name, String m_genre, int positive_age) {
+
+	private String hall_name;
+	private int totalSeatCount;
+	private int remainSeat;
+	private String m_Name;
+	private String m_Genre;
+	private int m_Positive_Age;
+	private String m_Start_Time;
+	private String m_End_Time;
+	private String m_Image;
+	private String m_Introduce;
+	private int price_no;
+	
+	public Movie() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Movie(String hallName, int totalSeatCount, int remainSeat, String m_Name, String m_Genre, int m_Positive_Age,
+			String m_Start_Time, String m_End_Time, String m_Image, String m_Introduce, int price_no) {
 		super();
-		this.m_no = m_no;
-		this.m_name = m_name;
-		this.m_genre = m_genre;
-		this.positive_age = positive_age;
+		this.hall_name = hallName;
+		this.totalSeatCount = totalSeatCount;
+		this.remainSeat = remainSeat;
+		this.m_Name = m_Name;
+		this.m_Genre = m_Genre;
+		this.m_Positive_Age = m_Positive_Age;
+		this.m_Start_Time = m_Start_Time;
+		this.m_End_Time = m_End_Time;
+		this.m_Image = m_Image;
+		this.m_Introduce = m_Introduce;
+		this.price_no = price_no;
 	}
-	public int getM_no() {
-		return m_no;
+
+	public String getHallName() {
+		return hall_name;
 	}
-	public void setM_no(int m_no) {
-		this.m_no = m_no;
+
+	public void setHallName(String hallName) {
+		this.hall_name = hallName;
 	}
-	public String getM_name() {
-		return m_name;
+
+	public int getTotalSeatCount() {
+		return totalSeatCount;
 	}
-	public void setM_name(String m_name) {
-		this.m_name = m_name;
+
+	public void setTotalSeatCount(int totalSeatCount) {
+		this.totalSeatCount = totalSeatCount;
 	}
-	public String getM_genre() {
-		return m_genre;
+
+	public int getRemainSeat() {
+		return remainSeat;
 	}
-	public void setM_genre(String m_genre) {
-		this.m_genre = m_genre;
+
+	public void setRemainSeat(int remainSeat) {
+		this.remainSeat = remainSeat;
 	}
-	public int getPositive_age() {
-		return positive_age;
+
+	public String getM_Name() {
+		return m_Name;
 	}
-	public void setPositive_age(int positive_age) {
-		this.positive_age = positive_age;
+
+	public void setM_Name(String m_Name) {
+		this.m_Name = m_Name;
 	}
+
+	public String getM_Genre() {
+		return m_Genre;
+	}
+
+	public void setM_Genre(String m_Genre) {
+		this.m_Genre = m_Genre;
+	}
+
+	public int getM_Positive_Age() {
+		return m_Positive_Age;
+	}
+
+	public void setM_Positive_Age(int m_Positive_Age) {
+		this.m_Positive_Age = m_Positive_Age;
+	}
+
+	public String getM_Start_Time() {
+		return m_Start_Time;
+	}
+
+	public void setM_Start_Time(String m_Start_Time) {
+		this.m_Start_Time = m_Start_Time;
+	}
+
+	public String getM_End_Time() {
+		return m_End_Time;
+	}
+
+	public void setM_End_Time(String m_End_Time) {
+		this.m_End_Time = m_End_Time;
+	}
+
+	public String getM_Image() {
+		return m_Image;
+	}
+
+	public void setM_Image(String m_Image) {
+		this.m_Image = m_Image;
+	}
+
+	public String getM_Introduce() {
+		return m_Introduce;
+	}
+
+	public void setM_Introduce(String m_Introduce) {
+		this.m_Introduce = m_Introduce;
+	}
+
+	public int getPrice_no() {
+		return price_no;
+	}
+
+	public void setPrice_no(int price_no) {
+		this.price_no = price_no;
+	}
+
 	@Override
 	public String toString() {
-		return "Movie [m_no=" + m_no + ", m_name=" + m_name + ", m_genre=" + m_genre + ", positive_age=" + positive_age
-				+ "]";
+		return "Movie [hallName=" + hall_name + ", totalSeatCount=" + totalSeatCount + ", remainSeat=" + remainSeat
+				+ ", m_Name=" + m_Name + ", m_Genre=" + m_Genre + ", m_Positive_Age=" + m_Positive_Age
+				+ ", m_Start_Time=" + m_Start_Time + ", m_End_Time=" + m_End_Time + ", m_Image=" + m_Image
+				+ ", m_Introduce=" + m_Introduce + ", price_no=" + price_no + "]";
 	}
 	
 	
+
 	
 }

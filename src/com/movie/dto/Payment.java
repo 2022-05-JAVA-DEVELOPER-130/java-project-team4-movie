@@ -1,4 +1,4 @@
-package com.movie.우혁;
+package com.movie.dto;
 
 public class Payment {
 	

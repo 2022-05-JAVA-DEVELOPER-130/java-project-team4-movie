@@ -1,7 +1,5 @@
 package com.movie.성민;
 
-import com.movie.dto.Cus;
-
 public class Reservation {
 	private int reservation_no;
 	private Payment payment; 

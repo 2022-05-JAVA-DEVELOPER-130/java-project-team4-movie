@@ -1,4 +1,4 @@
-package com.movie.dto;
+package com.movie.성민;
 
 import java.util.Date;
 

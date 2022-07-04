@@ -1,4 +1,6 @@
-package com.movie.준영;
+package com.movie.test;
+
+import com.movie.dao.MovieDao;
 
 public class MovieTestMain {
 

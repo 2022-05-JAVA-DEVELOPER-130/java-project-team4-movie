@@ -1,4 +1,6 @@
-package com.movie.예지;
+package com.movie.test;
+
+import com.movie.dao.SeatDao;
 
 public class SeatDaoTestMain {
 
