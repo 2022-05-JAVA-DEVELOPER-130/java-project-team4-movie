@@ -6,7 +6,10 @@ public class MovieTestMain {
 
 		MovieDao movie = new MovieDao();
 		System.out.println("1. hall_name select");
-		System.out.println(">> "+movie.selectByHallName("1회차"));
+		System.out.println(">> "+movie.selectByHallName("2회차"));
+		
+		System.out.println("2. hall_name selectAll");
+		System.out.println(">> "+movie.selectAll());
 	
 	}
 

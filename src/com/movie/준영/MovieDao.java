@@ -50,10 +50,8 @@ public class MovieDao {
 					rs.getString("m_name"), rs.getString("m_genre"), rs.getInt("m_positive_age"),
 					rs.getString("m_start_time"), rs.getString("m_end_time"), rs.getString("m_image"),
 					rs.getString("m_introduce"), rs.getInt("price_no")));
+			
 		}
-		rs.close();
-		pstmt.close();
-		con.close();
 		return movieList;
 	}
 
