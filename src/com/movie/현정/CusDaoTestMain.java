@@ -31,6 +31,8 @@ public class CusDaoTestMain {
 		String findId = cusJoinDao.selectByNamePhone("임현정", "1022223333");
 		System.out.println("ID 찾기 : " + findId);
 		
+		
+		
 
 	}
 
