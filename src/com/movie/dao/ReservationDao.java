@@ -25,7 +25,7 @@ public int insertReservationNo(Reservation Reservation) throws Exception{
 		pstmt.setInt(1, Reservation.getReservation_no());
 		pstmt.setString(2, Reservation.getCus_id());
 		pstmt.setInt(3, Reservation.getPayment_no());
-		//pstmt.setString(4,Reservation.getPayment());
+		//pstmt.setString(4,Reservation.getPayment()); payment?
 		
 		pstmt.executeUpdate();
 		pstmt.close();

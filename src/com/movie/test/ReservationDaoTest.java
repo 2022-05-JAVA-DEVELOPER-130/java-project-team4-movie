@@ -13,7 +13,7 @@ public class ReservationDaoTest {
 			System.out.println("1.예매번호 부여");
 			
 			Reservation r=new Reservation(0,"yeji",0,null);
-			//payment 적용 전
+			//payment 적용 전 
 			System.out.println(">> "+reservationDao.insertReservationNo(r));
 			
 			

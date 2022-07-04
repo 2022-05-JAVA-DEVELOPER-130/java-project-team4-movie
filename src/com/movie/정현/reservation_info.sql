@@ -3,7 +3,7 @@
 insert into reservation_info
 values(to_number(to_char(sysdate, 'yymmddHH24MISS')),null,null);
 
---
+-- 
 select * from reservation_info;
 select * from reservation_info order by cus_reservation_no;
 

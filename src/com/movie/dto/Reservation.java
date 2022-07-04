@@ -4,7 +4,7 @@ public class Reservation {
 	private int reservation_no;
 	private String cus_id;
 	private int payment_no;
-	private Payment payment;
+	private Payment payment; 
 	
 	
 	

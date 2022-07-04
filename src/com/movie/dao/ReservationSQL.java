@@ -13,6 +13,6 @@ public class ReservationSQL {
 	
 	
 	public static final String Reservation_DELETE
-	="delete from reservation_info where reservation_no=?";
+	="delete from reservation_info where reservation_no=?"; 
 ;
 }
