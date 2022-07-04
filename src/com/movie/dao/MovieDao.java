@@ -1,4 +1,4 @@
-package com.movie.준영;
+package com.movie.dao;
 /*
  * 
  */
@@ -6,12 +6,11 @@ package com.movie.준영;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.movie.common.DataSource;
-import com.movie.dao.MoiveDao;
+import com.movie.dto.Movie;
 
 public class MovieDao {
 	private DataSource dataSource;

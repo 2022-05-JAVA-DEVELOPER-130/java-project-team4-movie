@@ -1,9 +1,12 @@
-package com.movie.현정;
+package com.movie.dao;
 
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import com.movie.common.DataSource;
+import com.movie.dto.Customer;
 
 
 public class CusJoinDao {
@@ -14,13 +17,13 @@ public class CusJoinDao {
 		dataSource = new DataSource();
 	}
 
-	public int insertCus(CusDto cusDto) throws Exception {
+	public int insertCus(Customer cusDto) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(CusSQL.CUS_INSERT);
 
-		pstmt.setString(1, cusDto.getCus_nickname());
-		pstmt.setString(2, cusDto.getCus_name());
-		pstmt.setString(3, cusDto.getCus_id());
+		pstmt.setString(1, cusDto.getCus_id());
+		pstmt.setString(2, cusDto.getCus_nickname());
+		pstmt.setString(3, cusDto.getCus_name());
 		pstmt.setString(4, cusDto.getCus_password());
 		pstmt.setDate(5, new java.sql.Date(cusDto.getCus_birthday().getTime()));
 		pstmt.setString(6, cusDto.getCus_gender());
@@ -36,7 +39,7 @@ public class CusJoinDao {
 		return rowCount;
 	}
 
-	public int updateCus(CusDto cusDto) throws Exception {
+	public int updateCus(Customer cusDto) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(CusSQL.CUS_UPDATE);
 
@@ -62,7 +65,7 @@ public class CusJoinDao {
 
 	}
 
-	public int updateCus2(CusDto cusDto) throws Exception {
+	public int updateCus2(Customer cusDto) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(CusSQL.CUS_UPDATE2);
 
@@ -98,9 +101,9 @@ public class CusJoinDao {
 		return rowCount;
 	}
 
-	public CusDto selectById(String cus_id) throws Exception {
+	public Customer selectById(String cus_id) throws Exception {
 
-		CusDto findCus = null;
+		Customer findCus = null;
 
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(CusSQL.CUS_SELECT_BY_ID);
@@ -109,8 +112,8 @@ public class CusJoinDao {
 
 		ResultSet rs = pstmt.executeQuery();
 		if (rs.next()) {
-			findCus = new CusDto(rs.getInt("cus_no"), rs.getString("cus_nickname"), rs.getString("cus_name"),
-					rs.getString("cus_id"), rs.getString("cus_password"), rs.getDate("cus_birthday"),
+			findCus = new Customer(rs.getString("cus_id"), rs.getInt("cus_no"), rs.getString("cus_nickname"), rs.getString("cus_name"),
+					rs.getString("cus_password"), rs.getDate("cus_birthday"),
 					rs.getString("cus_gender"), rs.getString("cus_phone"), rs.getString("cus_email"),
 					rs.getInt("cus_point"), rs.getInt("coupon_no"));
 		}
@@ -141,6 +144,28 @@ public class CusJoinDao {
 		con.close();
 
 		return findId;
+
+	}
+	
+	public String selectByIdName(String cus_id, String cus_name) throws Exception {
+
+		String findPassword = null;
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(CusSQL.CUS_SELECT_BY_ID_NAME);
+
+		pstmt.setString(1, cus_id);
+		pstmt.setString(2, cus_name);
+
+		ResultSet rs = pstmt.executeQuery();
+		if (rs.next()) {
+			findPassword = rs.getString("cus_password");
+		}
+
+		rs.close();
+		pstmt.close();
+		con.close();
+
+		return findPassword;
 
 	}
 

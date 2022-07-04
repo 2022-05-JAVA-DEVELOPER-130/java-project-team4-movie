@@ -2,8 +2,8 @@ package com.movie.test;
 
 import java.util.List;
 
-import com.movie.dao.CusDao;
-import com.movie.dto.Cus;
+import com.movie.성민.Cus;
+import com.movie.성민.CusDao;
 
 public class MovieDaoTestMain {
 

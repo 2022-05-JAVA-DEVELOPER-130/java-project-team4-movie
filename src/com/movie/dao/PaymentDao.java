@@ -1,4 +1,4 @@
-package com.movie.우혁;
+package com.movie.dao;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -6,6 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.movie.common.DataSource;
+import com.movie.dto.Payment;
 
 
 public class PaymentDao {

@@ -1,5 +1,7 @@
-package com.movie.정현;
+package com.movie.test;
 import java.util.List;
+
+import com.movie.dao.ReservationDao;
 
 
 public class ReservationDaoTest {

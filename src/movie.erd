@@ -211,7 +211,7 @@
                               <supportSize>true</supportSize>
                               <type>2</type>
                             </columnType>
-                            <size>10</size>
+                            <size>12</size>
                             <notNull>false</notNull>
                             <primaryKey>true</primaryKey>
                             <description></description>
@@ -670,7 +670,12 @@
                     <net.java.amateras.db.visual.model.ColumnModel>
                       <columnName>payment_no</columnName>
                       <logicalName>payment_no</logicalName>
-                      <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../targetConnections/net.java.amateras.db.visual.model.ForeignKeyModel/source/columns/net.java.amateras.db.visual.model.ColumnModel/columnType"/>
+                      <columnType class="net.java.amateras.db.dialect.ColumnType">
+                        <name>NUMBER</name>
+                        <logicalName>Numeric</logicalName>
+                        <supportSize>true</supportSize>
+                        <type>2</type>
+                      </columnType>
                       <size>10</size>
                       <notNull>false</notNull>
                       <primaryKey>true</primaryKey>

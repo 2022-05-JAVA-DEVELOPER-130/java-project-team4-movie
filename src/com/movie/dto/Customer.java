@@ -1,12 +1,12 @@
-package com.movie.현정;
+package com.movie.dto;
 
 import java.util.Date;
 
-public class CusDto {
+public class Customer {
+	private String cus_id;
 	private int cus_no;
 	private String cus_nickname;
 	private String cus_name;
-	private String cus_id;
 	private String cus_password;
 	private Date cus_birthday;
 	private String cus_gender;
@@ -15,20 +15,13 @@ public class CusDto {
 	private int cus_point;
 	private int coupon_no;
 	
-	
-	 
-	public CusDto(String cus_id) {
-		super();
-		this.cus_id = cus_id;
-	}
-	
-	public CusDto(int cus_no, String cus_nickname, String cus_name, String cus_id, String cus_password,
+	public Customer(String cus_id, int cus_no, String cus_nickname, String cus_name, String cus_password,
 			Date cus_birthday, String cus_gender, String cus_phone, String cus_email, int cus_point, int coupon_no) {
 		super();
+		this.cus_id = cus_id;
 		this.cus_no = cus_no;
 		this.cus_nickname = cus_nickname;
 		this.cus_name = cus_name;
-		this.cus_id = cus_id;
 		this.cus_password = cus_password;
 		this.cus_birthday = cus_birthday;
 		this.cus_gender = cus_gender;
@@ -37,82 +30,106 @@ public class CusDto {
 		this.cus_point = cus_point;
 		this.coupon_no = coupon_no;
 	}
-	public int getCus_no() {
-		return cus_no;
-	}
-	public void setCus_no(int cus_no) {
-		this.cus_no = cus_no;
-	}
-	public String getCus_nickname() {
-		return cus_nickname;
-	}
-	public void setCus_nickname(String cus_nickname) {
-		this.cus_nickname = cus_nickname;
-	}
-	public String getCus_name() {
-		return cus_name;
-	}
-	public void setCus_name(String cus_name) {
-		this.cus_name = cus_name;
-	}
+
 	public String getCus_id() {
 		return cus_id;
 	}
+
 	public void setCus_id(String cus_id) {
 		this.cus_id = cus_id;
 	}
+
+	public int getCus_no() {
+		return cus_no;
+	}
+
+	public void setCus_no(int cus_no) {
+		this.cus_no = cus_no;
+	}
+
+	public String getCus_nickname() {
+		return cus_nickname;
+	}
+
+	public void setCus_nickname(String cus_nickname) {
+		this.cus_nickname = cus_nickname;
+	}
+
+	public String getCus_name() {
+		return cus_name;
+	}
+
+	public void setCus_name(String cus_name) {
+		this.cus_name = cus_name;
+	}
+
 	public String getCus_password() {
 		return cus_password;
 	}
+
 	public void setCus_password(String cus_password) {
 		this.cus_password = cus_password;
 	}
+
 	public Date getCus_birthday() {
 		return cus_birthday;
 	}
+
 	public void setCus_birthday(Date cus_birthday) {
 		this.cus_birthday = cus_birthday;
 	}
+
 	public String getCus_gender() {
 		return cus_gender;
 	}
+
 	public void setCus_gender(String cus_gender) {
 		this.cus_gender = cus_gender;
 	}
+
 	public String getCus_phone() {
 		return cus_phone;
 	}
+
 	public void setCus_phone(String cus_phone) {
 		this.cus_phone = cus_phone;
 	}
+
 	public String getCus_email() {
 		return cus_email;
 	}
+
 	public void setCus_email(String cus_email) {
 		this.cus_email = cus_email;
 	}
+
 	public int getCus_point() {
 		return cus_point;
 	}
+
 	public void setCus_point(int cus_point) {
 		this.cus_point = cus_point;
 	}
+
 	public int getCoupon_no() {
 		return coupon_no;
 	}
+
 	public void setCoupon_no(int coupon_no) {
 		this.coupon_no = coupon_no;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "CusDto [cus_no=" + cus_no + ", cus_nickname=" + cus_nickname + ", cus_name=" + cus_name + ", cus_id="
-				+ cus_id + ", cus_password=" + cus_password + ", cus_birthday=" + cus_birthday + ", cus_gender="
+		return "CusDto [cus_id=" + cus_id + ", cus_no=" + cus_no + ", cus_nickname=" + cus_nickname + ", cus_name="
+				+ cus_name + ", cus_password=" + cus_password + ", cus_birthday=" + cus_birthday + ", cus_gender="
 				+ cus_gender + ", cus_phone=" + cus_phone + ", cus_email=" + cus_email + ", cus_point=" + cus_point
 				+ ", coupon_no=" + coupon_no + "]";
 	}
 	
 	
-	
 
+	
 }
+
+
