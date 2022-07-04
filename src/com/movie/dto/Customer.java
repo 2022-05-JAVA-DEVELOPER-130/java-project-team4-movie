@@ -2,7 +2,7 @@ package com.movie.dto;
 
 import java.util.Date;
 
-public class CustomerInfo {
+public class Customer {
 	private String cus_id;
 	private int cus_no;
 	private String cus_nickname;
@@ -15,7 +15,7 @@ public class CustomerInfo {
 	private int cus_point;
 	private int coupon_no;
 	
-	public CustomerInfo(String cus_id, int cus_no, String cus_nickname, String cus_name, String cus_password,
+	public Customer(String cus_id, int cus_no, String cus_nickname, String cus_name, String cus_password,
 			Date cus_birthday, String cus_gender, String cus_phone, String cus_email, int cus_point, int coupon_no) {
 		super();
 		this.cus_id = cus_id;

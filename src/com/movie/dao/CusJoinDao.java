@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.movie.common.DataSource;
-import com.movie.dto.CustomerInfo;
+import com.movie.dto.Customer;
 
 
 public class CusJoinDao {
@@ -17,7 +17,7 @@ public class CusJoinDao {
 		dataSource = new DataSource();
 	}
 
-	public int insertCus(CustomerInfo cusDto) throws Exception {
+	public int insertCus(Customer cusDto) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(CusSQL.CUS_INSERT);
 
@@ -39,7 +39,7 @@ public class CusJoinDao {
 		return rowCount;
 	}
 
-	public int updateCus(CustomerInfo cusDto) throws Exception {
+	public int updateCus(Customer cusDto) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(CusSQL.CUS_UPDATE);
 
@@ -65,7 +65,7 @@ public class CusJoinDao {
 
 	}
 
-	public int updateCus2(CustomerInfo cusDto) throws Exception {
+	public int updateCus2(Customer cusDto) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(CusSQL.CUS_UPDATE2);
 
@@ -101,9 +101,9 @@ public class CusJoinDao {
 		return rowCount;
 	}
 
-	public CustomerInfo selectById(String cus_id) throws Exception {
+	public Customer selectById(String cus_id) throws Exception {
 
-		CustomerInfo findCus = null;
+		Customer findCus = null;
 
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(CusSQL.CUS_SELECT_BY_ID);
@@ -112,7 +112,7 @@ public class CusJoinDao {
 
 		ResultSet rs = pstmt.executeQuery();
 		if (rs.next()) {
-			findCus = new CustomerInfo(rs.getString("cus_id"), rs.getInt("cus_no"), rs.getString("cus_nickname"), rs.getString("cus_name"),
+			findCus = new Customer(rs.getString("cus_id"), rs.getInt("cus_no"), rs.getString("cus_nickname"), rs.getString("cus_name"),
 					rs.getString("cus_password"), rs.getDate("cus_birthday"),
 					rs.getString("cus_gender"), rs.getString("cus_phone"), rs.getString("cus_email"),
 					rs.getInt("cus_point"), rs.getInt("coupon_no"));
