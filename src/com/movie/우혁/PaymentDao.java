@@ -32,7 +32,7 @@ public class PaymentDao {
 	}
 	
 	public List<Payment> selectAll() throws Exception{
-		List<Payment> PaymentList=new ArrayList()<Payment>();
+		List<Payment> PaymentList=new ArrayList<Payment>();
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(PaymentSQL.PAYMENT_SELECT_ALL);
 		ResultSet rs = pstmt.executeQuery();
