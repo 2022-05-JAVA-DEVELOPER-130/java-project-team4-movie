@@ -37,25 +37,46 @@ public class SeatDao {
 	/*
 	 * 남은좌석 유무확인
 	 */
-	public List<Seat> selectByRemain(String hall_name, int seat_valid) throws Exception {
-		ArrayList<Seat> remainList = new ArrayList<Seat>();
-		Connection con = dataSource.getConnection();
-		PreparedStatement pstmt = con.prepareStatement(SeatSQL.SEAT_SELECT_BY_REMAIN);
-		pstmt.setString(1, hall_name);
-		pstmt.setInt(2, seat_valid);
-		ResultSet rs = pstmt.executeQuery();
-		while (rs.next()) {
-			remainList.add(new Seat(rs.getInt("seat_no"), rs.getInt("seat_arrange"), rs.getInt("seat_valid"),
-					rs.getString("hall_name"), rs.getInt("payment_no")));
-		}
-		rs.close();
-		pstmt.close();
-		con.close();
+//	public List<Seat> selectByRemain(String hall_name, int seat_valid) throws Exception {
+//		ArrayList<Seat> remainList = new ArrayList<Seat>();
+//		Connection con = dataSource.getConnection();
+//		PreparedStatement pstmt = con.prepareStatement(SeatSQL.SEAT_SELECT_BY_REMAIN);
+//		pstmt.setString(1, hall_name);
+//		pstmt.setInt(2, seat_valid);
+//		ResultSet rs = pstmt.executeQuery();
+//		while (rs.next()) {
+//			remainList.add(new Seat(rs.getInt("seat_no"), rs.getInt("seat_arrange"), rs.getInt("seat_valid"),
+//					rs.getString("hall_name"), rs.getInt("payment_no")));
+//		}
+//		rs.close();
+//		pstmt.close();
+//		con.close();
+//
+//		return remainList;
+//
+//	}
 
-		return remainList;
+	
+	/*
+	 * 자리번호로 예매가능여부확인
+	 */
+	public Seat selectByNo(int seat_arrange) throws Exception {
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(SeatSQL.SEAT_SELECT_BY_NO);
+		pstmt.setInt(1, seat_arrange);
+		ResultSet rs=pstmt.executeQuery();
+		Seat findSeat=null;
+		if(rs.next()) {
+			
+						
+		}
+		return findSeat;
+		
 
 	}
-
+	
+	
+	
 	/*
 	 * 회차당 전체좌석확인
 	 */
