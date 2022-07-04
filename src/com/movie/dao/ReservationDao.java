@@ -22,9 +22,9 @@ public int insertReservationNo(Reservation Reservation) throws Exception{
 		
 		Connection con= dataSource.getConnection();
 		PreparedStatement pstmt= con.prepareStatement(ReservationSQL.Reservation_INSERT);
-		pstmt.setInt(1, Reservation.getCus_reservation_no());
-		pstmt.setInt(2, Reservation.getAdult_count());
-		pstmt.setInt(3, Reservation.getChild_count());
+		pstmt.setInt(1, Reservation.getreservation_no());
+		pstmt.setString(2, Reservation.getCus_id());
+		pstmt.setInt(3, Reservation.getPayment_no());
 		
 		pstmt.executeUpdate();
 		pstmt.close();
@@ -45,8 +45,8 @@ public List<Reservation> selectAll() throws Exception{
 		PreparedStatement pstmt=con.prepareStatement(ReservationSQL.Reservation_SELECT_ALL);
 		ResultSet rs=pstmt.executeQuery();
 		while(rs.next()) {
-			ReservationList.add(new Reservation(rs.getInt("cus_reservation_no"), 
-					rs.getInt("adult_count"),rs.getInt("child_count")
+			ReservationList.add(new Reservation(rs.getInt("reservation_no"), 
+					rs.getString("cus_id"),rs.getInt("payment_no")
 					)
 					);
 		}
@@ -61,11 +61,11 @@ public List<Reservation> selectAll() throws Exception{
 /*
  * 예매내역 취소?
  */
-public int deleteReservation(int cus_reservation_no) throws Exception {
+public int deleteReservation(int reservation_no) throws Exception {
 	
 	Connection con=dataSource.getConnection();
 	PreparedStatement pstmt=con.prepareStatement(ReservationSQL.Reservation_DELETE);
-	pstmt.setInt(1, cus_reservation_no);
+	pstmt.setInt(1, reservation_no);
 	int rowCount=pstmt.executeUpdate();
 	pstmt.close();
 	con.close();

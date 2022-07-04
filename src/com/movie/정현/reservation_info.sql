@@ -1,7 +1,7 @@
 --reservation_info
 
 insert into reservation_info
-values(to_number(to_char(sysdate, 'yymmddHH24MI')),null,null,null,null);
+values(to_number(to_char(sysdate, 'yymmddHH24MI')),null,null);
 
 
 --
@@ -18,7 +18,7 @@ join customer_info cus_info
 on re_info.cus_id= cus_info.cus_id;
 
 
-select cus_reservation_no re_no,ADULT_COUNT,CHILD_COUNT,payment_no,cus_info.cus_id cus_id
+select cus_reservation_no re_no,payment_no,cus_info.cus_id cus_id
 from reservation_info re_info 
 join customer_info cus_info
 on re_info.cus_id= cus_info.cus_id;
