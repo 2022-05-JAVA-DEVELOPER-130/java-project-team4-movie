@@ -20,7 +20,7 @@ public class CustomerServicetestMain2 {
 		System.out.println(cusService2.findPassword("yeji", "한예지"));
 		
 		System.out.println("전체 회원리스트");
-		System.out.println(cusService2.findAll());
+		System.out.println(cusService2.findAll()); 
 		
 
 	}
