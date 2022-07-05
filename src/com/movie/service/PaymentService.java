@@ -2,53 +2,90 @@ package com.movie.service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.movie.common.DataSource;
+import com.movie.dao.MovieDao;
+import com.movie.dao.PaymentDao;
 import com.movie.dao.PaymentSQL;
 import com.movie.dao.ReservationSQL;
+import com.movie.dao.SeatDao;
 import com.movie.dao.SeatSQL;
+import com.movie.dto.Movie;
 import com.movie.dto.Payment;
+import com.movie.dto.Seat;
 
 public class PaymentService {
 	
-	DataSource dataSource = new DataSource();
+	private PaymentDao paymentDao;
+	private MovieDao movieDao;
+	private SeatDao seatDao;
+	
+	public PaymentService() {
+		paymentDao = new PaymentDao();
+		movieDao = new MovieDao();
+		seatDao = new SeatDao();
+	}
+	
+	/*
+	 * 예약전체삭제
+	 */
+	public int deletebyCusId(String cus_id) throws Exception {
+		return paymentDao.deleteByCusId(cus_id);
+	}
+	/*
+	 * 예약 1건삭제
+	 */
+	public int deleteByPaymentNo(int payment_no) throws Exception {
+		return paymentDao.deleteByPaymentNo(payment_no);
 		
+	}
+	/*
+	 * 예약목록 - 성민작업
+	 */
+//	public ArrayList<Payment> reservationList(String cus_id){
+//		return;
+//	}
+	
+	/*
+	 * 선택영화 주문목록
+	 */
+	public ArrayList<Seat> list(String cus_id) throws Exception{
+		return paymentDao.list(cus_id);
+	}
+	/*
+	 * 선택내용 정보출력
+	 */
+	public List<Payment> selectByCusId(String cus_id) throws Exception {
+		return paymentDao.selectAllByCusId(cus_id);
+	}
+	/*
+	 * 모든 예약자 정보출력
+	 */
+	public List<Payment> selectAll() throws Exception{
+		return paymentDao.selectAllList();
+	}
 		
+	
+	/*
+	 * 영화예약
+	 */
+//	public int create(String cus_id, String movie_hall, int adult_member_count, int child_member_count) throws Exception {
+//		Movie movie = movieDao.selectByHallName(movie_hall);
+//		Seat seat = new Seat(0, adult_member_count, child_member_count, null, null, null);
+//		ArrayList<Seat> seatList = new ArrayList<Seat>();
+//		seatList.add(seat);
+//		Payment newPayment =
+//				new Payment(0,
+//							null,
+//							seatList.get(0).getMovie().getPrice_no(),
+//							seatList.get(0).get);
+//		
+//		return 0;
 		
-		
-		//new Payment(1, "11", 1, "국민", 2,1);
-		
-		public void PaymentReservation(Payment payment, String id) throws Exception {
-			Connection con = dataSource.getConnection();
-			PreparedStatement pstmt = con.prepareStatement(PaymentSQL.PAYMENT_INSERT);
-			
-			pstmt.setInt(1, payment.getCoupon_no());
-			pstmt.setString(2, payment.getCard_name());
-			pstmt.setInt(3, payment.getAdult_member_count());
-			pstmt.setInt(4, payment.getChild_member_count());
-			
-			pstmt.executeUpdate();
-			PreparedStatement pstmt2 = con.prepareStatement(ReservationSQL.Reservation_INSERT);
-			pstmt2.setString(1, id);
-			pstmt2.executeUpdate();
-			
-			pstmt.close();
-			pstmt2.close();
-			con.close();
-			
-		}
-		
-		
-		public void SeatPayment(String a, int b) throws Exception{
-			Connection con = dataSource.getConnection();
-			PreparedStatement pstmt = con.prepareStatement(SeatSQL.SEAT_PAYMENT_NO_UPDATE);
-			pstmt.setString(1, a);
-			pstmt.setInt(2, b);
-			pstmt.executeUpdate();
-			pstmt.close();
-			con.close();
-			
-		}
+	
+	
 		
 		
 		

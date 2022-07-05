@@ -2,22 +2,28 @@ package com.movie.test;
 
 import com.movie.dao.PaymentDao;
 import com.movie.dto.Payment;
+import com.movie.service.PaymentService;
 
 public class PaymentTestMain {
-	
+
 	public static void main(String[] args) throws Exception {
+
+		PaymentService payment = new PaymentService();
+
+
+		System.out.println("1.예매내역 출력");
+		System.out.println(">> " + payment.list("junyeung"));
+
 		
-		PaymentDao payment = new PaymentDao();
-		/*
-		System.out.println("1.결제번호 부여");
-		System.out.println(">>"+payment.insertPayment(new Payment(1, "aa", 1, null, 2, 2)));
-		*/
+		System.out.println("2.결제취소");
+		System.out.println(">>" + payment.deletebyCusId("yeji"));
+
+		System.out.println("3.결제금액 출력");
 		
-		System.out.println("2.걸제정보 출력");
-		System.out.println(">> "+payment.selectByNo(1));
-		/*
-		System.out.println("3.결제 취소");
-		System.out.println(">> "+payment.deleteByNo(1));
-		*/
+		System.out.println("--------------");
+		System.out.println(payment.selectAll());
+
+		System.out.println("--------------");
+		System.out.println(payment.selectByCusId("jeonghun"));
 	}
 }

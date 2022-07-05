@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.movie.common.DataSource;
+import com.movie.dto.Movie;
 import com.movie.dto.Payment;
 import com.movie.dto.Seat;
-
 
 public class PaymentDao {
 	private DataSource dataSource;
@@ -19,14 +19,15 @@ public class PaymentDao {
 	public PaymentDao() {
 		dataSource = new DataSource();
 	}
+
 	/*
 	 * 주문전체삭제
 	 */
-	public int deleteAllReservation(String cus_id) throws Exception {
+	public int deleteByCusId(String cus_id) throws Exception {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		int rowCount = 0;
-		
+
 		try {
 			con = dataSource.getConnection();
 			con.setAutoCommit(false);
@@ -38,11 +39,12 @@ public class PaymentDao {
 			con.rollback();
 			e1.printStackTrace();
 		} finally {
-			if(con!=null)con.close();
+			if (con != null)
+				con.close();
 		}
 		return rowCount;
 	}
-	
+
 	/*
 	 * 주문 1건삭제
 	 */
@@ -61,11 +63,12 @@ public class PaymentDao {
 			con.rollback();
 			e1.printStackTrace();
 		} finally {
-			if(con!=null)con.close();
+			if (con != null)
+				con.close();
 		}
 		return rowCount;
 	}
-	
+
 	/*
 	 * 주문생성
 	 */
@@ -81,7 +84,7 @@ public class PaymentDao {
 			pstmt1.setInt(2, payment.getAdult_member_count());
 			pstmt1.setInt(3, payment.getChild_member_count());
 			pstmt1.setString(4, payment.getCus_id());
-			
+
 			pstmt2 = con.prepareStatement(PaymentSQL.PAYMENT_INSERT_BY_SEATNO);
 			for (Seat seat : payment.getSeatList()) {
 				pstmt2.setInt(1, seat.getSeat_arrange());
@@ -93,21 +96,108 @@ public class PaymentDao {
 			con.rollback();
 			e1.printStackTrace();
 		} finally {
-			if(con!=null)
+			if (con != null)
 				con.close();
 		}
-		
+
 		return 0;
 	}
-	
+
 	/*
-	 * 주문전체(cus_id로 검색)
+	 * 예매내역(cus_id로 검색)
 	 */
+	public ArrayList<Seat> list(String cus_id) throws Exception {
+		ArrayList<Seat> seatList = new ArrayList<Seat>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(PaymentSQL.SELECT_BY_CUSID_ALL);
+			pstmt.setString(1, cus_id);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				seatList.add(new Seat(rs.getInt("seat_no"), rs.getInt("seat_arrange"), rs.getInt("seat_valid"),
+						rs.getString("hall_name"), rs.getString("cus_id"), null));
+			}
+		} finally {
+			if (con != null) {
+				con.close();
+			}
+		}
+
+		return seatList;
+	}
+
+	public List<Payment> selectAllList() throws Exception{
+		List<Payment> paymentList = new ArrayList<Payment>();
+		Connection con=dataSource.getConnection();
+		PreparedStatement pstmt=con.prepareStatement(PaymentSQL.PAYMENT_SELECT_ALL);
+		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()) {
+			paymentList.add(new Payment(rs.getInt("payment_no"),
+										rs.getDate("payment_date"),
+										rs.getString("card_name"),
+										rs.getInt("adult_member_count"),
+										rs.getInt("child_member_count"),
+										rs.getNString("cus_id"),
+										null
+					));
+		}
+		rs.close();
+		pstmt.close();
+		con.close();
+		return paymentList;
+		
+	}
 	
+	public List<Payment> selectAllByCusId(String cus_id) throws Exception{
+		List<Payment> paymentList = new ArrayList<Payment>();
+		Connection con=dataSource.getConnection();
+		PreparedStatement pstmt=con.prepareStatement(PaymentSQL.SELECT_BY_CUSID);
+		pstmt.setString(1, cus_id);
+		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()) {
+			paymentList.add(new Payment(rs.getInt("payment_no"),
+										rs.getDate("payment_date"),
+										rs.getString("card_name"),
+										rs.getInt("adult_member_count"),
+										rs.getInt("child_member_count"),
+										rs.getNString("cus_id"),
+										null
+					));
+		}
+		rs.close();
+		pstmt.close();
+		con.close();
+		return paymentList;
+		
+	}
 	
-	/*
-	 * 주문1개보기
-	 */
-	
-	
+//	public Payment selectById(String cus_id) throws Exception{
+//		Payment findCus = null;
+//		Connection con=dataSource.getConnection();
+//		PreparedStatement pstmt=con.prepareStatement(PaymentSQL.SELECT_BY_CUSID);
+//		pstmt.setString(1, cus_id);
+//		ResultSet rs = pstmt.executeQuery();
+//
+//		while(rs.next()) {
+//				findCus =
+//						new Payment(rs.getInt("payment_no"),
+//								rs.getDate("payment_date"),
+//								rs.getString("card_name"),
+//								rs.getInt("adult_member_count"),
+//								rs.getInt("child_member_count"),
+//								rs.getNString("cus_id"),
+//								null);
+//			
+//		}
+//		rs.close();
+//		pstmt.close();
+//		con.close();
+//		return findCus;
+//		
+//	}
+
 }

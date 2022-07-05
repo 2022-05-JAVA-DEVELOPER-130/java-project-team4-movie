@@ -76,7 +76,8 @@ public class SeatDao {
 							  rs.getInt("seat_arrange"),
 							  rs.getInt("seat_valid"),
 							  rs.getString("hall_name"),
-							  rs.getString("cus_id")));
+							  rs.getString("cus_id"),
+							  null));
 		}
 		rs.close();
 		pstmt.close();
@@ -85,6 +86,7 @@ public class SeatDao {
 
 	
 	}
+
 	
 	
 
