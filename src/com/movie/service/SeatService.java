@@ -1,5 +1,7 @@
 package com.movie.service;
 
+import java.util.List;
+
 import com.movie.dao.SeatDao;
 import com.movie.dto.Seat;
 
@@ -12,17 +14,22 @@ public class SeatService {
 
 	/*
 	 * 좌석예매
-	 * 	- 좌석이 중복된 경우에는 메세지 띄운다.
 	 */
+	public int seatReservation(String cus_id, String hall_name, int seat_arrange) throws Exception {
+		return seatDao.update(cus_id, hall_name, seat_arrange);
+	}
 
-//	public boolean seatReservation(Seat newSeat) throws Exception {
-//		boolean isReservation = false;
-//		/*
-//		 * 좌석예매여부체크
-//		 * 	- 빈자리면     예매
-//		 * 	- 빈자리아니면 메세지
-//		 */
-//		Seat findSeat = seatDao.
-//
-//	}
+	/*
+	 * 회차별 남은좌석수
+	 */
+	public int findRemain(String hall_name) throws Exception {
+		return seatDao.remainResultSelect(hall_name);
+	}
+	
+	/*
+	 * 아이디로 예매내역검색
+	 */
+	public List<Seat> findAll(String cus_id) throws Exception {
+		return seatDao.selectById(cus_id);
+	}
 }

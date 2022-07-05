@@ -13,7 +13,15 @@ CREATE TABLE coupon_info(
 		coupon_effect                 		NUMBER(3)		 NULL 
 );
 
+COMMENT ON TABLE coupon_info is 'coupon_info';
+COMMENT ON COLUMN coupon_info.coupon_no is 'coupon_no';
+COMMENT ON COLUMN coupon_info.coupon_name is 'coupon_name';
+COMMENT ON COLUMN coupon_info.coupon_effect is 'coupon_effect';
 
+
+/**********************************/
+/* Table Name: customer_info */
+/**********************************/
 CREATE TABLE customer_info(
 		cus_id                        		VARCHAR2(12)		 NULL ,
 		cus_no                        		NUMBER(5)		 NULL ,
@@ -28,23 +36,124 @@ CREATE TABLE customer_info(
 		coupon_no                     		NUMBER(10)		 NULL 
 );
 
-DROP SEQUENCE cus_no_SEQ;
+CREATE SEQUENCE customer_info_cus_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
-CREATE SEQUENCE cus_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
+CREATE TRIGGER customer_info_cus_no_TRG
+BEFORE INSERT ON customer_info
+FOR EACH ROW
+BEGIN
+IF :NEW.cus_no IS NOT NULL THEN
+  SELECT customer_info_cus_no_SEQ.NEXTVAL INTO :NEW.cus_no FROM DUAL;
+END IF;
+END;
+
+COMMENT ON TABLE customer_info is 'customer_info';
+COMMENT ON COLUMN customer_info.cus_id is 'cus_id';
+COMMENT ON COLUMN customer_info.cus_no is 'cus_no';
+COMMENT ON COLUMN customer_info.cus_nickname is 'cus_nickname';
+COMMENT ON COLUMN customer_info.cus_name is 'cus_name';
+COMMENT ON COLUMN customer_info.cus_password is 'cus_password';
+COMMENT ON COLUMN customer_info.cus_birthday is 'cus_birthday';
+COMMENT ON COLUMN customer_info.cus_gender is 'cus_gender';
+COMMENT ON COLUMN customer_info.cus_phone is 'cus_phone';
+COMMENT ON COLUMN customer_info.cus_email is 'cus_email';
+COMMENT ON COLUMN customer_info.cus_point is 'cus_point';
+COMMENT ON COLUMN customer_info.coupon_no is 'coupon_no';
 
 
+<<<<<<< HEAD
+/**********************************/
+/* Table Name: credit_card */
+/**********************************/
+=======
+>>>>>>> branch 'master' of https://github.com/2022-05-JAVA-DEVELOPER/java-project-team4-movie.git
 CREATE TABLE credit_card(
 		card_name                     		VARCHAR2(10)		 NULL 
 );
 
+COMMENT ON TABLE credit_card is 'credit_card';
+COMMENT ON COLUMN credit_card.card_name is 'card_name';
 
+<<<<<<< HEAD
+
+/**********************************/
+/* Table Name: payment */
+/**********************************/
+CREATE TABLE payment(
+		payment_no                    		NUMBER(10)		 NULL ,
+		payment_date                  		DATE		 DEFAULT sysdate		 NULL ,
+		card_name                     		VARCHAR2(10)		 NULL ,
+		adult_member_count            		NUMBER(5)		 NULL ,
+		child_member_count            		NUMBER(5)		 NULL ,
+		cus_id                        		VARCHAR2(12)		 NULL 
+);
+
+CREATE SEQUENCE payment_payment_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
+
+CREATE TRIGGER payment_payment_no_TRG
+BEFORE INSERT ON payment
+FOR EACH ROW
+BEGIN
+IF :NEW.payment_no IS NOT NULL THEN
+  SELECT payment_payment_no_SEQ.NEXTVAL INTO :NEW.payment_no FROM DUAL;
+END IF;
+END;
+
+COMMENT ON TABLE payment is 'payment';
+COMMENT ON COLUMN payment.payment_no is 'payment_no';
+COMMENT ON COLUMN payment.payment_date is 'payment_date';
+COMMENT ON COLUMN payment.card_name is 'card_name';
+COMMENT ON COLUMN payment.adult_member_count is 'adult_member_count';
+COMMENT ON COLUMN payment.child_member_count is 'child_member_count';
+COMMENT ON COLUMN payment.cus_id is 'cus_id';
+
+
+/**********************************/
+/* Table Name: reservation_info */
+/**********************************/
+CREATE TABLE reservation_info(
+		reservation_no                		NUMBER(12)		 NULL ,
+		payment_no                    		NUMBER(10)		 NULL ,
+		cus_id                        		VARCHAR2(12)		 NULL 
+);
+
+CREATE SEQUENCE reservation_info_reservation_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
+
+CREATE TRIGGER reservation_info_reservation_no_TRG
+BEFORE INSERT ON reservation_info
+FOR EACH ROW
+BEGIN
+IF :NEW.reservation_no IS NOT NULL THEN
+  SELECT reservation_info_reservation_no_SEQ.NEXTVAL INTO :NEW.reservation_no FROM DUAL;
+END IF;
+END;
+
+COMMENT ON TABLE reservation_info is 'reservation_info';
+COMMENT ON COLUMN reservation_info.reservation_no is 'reservation_no';
+COMMENT ON COLUMN reservation_info.payment_no is 'payment_no';
+COMMENT ON COLUMN reservation_info.cus_id is 'cus_id';
+
+
+/**********************************/
+/* Table Name: price_info */
+/**********************************/
+=======
+>>>>>>> branch 'master' of https://github.com/2022-05-JAVA-DEVELOPER/java-project-team4-movie.git
 CREATE TABLE price_info(
 		price_no                      		NUMBER(10)		 NULL ,
 		adult_price                   		NUMBER(10)		 NULL ,
 		child_price                   		NUMBER(10)		 NULL 
 );
 
+COMMENT ON TABLE price_info is 'price_info';
+COMMENT ON COLUMN price_info.price_no is 'price_no';
+COMMENT ON COLUMN price_info.adult_price is 'adult_price';
+COMMENT ON COLUMN price_info.child_price is 'child_price';
 
+
+/**********************************/
+/* Table Name: movie_hall */
+/**********************************/
 CREATE TABLE movie_hall(
 		hall_name                     		VARCHAR2(10)		 NULL ,
 		total_seat_count              		NUMBER(10)		 NULL ,
@@ -59,7 +168,23 @@ CREATE TABLE movie_hall(
 		price_no                      		NUMBER(10)		 NULL 
 );
 
+COMMENT ON TABLE movie_hall is 'movie_hall';
+COMMENT ON COLUMN movie_hall.hall_name is 'hall_name';
+COMMENT ON COLUMN movie_hall.total_seat_count is 'total_seat_count';
+COMMENT ON COLUMN movie_hall.remain_seat is 'remain_seat';
+COMMENT ON COLUMN movie_hall.m_name is 'm_name';
+COMMENT ON COLUMN movie_hall.m_genre is 'm_genre';
+COMMENT ON COLUMN movie_hall.m_positive_age is 'm_positive_age';
+COMMENT ON COLUMN movie_hall.m_start_time is 'm_start_time';
+COMMENT ON COLUMN movie_hall.m_end_time is 'm_end_time';
+COMMENT ON COLUMN movie_hall.m_image is 'm_image';
+COMMENT ON COLUMN movie_hall.m_introduce is 'm_introduce';
+COMMENT ON COLUMN movie_hall.price_no is 'price_no';
 
+
+/**********************************/
+/* Table Name: seat */
+/**********************************/
 CREATE TABLE seat(
 		seat_no                       		NUMBER(2)		 NULL ,
 		seat_arrange                  		NUMBER(2)		 NULL ,
@@ -68,11 +193,27 @@ CREATE TABLE seat(
 		cus_id                        		VARCHAR2(12)		 NULL 
 );
 
-DROP SEQUENCE seat_no_SEQ;
+CREATE SEQUENCE seat_seat_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
+<<<<<<< HEAD
+CREATE TRIGGER seat_seat_no_TRG
+BEFORE INSERT ON seat
+FOR EACH ROW
+BEGIN
+IF :NEW.seat_no IS NOT NULL THEN
+  SELECT seat_seat_no_SEQ.NEXTVAL INTO :NEW.seat_no FROM DUAL;
+END IF;
+END;
+=======
 CREATE SEQUENCE seat_no_SEQ MAXVALUE 50 NOCACHE NOORDER NOCYCLE;
+>>>>>>> branch 'master' of https://github.com/2022-05-JAVA-DEVELOPER/java-project-team4-movie.git
 
-
+COMMENT ON TABLE seat is 'seat';
+COMMENT ON COLUMN seat.seat_no is 'seat_no';
+COMMENT ON COLUMN seat.seat_arrange is 'seat_arrange';
+COMMENT ON COLUMN seat.seat_valid is 'seat_valid';
+COMMENT ON COLUMN seat.hall_name is 'hall_name';
+COMMENT ON COLUMN seat.cus_id is 'cus_id';
 
 CREATE TABLE payment(
 		payment_no                    		NUMBER(10)		 NULL ,
