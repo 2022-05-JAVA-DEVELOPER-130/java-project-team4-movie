@@ -9,7 +9,7 @@ import com.movie.dao.ReservationSQL;
 import com.movie.dao.SeatSQL;
 import com.movie.dto.Payment;
 
-public class PaymentReservationService {
+public class PaymentService {
 	
 	DataSource dataSource = new DataSource();
 		

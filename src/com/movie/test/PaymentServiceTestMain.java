@@ -4,12 +4,12 @@ import com.movie.dao.PaymentDao;
 import com.movie.dao.ReservationDao;
 import com.movie.dto.Payment;
 import com.movie.dto.Reservation;
-import com.movie.service.PaymentReservationService;
+import com.movie.service.PaymentService;
 
-public class PaymentReservationServiceTestMain {
+public class PaymentServiceTestMain {
 
 	public static void main(String[] args) throws Exception{
-		PaymentReservationService prs = new PaymentReservationService();
+		PaymentService prs = new PaymentService();
 		ReservationDao rDao = new ReservationDao();
 		PaymentDao pDao = new PaymentDao();
 		Payment r=new Payment(1,"a",1,"국민",2,2);
