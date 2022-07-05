@@ -1,5 +1,7 @@
 package com.movie.service;
 
+import java.util.List;
+
 import com.movie.dao.CusJoinDao;
 import com.movie.dto.Customer;
 
@@ -46,12 +48,18 @@ public class CusService {
 		return loginResult;
 		
 	}
+
 	
 	//회원탈퇴
 	public int deleteInfo(String cus_id) throws Exception{
-	
-		return cusJoinDao.deleteById(cus_id);
+		return 0;
 	}
+
+	//고객 전체검색
+	public List<Customer> findAll() throws Exception{
+		return cusJoinDao.selectAll();
+	}
+
 	
 	//정보수정
 	public boolean updateInfo(String cus_nickname ) {
