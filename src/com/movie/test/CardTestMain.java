@@ -20,9 +20,6 @@ public class CardTestMain {
 		insertCardInfo6.insertinto(new CardInfo("삼성"));
 		CardInfo insertCardInfo7=new CardInfo();
 		insertCardInfo7.insertinto(new CardInfo("기업"));
-		
-		
-	
 
 	} 
 
