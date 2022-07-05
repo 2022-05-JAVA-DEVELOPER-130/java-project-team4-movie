@@ -21,6 +21,8 @@ public class CardTestMain {
 		CardInfo insertCardInfo7=new CardInfo();
 		insertCardInfo7.insertinto(new CardInfo("기업"));
 		
+		
+	
 
 	} 
 
