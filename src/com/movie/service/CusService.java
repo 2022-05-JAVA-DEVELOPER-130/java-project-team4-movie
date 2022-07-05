@@ -62,8 +62,13 @@ public class CusService {
 
 	
 	//정보수정
-	public boolean updateInfo(String cus_nickname ) {
+	public boolean updateInfo(String cus_nickname, String cus_password, String cus_birthday, String cus_gender, String cus_phone, String cus_email ) {
 		boolean isUpdate = false;
+		
+		Customer updateCustomer = cusJoinDao.updateCus2(cus_password);
+		
+		
+		if(cusJoinDao.updateCus2(null))
 		
 		
 		
