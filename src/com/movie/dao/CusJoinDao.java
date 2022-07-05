@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import com.movie.common.DataSource;
 import com.movie.dto.Customer;
@@ -76,7 +77,6 @@ public class CusJoinDao {
 		pstmt.setString(5, cusDto.getCus_phone());
 		pstmt.setString(6, cusDto.getCus_email());
 		pstmt.setString(7, cusDto.getCus_id());
-		pstmt.setString(8, cusDto.getCus_password());
 
 		int rowCount = pstmt.executeUpdate();
 
@@ -93,12 +93,12 @@ public class CusJoinDao {
 
 		pstmt.setString(1, cus_id);
 
-		int rowCount = pstmt.executeUpdate();
+		int deleteRowCount = pstmt.executeUpdate();
 
 		pstmt.close();
 		con.close();
 
-		return rowCount;
+		return deleteRowCount;
 	}
 
 	public Customer selectById(String cus_id) throws Exception {
@@ -167,6 +167,24 @@ public class CusJoinDao {
 
 		return findPassword;
 
+	}
+	
+	
+	public ArrayList<Customer> selectAll() throws Exception {
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt=con.prepareStatement(CusSQL.CUS_SELECT_ALL);
+		ResultSet rs=pstmt.executeQuery();
+		ArrayList<Customer> CusList=new ArrayList<Customer>();
+		while(rs.next()) {
+			CusList.add(new Customer(rs.getString("cus_id"), rs.getInt("cus_no"), 
+					rs.getString("cus_nickname"), rs.getString("cus_name"),
+					rs.getString("cus_password"), rs.getDate("cus_birthday"),
+					rs.getString("cus_gender"), rs.getString("cus_phone"), rs.getString("cus_email"),
+					rs.getInt("cus_point"), rs.getInt("coupon_no"))
+					);
+		}
+		return CusList;
+		
 	}
 
 }

@@ -8,6 +8,15 @@ public class Reservation {
 	
 	
 	
+	
+	
+	public Reservation(int reservation_no, String cus_id, int payment_no) {
+		super();
+		this.reservation_no = reservation_no;
+		this.cus_id = cus_id;
+		this.payment_no = payment_no;
+	}
+
 	public Reservation(int reservation_no, String cus_id, int payment_no, Payment payment) {
 		super();
 		this.reservation_no = reservation_no;

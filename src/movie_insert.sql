@@ -5,11 +5,11 @@ insert into price_info values(2, 10000, 8000); -- 조조
 insert into price_info values(3, 12000, 9000); -- 심야
 
 --movie_hall insert
-insert into movie_hall values('1회차', 10, ((10)-(select sum(seat_valid) from seat where seat_no = 1)), '마녀2', '액션', 15, '07/10 08:00', '07/10 10:17', null, '감독 : 조셉 코신스키 / 배우 : 톰 크루즈 ,  마일즈 텔러 ,  제니퍼 코넬리',2);
-insert into movie_hall values('2회차', 10, ((10)-(select sum(seat_valid) from seat where seat_no = 2)), '탑건-매버릭', '액션', 12, '07/10 12:00', '07/10 14:10', null, '감독 : 타이카 와이티티 / 배우 : 크리스 헴스워스 ,  나탈리 포트만 ,  테사 톰슨 ,  크리스찬 베일 ,  타이카 와이티티 ,  크리스 프랫',1);
-insert into movie_hall values('3회차', 10, ((10)-(select sum(seat_valid) from seat where seat_no = 3)), '헤어질 결심', '로맨스', 15, '07/10 14:00', '07/10 16:18', null, '감독 : 박찬욱 / 프로듀서 : 백지선 ,  고대석 / 배우 : 탕웨이 ,  박해일 ,  이정현 ,  박용우 ,  고경표 ,  김신영',1);
-insert into movie_hall values('4회차', 10, ((10)-(select sum(seat_valid) from seat where seat_no = 4)), '토르-러브 앤 썬더', '액션', 12, '07/10 16:00', '07/10 17:59', null, '감독 : 타이카 와이티티 / 배우 : 크리스 헴스워스 ,  나탈리 포트만 ,  테사 톰슨 ,  크리스찬 베일 ,  타이카 와이티티 ,  크리스 프랫',1);
-insert into movie_hall values('5회차', 10, ((10)-(select sum(seat_valid) from seat where seat_no = 5)), '범죄도시2', '액션', 15, '07/10 00:00', '07/10 01:46', null, '감독 : 이상용 / 프로듀서 : 유영채 / 배우 : 마동석 ,  손석구 ,  최귀화 ,  박지환 ,  허동원 ,  하준 ,  정재광',3);
+insert into movie_hall values('1회차', 10, (select sum(seat_valid) from seat where seat_no = 1), '마녀2', '액션', 15, '07/10 08:00', '07/10 10:17', null, '감독 : 조셉 코신스키 / 배우 : 톰 크루즈 ,  마일즈 텔러 ,  제니퍼 코넬리',2);
+insert into movie_hall values('2회차', 10, (select sum(seat_valid) from seat where seat_no = 2), '탑건-매버릭', '액션', 12, '07/10 12:00', '07/10 14:10', null, '감독 : 타이카 와이티티 / 배우 : 크리스 헴스워스 ,  나탈리 포트만 ,  테사 톰슨 ,  크리스찬 베일 ,  타이카 와이티티 ,  크리스 프랫',1);
+insert into movie_hall values('3회차', 10, (select sum(seat_valid) from seat where seat_no = 3), '헤어질 결심', '로맨스', 15, '07/10 14:00', '07/10 16:18', null, '감독 : 박찬욱 / 프로듀서 : 백지선 ,  고대석 / 배우 : 탕웨이 ,  박해일 ,  이정현 ,  박용우 ,  고경표 ,  김신영',1);
+insert into movie_hall values('4회차', 10, (select sum(seat_valid) from seat where seat_no = 4), '토르-러브 앤 썬더', '액션', 12, '07/10 16:00', '07/10 17:59', null, '감독 : 타이카 와이티티 / 배우 : 크리스 헴스워스 ,  나탈리 포트만 ,  테사 톰슨 ,  크리스찬 베일 ,  타이카 와이티티 ,  크리스 프랫',1);
+insert into movie_hall values('5회차', 10, (select sum(seat_valid) from seat where seat_no = 5), '범죄도시2', '액션', 15, '07/10 00:00', '07/10 01:46', null, '감독 : 이상용 / 프로듀서 : 유영채 / 배우 : 마동석 ,  손석구 ,  최귀화 ,  박지환 ,  허동원 ,  하준 ,  정재광',3);
 
 
 --seat insert
@@ -69,12 +69,7 @@ insert into seat values(seat_no_seq.nextval, 9, 1, '5회차', null);
 insert into seat values(seat_no_seq.nextval, 10, 1, '5회차', null);
 
 
---update movie_hall
-update movie_hall set remain_seat = (select sum(seat_valid) from seat where hall_name = '1회차') where hall_name = '1회차';
-update movie_hall set remain_seat = (select sum(seat_valid) from seat where hall_name = '2회차') where hall_name = '2회차';
-update movie_hall set remain_seat = (select sum(seat_valid) from seat where hall_name = '3회차') where hall_name = '3회차';
-update movie_hall set remain_seat = (select sum(seat_valid) from seat where hall_name = '4회차') where hall_name = '4회차';
-update movie_hall set remain_seat = (select sum(seat_valid) from seat where hall_name = '5회차') where hall_name = '5회차';
+
 
 
 --coupon_info insert
@@ -95,7 +90,7 @@ insert into customer_info values('hunjung', cus_no_seq.nextval, '자두현정', 
 
 commit;
 
-------------------------여기까지 기본데이터 ------------------------------------
+
 insert into credit_card values('국민');
 insert into credit_card values('신한');
 insert into credit_card values('농협');
@@ -103,14 +98,48 @@ insert into credit_card values('우리');
 insert into credit_card values('기업');
 insert into credit_card values('IBK');
 
+------------------------여기까지 기본데이터 ------------------------------------
 
-insert into payment values(payment_no_seq.nextval, sysdate, 1, '신한' ,2,0);
-insert into payment values(payment_no_seq.nextval, sysdate, 2, '국민' ,0,3);
-insert into payment values(payment_no_seq.nextval, sysdate, 1, '농협' ,1,1);
-insert into payment values(payment_no_seq.nextval, sysdate, 1, '우리' ,2,1);
-insert into payment values(payment_no_seq.nextval, sysdate, 3, '신한' ,2,3);
-insert into payment values(payment_no_seq.nextval, sysdate, 2, '기업' ,0,1);
+insert into payment values(payment_no_seq.nextval, sysdate, '신한' ,2,0, 'seongmin',1);
+insert into payment values(payment_no_seq.nextval, sysdate, '신한' ,2,0, 'seongmin',3);
+insert into payment values(payment_no_seq.nextval, sysdate, '국민' ,0,1, 'yeji',2);
+insert into payment values(payment_no_seq.nextval, sysdate, '농협' ,1,1, 'junyeung',5);
+insert into payment values(payment_no_seq.nextval, sysdate, '농협' ,1,1, 'junyeung',6);
+insert into payment values(payment_no_seq.nextval, sysdate, '우리' ,2,1, 'woohuck',11);
+insert into payment values(payment_no_seq.nextval, sysdate, '우리' ,2,1, 'woohuck',12);
+insert into payment values(payment_no_seq.nextval, sysdate, '우리' ,2,1, 'woohuck',15);
+insert into payment values(payment_no_seq.nextval, sysdate, '신한' ,1,2, 'jeonghun',35);
+insert into payment values(payment_no_seq.nextval, sysdate, '신한' ,1,2, 'jeonghun',37);
+insert into payment values(payment_no_seq.nextval, sysdate, '신한' ,1,2, 'jeonghun',38);
+
+insert into reservation_info values(reservation_no_seq.nextval, 1, 'seongmin');
+insert into reservation_info values(reservation_no_seq.nextval, 2, 'yeji');
+insert into reservation_info values(reservation_no_seq.nextval, 3, 'junyeung');
+insert into reservation_info values(reservation_no_seq.nextval, 4, 'woohuck');
+insert into reservation_info values(reservation_no_seq.nextval, 5, 'jeonghun');
+
+update seat set cus_id= 'seongmin', seat_valid =0 where hall_name = '1회차' and seat_arrange = 1;
+update seat set cus_id= 'seongmin', seat_valid =0 where hall_name = '1회차' and seat_arrange = 3;
+
+update seat set cus_id= 'yeji', seat_valid =0 where hall_name = '1회차' and seat_arrange = 2;
+
+update seat set cus_id= 'junyeung', seat_valid =0 where hall_name = '1회차' and seat_arrange = 5;
+update seat set cus_id= 'junyeung', seat_valid =0 where hall_name = '1회차' and seat_arrange = 6;
+
+update seat set cus_id= 'woohuck', seat_valid =0 where hall_name = '2회차' and seat_arrange = 1;
+update seat set cus_id= 'woohuck', seat_valid =0 where hall_name = '2회차' and seat_arrange = 2;
+update seat set cus_id= 'woohuck', seat_valid =0 where hall_name = '2회차' and seat_arrange = 5;
+
+update seat set cus_id= 'jeonghun', seat_valid =0 where hall_name = '3회차' and seat_arrange = 5;
+update seat set cus_id= 'jeonghun', seat_valid =0 where hall_name = '3회차' and seat_arrange = 7;
+update seat set cus_id= 'jeonghun', seat_valid =0 where hall_name = '3회차' and seat_arrange = 8;
+
+--update movie_hall
+update movie_hall set remain_seat = (select sum(seat_valid) from seat where hall_name = '1회차') where hall_name = '1회차';
+update movie_hall set remain_seat = (select sum(seat_valid) from seat where hall_name = '2회차') where hall_name = '2회차';
+update movie_hall set remain_seat = (select sum(seat_valid) from seat where hall_name = '3회차') where hall_name = '3회차';
+update movie_hall set remain_seat = (select sum(seat_valid) from seat where hall_name = '4회차') where hall_name = '4회차';
+update movie_hall set remain_seat = (select sum(seat_valid) from seat where hall_name = '5회차') where hall_name = '5회차';
 
 
 commit;
-update seat set payment_no = (select max(payment_no) from payment) where hall_name = ? and seat_arrange = ?;

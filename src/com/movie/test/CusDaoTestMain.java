@@ -22,7 +22,7 @@ public class CusDaoTestMain {
 				"grape2@google.com", 3000, 1);
 		System.out.println("updateCus : " + cusJoinDao.updateCus(updateCus));
 
-		Customer updateCus2 = new Customer("alchan2", 8, "포도개조아", "김최종", "1234", aaa, "F", "010-7895-4532",
+		Customer updateCus2 = new Customer("hunjung", 7, null, "김최종", "7891", aaa, "M", "1022223333",
 				"grape2@google.com", 3000, 1);
 		System.out.println("updateCus2 : " + cusJoinDao.updateCus2(updateCus2));
 
@@ -31,11 +31,12 @@ public class CusDaoTestMain {
 		Customer findCus = cusJoinDao.selectById("hunjung");
 		System.out.println("selectById : "+ findCus);
 		
+		
 		String findId = cusJoinDao.selectByNamePhone("임현정", "1022223333");
 		System.out.println("ID 찾기 : " + findId);
 		
 		String findPassword = cusJoinDao.selectByIdName("hunjung","임현정");
-		System.out.println("ID 찾기 : " + findPassword);
+		System.out.println("PASSWORD 찾기 : " + findPassword);
 		
 
 	}

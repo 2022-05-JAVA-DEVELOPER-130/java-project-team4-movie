@@ -1,27 +1,32 @@
 package com.movie.dto;
 
+import java.sql.Date;
+import java.util.ArrayList;
+
 public class Payment {
 	
 	private int payment_no;
-	private String payment_date;
-	private int coupon_no;
+	private Date payment_date;
 	private String card_name;
 	private int adult_member_count;
 	private int child_member_count;
-	
+	private String cus_id;
+	private ArrayList<Seat> seatList = new ArrayList<Seat>();
+
 	public Payment() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public Payment(int payment_no, String payment_date, int coupon_no, String card_name, int adult_member_count,
-			int child_member_count) {
+
+	public Payment(int payment_no, Date payment_date, String card_name, int adult_member_count, int child_member_count,
+			String cus_id, ArrayList<Seat> seatList) {
 		super();
-		this.payment_no=payment_no;
-		this.payment_date=payment_date;
-		this.coupon_no=coupon_no;
-		this.card_name=card_name;
-		this.adult_member_count=adult_member_count;
-		this.child_member_count=child_member_count;
+		this.payment_no = payment_no;
+		this.payment_date = payment_date;
+		this.card_name = card_name;
+		this.adult_member_count = adult_member_count;
+		this.child_member_count = child_member_count;
+		this.cus_id = cus_id;
+		this.seatList = seatList;
 	}
 
 	public int getPayment_no() {
@@ -32,20 +37,12 @@ public class Payment {
 		this.payment_no = payment_no;
 	}
 
-	public String getPayment_date() {
+	public Date getPayment_date() {
 		return payment_date;
 	}
 
-	public void setPayment_date(String payment_date) {
+	public void setPayment_date(Date payment_date) {
 		this.payment_date = payment_date;
-	}
-
-	public int getCoupon_no() {
-		return coupon_no;
-	}
-
-	public void setCoupon_no(int coupon_no) {
-		this.coupon_no = coupon_no;
 	}
 
 	public String getCard_name() {
@@ -71,11 +68,32 @@ public class Payment {
 	public void setChild_member_count(int child_member_count) {
 		this.child_member_count = child_member_count;
 	}
-	
+
+	public String getCus_id() {
+		return cus_id;
+	}
+
+	public void setCus_id(String cus_id) {
+		this.cus_id = cus_id;
+	}
+
+	public ArrayList<Seat> getSeatList() {
+		return seatList;
+	}
+
+	public void setSeatList(ArrayList<Seat> seatList) {
+		this.seatList = seatList;
+	}
+
 	@Override
 	public String toString() {
-		return "Payment [payment_no=" + payment_no + ", payment_date=" + payment_date + ", coupon_no=" + 
-				coupon_no + ", card_name=" + card_name + ", adult_member_count=" + adult_member_count + 
-				", child_member_count=" + child_member_count + "]";
+		return "Payment [payment_no=" + payment_no + ", payment_date=" + payment_date + ", card_name=" + card_name
+				+ ", adult_member_count=" + adult_member_count + ", child_member_count=" + child_member_count
+				+ ", cus_id=" + cus_id + ", seatList=" + seatList + "]";
 	}
+	
+
+
+
+
 }
