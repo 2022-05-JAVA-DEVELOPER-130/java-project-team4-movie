@@ -13,6 +13,9 @@ public class CardInfo {
 	public void setCard_name(String card_name) {
 		this.card_name = card_name;
 	}
+	public void insertinto(CardInfo cardInfo) {
+		
+	}
 		
 	}
 
