@@ -114,3 +114,6 @@ insert into payment values(payment_no_seq.nextval, sysdate, 2, '기업' ,0,1);
 
 commit;
 update seat set payment_no = (select max(payment_no) from payment) where hall_name = ? and seat_arrange = ?;
+
+
+select * from movie_hall a join price_info b on a.price_no = b.price_no

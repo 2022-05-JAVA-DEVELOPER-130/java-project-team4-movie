@@ -68,14 +68,11 @@ public List<Reservation> selectAll() throws Exception{
 		Connection con= dataSource.getConnection();
 		PreparedStatement pstmt=con.prepareStatement(ReservationSQL.Reservation_SELECT_ALL);
 		ResultSet rs=pstmt.executeQuery();
-		/* payment 적용전
+		
 		while(rs.next()) {
 			ReservationList.add(new Reservation(rs.getInt("reservation_no"), 
-					rs.getString("cus_id"),rs.getInt("payment_no"),
-					rs.get000("payment")
-					)
-					);
-		}*/
+					rs.getString("cus_id"),rs.getInt("payment_no")));
+		}
 		rs.close();
 		pstmt.close();
 		con.close();
