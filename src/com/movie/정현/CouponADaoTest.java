@@ -6,7 +6,7 @@ import com.movie.dao.CouponDao;
 public class CouponADaoTest {
 	public static void main(String[] args) throws Exception{
 		CouponADao couponADao = new CouponADao();
-				System.out.println(couponADao.insertCouponNo(1));
+				System.out.println(couponADao.insertCouponNo(1,"회원가입할인",10));
 	}
 	
 	
