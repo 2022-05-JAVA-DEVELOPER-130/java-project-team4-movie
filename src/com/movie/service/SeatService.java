@@ -1,38 +1,28 @@
 package com.movie.service;
 
 import com.movie.dao.SeatDao;
+import com.movie.dto.Seat;
 
 public class SeatService {
 	private SeatDao seatDao;
+
 	public SeatService() {
-		seatDao=new SeatDao();
+		seatDao = new SeatDao();
 	}
-	
+
 	/*
 	 * 좌석예매
 	 * 	- 좌석이 중복된 경우에는 메세지 띄운다.
 	 */
-	
-//	public boolean addSeat(int seat_valid, int seat_no, String hall_name) throws Exception{
+
+//	public boolean seatReservation(Seat newSeat) throws Exception {
 //		boolean isReservation = false;
 //		/*
 //		 * 좌석예매여부체크
-//		 * 	- 예매되었으면 메세지
-//		 * 	- 빈좌석이면 오류
+//		 * 	- 빈자리면     예매
+//		 * 	- 빈자리아니면 메세지
 //		 */
-//		List<Seat> remainSeat=seatDao.selectByRemain(hall_name, 1);
-//		if(remainSeat==seatDao.selectByRemain(hall_name, 0)) {
-//			isReservation=false;
-//		}else {
-//			int rowCount=seatDao.update(seat_valid, seat_no, hall_name);
-//		}
-//		
-//		return isReservation;
-//		
-		
-		
-	}
-	
-	
-	
-
+//		Seat findSeat = seatDao.
+//
+//	}
+}

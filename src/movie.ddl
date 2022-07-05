@@ -1,6 +1,12 @@
-/**********************************/
-/* Table Name: coupon_info */
-/**********************************/
+DROP TABLE reservation_info CASCADE CONSTRAINTS;
+DROP TABLE payment CASCADE CONSTRAINTS;
+DROP TABLE seat CASCADE CONSTRAINTS;
+DROP TABLE movie_hall CASCADE CONSTRAINTS;
+DROP TABLE price_info CASCADE CONSTRAINTS;
+DROP TABLE credit_card CASCADE CONSTRAINTS;
+DROP TABLE customer_info CASCADE CONSTRAINTS;
+DROP TABLE coupon_info CASCADE CONSTRAINTS;
+
 CREATE TABLE coupon_info(
 		coupon_no                     		NUMBER(10)		 NULL ,
 		coupon_name                   		VARCHAR2(20)		 NULL ,
@@ -55,9 +61,12 @@ COMMENT ON COLUMN customer_info.cus_point is 'cus_point';
 COMMENT ON COLUMN customer_info.coupon_no is 'coupon_no';
 
 
+<<<<<<< HEAD
 /**********************************/
 /* Table Name: credit_card */
 /**********************************/
+=======
+>>>>>>> branch 'master' of https://github.com/2022-05-JAVA-DEVELOPER/java-project-team4-movie.git
 CREATE TABLE credit_card(
 		card_name                     		VARCHAR2(10)		 NULL 
 );
@@ -65,6 +74,7 @@ CREATE TABLE credit_card(
 COMMENT ON TABLE credit_card is 'credit_card';
 COMMENT ON COLUMN credit_card.card_name is 'card_name';
 
+<<<<<<< HEAD
 
 /**********************************/
 /* Table Name: payment */
@@ -127,6 +137,8 @@ COMMENT ON COLUMN reservation_info.cus_id is 'cus_id';
 /**********************************/
 /* Table Name: price_info */
 /**********************************/
+=======
+>>>>>>> branch 'master' of https://github.com/2022-05-JAVA-DEVELOPER/java-project-team4-movie.git
 CREATE TABLE price_info(
 		price_no                      		NUMBER(10)		 NULL ,
 		adult_price                   		NUMBER(10)		 NULL ,
@@ -183,6 +195,7 @@ CREATE TABLE seat(
 
 CREATE SEQUENCE seat_seat_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
+<<<<<<< HEAD
 CREATE TRIGGER seat_seat_no_TRG
 BEFORE INSERT ON seat
 FOR EACH ROW
@@ -191,6 +204,9 @@ IF :NEW.seat_no IS NOT NULL THEN
   SELECT seat_seat_no_SEQ.NEXTVAL INTO :NEW.seat_no FROM DUAL;
 END IF;
 END;
+=======
+CREATE SEQUENCE seat_no_SEQ MAXVALUE 50 NOCACHE NOORDER NOCYCLE;
+>>>>>>> branch 'master' of https://github.com/2022-05-JAVA-DEVELOPER/java-project-team4-movie.git
 
 COMMENT ON TABLE seat is 'seat';
 COMMENT ON COLUMN seat.seat_no is 'seat_no';
@@ -198,6 +214,33 @@ COMMENT ON COLUMN seat.seat_arrange is 'seat_arrange';
 COMMENT ON COLUMN seat.seat_valid is 'seat_valid';
 COMMENT ON COLUMN seat.hall_name is 'hall_name';
 COMMENT ON COLUMN seat.cus_id is 'cus_id';
+
+CREATE TABLE payment(
+		payment_no                    		NUMBER(10)		 NULL ,
+		payment_date                  		DATE		 DEFAULT sysdate		 NULL ,
+		card_name                     		VARCHAR2(10)		 NULL ,
+		adult_member_count            		NUMBER(5)		 NULL ,
+		child_member_count            		NUMBER(5)		 NULL ,
+		cus_id                        		VARCHAR2(12)		 NULL ,
+		seat_no                       		NUMBER(2)		 NULL 
+);
+
+DROP SEQUENCE payment_no_SEQ;
+
+CREATE SEQUENCE payment_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
+
+
+
+CREATE TABLE reservation_info(
+		reservation_no                		NUMBER(12)		 NULL ,
+		payment_no                    		NUMBER(10)		 NULL ,
+		cus_id                        		VARCHAR2(12)		 NULL 
+);
+
+DROP SEQUENCE reservation_no_SEQ;
+
+CREATE SEQUENCE reservation_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
+
 
 
 
@@ -208,14 +251,6 @@ ALTER TABLE customer_info ADD CONSTRAINT IDX_customer_info_FK0 FOREIGN KEY (coup
 
 ALTER TABLE credit_card ADD CONSTRAINT IDX_credit_card_PK PRIMARY KEY (card_name);
 
-ALTER TABLE payment ADD CONSTRAINT IDX_payment_PK PRIMARY KEY (payment_no);
-ALTER TABLE payment ADD CONSTRAINT IDX_payment_FK0 FOREIGN KEY (card_name) REFERENCES credit_card (card_name);
-ALTER TABLE payment ADD CONSTRAINT IDX_payment_FK1 FOREIGN KEY (cus_id) REFERENCES customer_info (cus_id);
-
-ALTER TABLE reservation_info ADD CONSTRAINT IDX_reservation_info_PK PRIMARY KEY (reservation_no);
-ALTER TABLE reservation_info ADD CONSTRAINT IDX_reservation_info_FK0 FOREIGN KEY (cus_id) REFERENCES customer_info (cus_id);
-ALTER TABLE reservation_info ADD CONSTRAINT IDX_reservation_info_FK1 FOREIGN KEY (payment_no) REFERENCES payment (payment_no);
-
 ALTER TABLE price_info ADD CONSTRAINT IDX_price_info_PK PRIMARY KEY (price_no);
 
 ALTER TABLE movie_hall ADD CONSTRAINT IDX_movie_hall_PK PRIMARY KEY (hall_name);
@@ -224,4 +259,13 @@ ALTER TABLE movie_hall ADD CONSTRAINT IDX_movie_hall_FK0 FOREIGN KEY (price_no) 
 ALTER TABLE seat ADD CONSTRAINT IDX_seat_PK PRIMARY KEY (seat_no);
 ALTER TABLE seat ADD CONSTRAINT IDX_seat_FK0 FOREIGN KEY (hall_name) REFERENCES movie_hall (hall_name);
 ALTER TABLE seat ADD CONSTRAINT IDX_seat_FK1 FOREIGN KEY (cus_id) REFERENCES customer_info (cus_id);
+
+ALTER TABLE payment ADD CONSTRAINT IDX_payment_PK PRIMARY KEY (payment_no);
+ALTER TABLE payment ADD CONSTRAINT IDX_payment_FK0 FOREIGN KEY (card_name) REFERENCES credit_card (card_name);
+ALTER TABLE payment ADD CONSTRAINT IDX_payment_FK1 FOREIGN KEY (cus_id) REFERENCES customer_info (cus_id);
+ALTER TABLE payment ADD CONSTRAINT IDX_payment_FK2 FOREIGN KEY (seat_no) REFERENCES seat (seat_no);
+
+ALTER TABLE reservation_info ADD CONSTRAINT IDX_reservation_info_PK PRIMARY KEY (reservation_no);
+ALTER TABLE reservation_info ADD CONSTRAINT IDX_reservation_info_FK0 FOREIGN KEY (cus_id) REFERENCES customer_info (cus_id);
+ALTER TABLE reservation_info ADD CONSTRAINT IDX_reservation_info_FK1 FOREIGN KEY (payment_no) REFERENCES payment (payment_no);
 
