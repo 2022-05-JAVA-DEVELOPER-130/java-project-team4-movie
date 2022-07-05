@@ -54,12 +54,10 @@ public class CusService {
 	}
 	
 	//정보수정
-	public boolean updateInfo(String cus_nickname, ) {
+	public boolean updateInfo(String cus_nickname ) {
 		boolean isUpdate = false;
 		
-		if() {
-			
-		}
+		
 		
 		
 		return true;
