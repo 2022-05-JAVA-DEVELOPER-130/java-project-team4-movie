@@ -1,39 +1,56 @@
 package com.movie.dto;
 
 public class Reservation {
-	private int cus_reservation_no;
-	private int adult_count;
-	private int child_count;
-	public Reservation(int cus_reservation_no, int adult_count, int child_count) {
+	private int reservation_no;
+	private String cus_id;
+	private int payment_no;
+	private Payment payment; 
+	
+	
+	
+	public Reservation(int reservation_no, String cus_id, int payment_no, Payment payment) {
 		super();
-		this.cus_reservation_no = cus_reservation_no;
-		this.adult_count = adult_count;
-		this.child_count = child_count;
-		
+		this.reservation_no = reservation_no;
+		this.cus_id = cus_id;
+		this.payment_no = payment_no;
+		this.payment = payment;
 	}
-	public int getCus_reservation_no() {
-		return cus_reservation_no;
+	
+	public int getReservation_no() {
+		return reservation_no;
 	}
-	public void setCus_reservation_no(int cus_reservation_no) {
-		this.cus_reservation_no = cus_reservation_no;
+
+	public void setReservation_no(int reservation_no) {
+		this.reservation_no = reservation_no;
 	}
-	public int getAdult_count() {
-		return adult_count;
+
+	public Payment getPayment() {
+		return payment;
 	}
-	public void setAdult_count(int adult_count) {
-		this.adult_count = adult_count;
+
+	public void setPayment(Payment payment) {
+		this.payment = payment;
 	}
-	public int getChild_count() {
-		return child_count;
+
+	public String getCus_id() {
+		return cus_id;
 	}
-	public void setChild_count(int child_count) {
-		this.child_count = child_count;
+	public void setCus_id(String cus_id) {
+		this.cus_id = cus_id;
 	}
+	public int getPayment_no() {
+		return payment_no;
+	}
+	public void setPayment_no(int payment_no) {
+		this.payment_no = payment_no;
+	}
+
 	@Override
 	public String toString() {
-		return "Reservation [cus_reservation_no=" + cus_reservation_no + ", adult_count=" + adult_count
-				+ ", child_count=" + child_count + "]";
+		return "Reservation [reservation_no=" + reservation_no + ", cus_id=" + cus_id + ", payment_no=" + payment_no
+				+ ", payment=" + payment + "]";
 	}
 	
 	
+		
 }

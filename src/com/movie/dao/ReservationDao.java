@@ -18,20 +18,44 @@ public class ReservationDao {
   * 예매번호 부여?
  */
 	
-public int insertReservationNo(Reservation Reservation) throws Exception{
+public int insertReservationNo(String id) throws Exception{
 		
 		Connection con= dataSource.getConnection();
 		PreparedStatement pstmt= con.prepareStatement(ReservationSQL.Reservation_INSERT);
-		pstmt.setInt(1, Reservation.getCus_reservation_no());
-		pstmt.setInt(2, Reservation.getAdult_count());
-		pstmt.setInt(3, Reservation.getChild_count());
 		
-		pstmt.executeUpdate();
+		pstmt.setString(1, id);
+		//pstmt.setString(4,Reservation.getPayment()); payment?
+		
+		int rowCount = pstmt.executeUpdate();
 		pstmt.close();
 		con.close();
-		return 0;
+		return rowCount;
 	}
+/*
+ * 예매내역 확인2
+ */
+public Reservation selectByReNo(int reservation_no) throws Exception{
 	
+	Reservation findReservation=null;
+	
+	Connection con=dataSource.getConnection();
+	PreparedStatement pstmt=con.prepareStatement(ReservationSQL.Reservation_SELECT_BY_RE_NO);
+	pstmt.setInt(1, reservation_no);
+	
+	ResultSet rs = pstmt.executeQuery();
+	/* payment 적용전
+	if(rs.next()) {
+		findReservation=new Reservation(rs.getInt("reservation_no"), 
+				rs.getString("cus_id"),rs.getInt("payment_no"),
+				rs.get000("payment")
+				);
+	
+	}*/
+	rs.close();
+	pstmt.close();
+	con.close();
+	return findReservation;
+}
 		
 
 	/*
@@ -44,12 +68,14 @@ public List<Reservation> selectAll() throws Exception{
 		Connection con= dataSource.getConnection();
 		PreparedStatement pstmt=con.prepareStatement(ReservationSQL.Reservation_SELECT_ALL);
 		ResultSet rs=pstmt.executeQuery();
+		/* payment 적용전
 		while(rs.next()) {
-			ReservationList.add(new Reservation(rs.getInt("cus_reservation_no"), 
-					rs.getInt("adult_count"),rs.getInt("child_count")
+			ReservationList.add(new Reservation(rs.getInt("reservation_no"), 
+					rs.getString("cus_id"),rs.getInt("payment_no"),
+					rs.get000("payment")
 					)
 					);
-		}
+		}*/
 		rs.close();
 		pstmt.close();
 		con.close();
@@ -58,18 +84,19 @@ public List<Reservation> selectAll() throws Exception{
 		return ReservationList;
 		
 	}
+	
 /*
  * 예매내역 취소?
  */
-public int deleteReservation(int cus_reservation_no) throws Exception {
+public int deleteReservation(int reservation_no) throws Exception {
 	
 	Connection con=dataSource.getConnection();
 	PreparedStatement pstmt=con.prepareStatement(ReservationSQL.Reservation_DELETE);
-	pstmt.setInt(1, cus_reservation_no);
+	pstmt.setInt(1, reservation_no);
 	int rowCount=pstmt.executeUpdate();
 	pstmt.close();
 	con.close();
-	return 0;
+	return rowCount;
 	
 }
 	
