@@ -105,11 +105,17 @@ insert into credit_card values('IBK');
 
 ------------------------여기까지 기본데이터 ------------------------------------
 
-insert into payment values(payment_no_seq.nextval, sysdate, '신한' ,2,0, 'seongmin');
-insert into payment values(payment_no_seq.nextval, sysdate, '국민' ,0,1, 'yeji');
-insert into payment values(payment_no_seq.nextval, sysdate, '농협' ,1,1, 'junyeung');
-insert into payment values(payment_no_seq.nextval, sysdate, '우리' ,2,1, 'woohuck');
-insert into payment values(payment_no_seq.nextval, sysdate, '신한' ,1,2, 'jeonghun');
+insert into payment values(payment_no_seq.nextval, sysdate, '신한' ,2,0, 'seongmin',1);
+insert into payment values(payment_no_seq.nextval, sysdate, '신한' ,2,0, 'seongmin',3);
+insert into payment values(payment_no_seq.nextval, sysdate, '국민' ,0,1, 'yeji',2);
+insert into payment values(payment_no_seq.nextval, sysdate, '농협' ,1,1, 'junyeung',5);
+insert into payment values(payment_no_seq.nextval, sysdate, '농협' ,1,1, 'junyeung',6);
+insert into payment values(payment_no_seq.nextval, sysdate, '우리' ,2,1, 'woohuck',11);
+insert into payment values(payment_no_seq.nextval, sysdate, '우리' ,2,1, 'woohuck',12);
+insert into payment values(payment_no_seq.nextval, sysdate, '우리' ,2,1, 'woohuck',15);
+insert into payment values(payment_no_seq.nextval, sysdate, '신한' ,1,2, 'jeonghun',35);
+insert into payment values(payment_no_seq.nextval, sysdate, '신한' ,1,2, 'jeonghun',37);
+insert into payment values(payment_no_seq.nextval, sysdate, '신한' ,1,2, 'jeonghun',38);
 
 insert into reservation_info values(reservation_no_seq.nextval, 1, 'seongmin');
 insert into reservation_info values(reservation_no_seq.nextval, 2, 'yeji');
@@ -117,20 +123,20 @@ insert into reservation_info values(reservation_no_seq.nextval, 3, 'junyeung');
 insert into reservation_info values(reservation_no_seq.nextval, 4, 'woohuck');
 insert into reservation_info values(reservation_no_seq.nextval, 5, 'jeonghun');
 
-update seat set cus_id= 'seongmin' where hall_name = '1회차' and seat_arrange = 1;
-update seat set cus_id= 'seongmin' where hall_name = '1회차' and seat_arrange = 3;
+update seat set cus_id= 'seongmin', seat_valid =0 where hall_name = '1회차' and seat_arrange = 1;
+update seat set cus_id= 'seongmin', seat_valid =0 where hall_name = '1회차' and seat_arrange = 3;
 
-update seat set cus_id= 'yeji' where hall_name = '1회차' and seat_arrange = 2;
+update seat set cus_id= 'yeji', seat_valid =0 where hall_name = '1회차' and seat_arrange = 2;
 
-update seat set cus_id= 'junyeung' where hall_name = '1회차' and seat_arrange = 5;
-update seat set cus_id= 'junyeung' where hall_name = '1회차' and seat_arrange = 6;
+update seat set cus_id= 'junyeung', seat_valid =0 where hall_name = '1회차' and seat_arrange = 5;
+update seat set cus_id= 'junyeung', seat_valid =0 where hall_name = '1회차' and seat_arrange = 6;
 
-update seat set cus_id= 'woohuck' where hall_name = '2회차' and seat_arrange = 1;
-update seat set cus_id= 'woohuck' where hall_name = '2회차' and seat_arrange = 2;
-update seat set cus_id= 'woohuck' where hall_name = '2회차' and seat_arrange = 5;
+update seat set cus_id= 'woohuck', seat_valid =0 where hall_name = '2회차' and seat_arrange = 1;
+update seat set cus_id= 'woohuck', seat_valid =0 where hall_name = '2회차' and seat_arrange = 2;
+update seat set cus_id= 'woohuck', seat_valid =0 where hall_name = '2회차' and seat_arrange = 5;
 
-update seat set cus_id= 'jeonghun' where hall_name = '3회차' and seat_arrange = 5;
-update seat set cus_id= 'jeonghun' where hall_name = '3회차' and seat_arrange = 7;
-update seat set cus_id= 'jeonghun' where hall_name = '3회차' and seat_arrange = 8;
+update seat set cus_id= 'jeonghun', seat_valid =0 where hall_name = '3회차' and seat_arrange = 5;
+update seat set cus_id= 'jeonghun', seat_valid =0 where hall_name = '3회차' and seat_arrange = 7;
+update seat set cus_id= 'jeonghun', seat_valid =0 where hall_name = '3회차' and seat_arrange = 8;
 
 commit;

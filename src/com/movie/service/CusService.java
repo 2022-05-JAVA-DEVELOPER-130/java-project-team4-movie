@@ -1,5 +1,7 @@
 package com.movie.service;
 
+import java.util.List;
+
 import com.movie.dao.CusJoinDao;
 import com.movie.dto.Customer;
 
@@ -43,7 +45,10 @@ public class CusService {
 		return loginResult;
 		
 	}
-	
+	//고객 전체검색
+	public List<Customer> findAll() throws Exception{
+		return cusJoinDao.selectAll();
+	}
 	//
 	
 		
