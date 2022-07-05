@@ -58,6 +58,12 @@ public class CusService {
 	public List<Customer> findAll() throws Exception {
 		return cusJoinDao.selectAll();
 	}
+	
+	// 아이디로 고객 한명 찾기
+	public Customer findById(String id) throws Exception {
+		return cusJoinDao.selectById(id);
+	}
+	
 
 	// 정보수정
 	public int updateInfo(Customer customer) throws Exception {
