@@ -2,9 +2,10 @@ package com.movie.test;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
+import com.movie.dao.CusJoinDao;
 import com.movie.dto.Customer;
-import com.movie.service.CusService;
 import com.movie.service.CusService2;
 
 public class CustomerServicetestMain2 {
@@ -20,7 +21,13 @@ public class CustomerServicetestMain2 {
 		System.out.println(cusService2.findPassword("yeji", "한예지"));
 		
 		System.out.println("전체 회원리스트");
-		System.out.println(cusService2.findAll()); 
+		List<Customer> customerList=cusService2.findAll();
+		for(Customer customer2:customerList) {
+				System.out.println(customer2); 
+		}
+		
+		
+				
 		
 
 	}

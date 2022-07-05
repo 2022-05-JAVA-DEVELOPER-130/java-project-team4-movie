@@ -27,6 +27,7 @@ public class CusService2 {
 			return cusJoinDao.selectByIdName(cus_id,cus_name);
 		}
 			
+		
 	
 
 }
