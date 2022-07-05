@@ -11,15 +11,18 @@ public class CusService {
 	
 	//회원가입
 	
-	public boolean addCustomer(Customer newcustomer) throws Exception{
+	public boolean addCustomer(Customer newCustomer) throws Exception{
 		boolean isSuccess = false;
 		
-		Customer findCustomer = cusJoinDao.selectById(newcustomer.getCus_id());
-		if(findCustomer == null) {
-			int rowCount = cusJoinDao.insertCus(findCustomer);
+		if(cusJoinDao.selectById(newCustomer.getCus_id()) == null) {
+			int rowCount = cusJoinDao.insertCus(newCustomer);
 			isSuccess = true;
-		}
+			
+		}else {
 			isSuccess = false;
+		}
+		
+		
 			return isSuccess;
 	}
 	
@@ -32,7 +35,7 @@ public class CusService {
 			loginResult = 1;
 			//아이디 일치하지 않음
 		}else {
-			if (findCustomer.getCus_id().equals(cus_password)) {
+			if (findCustomer.getCus_password().equals(cus_password)) {
 				loginResult = 0;
 				//로그인성공
 			}else {
@@ -44,8 +47,23 @@ public class CusService {
 		
 	}
 	
-	//
+	//회원탈퇴
+	public int deleteInfo(String cus_id) throws Exception{
 	
+		return cusJoinDao.deleteById(cus_id);
+	}
+	
+	//정보수정
+	public boolean updateInfo(String cus_nickname, ) {
+		boolean isUpdate = false;
+		
+		if() {
+			
+		}
+		
+		
+		return true;
+	}
 		
 
 }

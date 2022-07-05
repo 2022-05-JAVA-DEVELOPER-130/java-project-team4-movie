@@ -93,12 +93,12 @@ public class CusJoinDao {
 
 		pstmt.setString(1, cus_id);
 
-		int rowCount = pstmt.executeUpdate();
+		int deleteRowCount = pstmt.executeUpdate();
 
 		pstmt.close();
 		con.close();
 
-		return rowCount;
+		return deleteRowCount;
 	}
 
 	public Customer selectById(String cus_id) throws Exception {
