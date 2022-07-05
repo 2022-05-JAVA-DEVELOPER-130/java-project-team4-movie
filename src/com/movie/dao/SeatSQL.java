@@ -5,7 +5,7 @@ public class SeatSQL {
 	public final static String SEAT_UPDATE=
 			"update seat set cus_id=?,seat_valid=0 where hall_name=? and seat_arrange=?";
 	public final static String SEAT_UPDATE2=
-			"update seat set  =(select remain_seat from movie_hall where hall_name='1회차') where hall_name='1회차';";
+			"update movie_hall set remain_seat = (select sum(seat_valid) from seat where hall_name = ?) where hall_name = ?";
 	public final static String SEAT_SELECT_BY_HALL=
 			"select * from seat where hall_name=?";
 	public final static String SEAT_SELECT_BY_ID=
