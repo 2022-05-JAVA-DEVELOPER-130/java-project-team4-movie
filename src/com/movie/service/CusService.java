@@ -60,33 +60,16 @@ public class CusService {
 		return cusJoinDao.selectAll();
 	}
 
-
-	/*
-	//이름, 연락처 입력후 아이디 찾기
-		public Customer findId(String cus_name, String cus_phone) throws Exception{						
-			return cusJoinDao.selectByNamePhone();
-	}
-
+	
 	//정보수정
 	public boolean updateInfo(String cus_nickname, String cus_password, String cus_birthday, String cus_gender, String cus_phone, String cus_email ) {
 		boolean isUpdate = false;
-		
-		Customer updateCustomer = cusJoinDao.updateCus2(cus_password);
-		
-		
-		if(cusJoinDao.updateCus2(null))
 		
 		
 		
 		
 		return true;
 	}
-
-	
-	//아이디, 이름 입력후 비밀번호 찾기
-	public Customer findPassword(String cus_id, String cus_name)throws Exception{
-		return cusJoinDao.selectByIdName();
-	}
 		
-*/
+
 }
