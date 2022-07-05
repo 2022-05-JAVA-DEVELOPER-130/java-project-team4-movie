@@ -21,12 +21,6 @@ public class CustomerServicetestMain {
 		System.out.println("로그인>>" + cusService.login("hejin", "6789"));
 
 		System.out.println("회원탈퇴>>" + cusService.deleteInfo("hunjung"));
-
-//			Customer updateCustomer = 
-//					new Customer("updateid22", 0, "업데등장", "신수정", "1234", aaa, "F", "010-7895-4574",
-//				"updat22@naver.com", 3000, 1);
-//		System.out.println(">> 정보수정"
-//				+ cusService.updateInfo("업데등장", "1234", "1991/01/01", "F", "010-7895-4574", "updat22@naver.com"));
 		
 		Customer updateCustomer = new Customer ("newid22", 0, "점점점", "신수정", "1234", aaa, "M", "010-7895-4574",
 				"new22@naver.com", 3000, 1);
