@@ -13,7 +13,7 @@ public class CardTestMain {
 		CardInfo insertCardInfo6=new CardInfo("삼성");
 		CardInfo insertCardInfo7=new CardInfo("기업");
 		
-		CardInfo cardinfo=new CardInfo();
+
 	} 
 
 }
