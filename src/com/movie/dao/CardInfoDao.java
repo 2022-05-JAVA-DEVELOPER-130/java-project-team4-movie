@@ -1,4 +1,4 @@
-package 프로젝트;
+package src.com.movie.dao;
 
 
 import java.sql.Connection;
