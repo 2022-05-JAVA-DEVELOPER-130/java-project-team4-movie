@@ -3,7 +3,9 @@ package com.movie.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import com.movie.common.DataSource;
@@ -17,9 +19,6 @@ public class SeatDao {
 	}
 
 
-	/*
-	 * 좌석예매(예매 시 seat_valid가 0으로 바뀜)
-	 */
 	public int update(String cus_id, String hall_name, int seat_arrange) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(SeatSQL.SEAT_UPDATE);
@@ -34,9 +33,37 @@ public class SeatDao {
 		return rowCount;
 	}
 
-	/*
-	 * 아이디로 예매좌석 호출
-	 */
+//	public int remainUpdate(String hall_name) throws Exception {
+//		Connection con = dataSource.getConnection();
+//		PreparedStatement pstmt = con.prepareStatement(SeatSQL.SEAT_UPDATE2);
+//		pstmt.setString(1, hall_name);
+//		pstmt.setString(2, hall_name);
+//	
+//		int remainCount = pstmt.executeUpdate();
+//		
+//		
+//		pstmt.close();
+//		con.close();
+//
+//		return remainCount;
+//		
+//		
+//	}
+
+	public int remainResultSelect(String hall_name) throws Exception {
+		int count =0;
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(SeatSQL.MOVIE_HALL_SEAT);
+		pstmt.setString(1, hall_name);
+		ResultSet rs = pstmt.executeQuery();
+		if(rs.next()) {
+			count = rs.getInt("remain_seat");
+		}
+		
+		return count;
+		
+	}
+
 	public List<Seat> selectById(String cus_id) throws Exception {
 		ArrayList<Seat> findList = new ArrayList<Seat>();
 		Connection con = dataSource.getConnection();
@@ -60,51 +87,7 @@ public class SeatDao {
 	}
 	
 	
-	/*
-	 * 회차별 남은좌석 유무확인(seat_valid가 1인값만 출력)
-	 */
-	public List<Seat> selectByHall(String hall_name) throws Exception {
-		ArrayList<Seat> remainList = new ArrayList<Seat>();
-		Connection con = dataSource.getConnection();
-		PreparedStatement pstmt = con.prepareStatement(SeatSQL.SEAT_SELECT_BY_HALL);
-		pstmt.setString(1, hall_name);
-		ResultSet rs = pstmt.executeQuery();
-		while (rs.next()) {
-			if(rs.getInt("seat_valid")==1) {
-				remainList.add(new Seat(rs.getInt("seat_no"), rs.getInt("seat_arrange"), rs.getInt("seat_valid"),
-						rs.getString("hall_name"), rs.getString("cus_id")));
-			}
-			
-		}
-		rs.close();
-		pstmt.close();
-		con.close();
 
-		return remainList;
-
-	}
-
-	
-
-	
-	
-//	/*
-//	 * 회차당 전체좌석확인
-//	 */
-//	public List<Seat> selectAll(String hall_name) throws Exception {
-//		ArrayList<Seat> allList = new ArrayList<Seat>();
-//		Connection con = dataSource.getConnection();
-//		PreparedStatement pstmt = con.prepareStatement(SeatSQL.SEAT_SELECT_ALL);
-//		pstmt.setString(1, hall_name);
-//		ResultSet rs = pstmt.executeQuery();
-//		while (rs.next()) {
-//			allList.add(new Seat(rs.getInt("seat_no"), rs.getInt("seat_arrange"), rs.getInt("seat_valid"),
-//					rs.getString("hall_name"), rs.getString("cus_id")));
-//		}
-//		rs.close();
-//		pstmt.close();
-//		con.close();
-//		return allList;
 
 	}
 
