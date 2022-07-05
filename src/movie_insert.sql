@@ -69,12 +69,7 @@ insert into seat values(seat_no_seq.nextval, 9, 1, '5회차', null);
 insert into seat values(seat_no_seq.nextval, 10, 1, '5회차', null);
 
 
---update movie_hall
-update movie_hall set remain_seat = (select sum(seat_valid) from seat where hall_name = '1회차') where hall_name = '1회차';
-update movie_hall set remain_seat = (select sum(seat_valid) from seat where hall_name = '2회차') where hall_name = '2회차';
-update movie_hall set remain_seat = (select sum(seat_valid) from seat where hall_name = '3회차') where hall_name = '3회차';
-update movie_hall set remain_seat = (select sum(seat_valid) from seat where hall_name = '4회차') where hall_name = '4회차';
-update movie_hall set remain_seat = (select sum(seat_valid) from seat where hall_name = '5회차') where hall_name = '5회차';
+
 
 
 --coupon_info insert
@@ -138,5 +133,13 @@ update seat set cus_id= 'woohuck', seat_valid =0 where hall_name = '2회차' and
 update seat set cus_id= 'jeonghun', seat_valid =0 where hall_name = '3회차' and seat_arrange = 5;
 update seat set cus_id= 'jeonghun', seat_valid =0 where hall_name = '3회차' and seat_arrange = 7;
 update seat set cus_id= 'jeonghun', seat_valid =0 where hall_name = '3회차' and seat_arrange = 8;
+
+--update movie_hall
+update movie_hall set remain_seat = (select sum(seat_valid) from seat where hall_name = '1회차') where hall_name = '1회차';
+update movie_hall set remain_seat = (select sum(seat_valid) from seat where hall_name = '2회차') where hall_name = '2회차';
+update movie_hall set remain_seat = (select sum(seat_valid) from seat where hall_name = '3회차') where hall_name = '3회차';
+update movie_hall set remain_seat = (select sum(seat_valid) from seat where hall_name = '4회차') where hall_name = '4회차';
+update movie_hall set remain_seat = (select sum(seat_valid) from seat where hall_name = '5회차') where hall_name = '5회차';
+
 
 commit;
