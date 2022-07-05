@@ -7,7 +7,7 @@ import com.movie.dto.Movie;
 
 public class MovieService {
 
-	private MovieDao movieDao;;
+	private MovieDao movieDao;
 	
 	public MovieService() {
 		movieDao = new MovieDao();
