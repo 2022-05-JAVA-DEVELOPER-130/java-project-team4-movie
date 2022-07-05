@@ -13,15 +13,18 @@ public class CusService {
 	
 	//회원가입
 	
-	public boolean addCustomer(Customer newcustomer) throws Exception{
+	public boolean addCustomer(Customer newCustomer) throws Exception{
 		boolean isSuccess = false;
 		
-		Customer findCustomer = cusJoinDao.selectById(newcustomer.getCus_id());
-		if(findCustomer == null) {
-			int rowCount = cusJoinDao.insertCus(findCustomer);
+		if(cusJoinDao.selectById(newCustomer.getCus_id()) == null) {
+			int rowCount = cusJoinDao.insertCus(newCustomer);
 			isSuccess = true;
-		}
+			
+		}else {
 			isSuccess = false;
+		}
+		
+		
 			return isSuccess;
 	}
 	
@@ -34,7 +37,7 @@ public class CusService {
 			loginResult = 1;
 			//아이디 일치하지 않음
 		}else {
-			if (findCustomer.getCus_id().equals(cus_password)) {
+			if (findCustomer.getCus_password().equals(cus_password)) {
 				loginResult = 0;
 				//로그인성공
 			}else {
@@ -45,12 +48,40 @@ public class CusService {
 		return loginResult;
 		
 	}
+
+	
+	//회원탈퇴
+	public int deleteInfo(String cus_id) throws Exception{
+		return 0;
+	}
+
 	//고객 전체검색
 	public List<Customer> findAll() throws Exception{
 		return cusJoinDao.selectAll();
 	}
-	//
-	
-		
 
+
+	/*
+	//이름, 연락처 입력후 아이디 찾기
+		public Customer findId(String cus_name, String cus_phone) throws Exception{						
+			return cusJoinDao.selectByNamePhone();
+	}
+
+	//정보수정
+	public boolean updateInfo(String cus_nickname ) {
+		boolean isUpdate = false;
+		
+		
+		
+		
+		return true;
+	}
+
+	
+	//아이디, 이름 입력후 비밀번호 찾기
+	public Customer findPassword(String cus_id, String cus_name)throws Exception{
+		return cusJoinDao.selectByIdName();
+	}
+		
+*/
 }
