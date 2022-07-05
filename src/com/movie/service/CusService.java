@@ -49,8 +49,18 @@ public class CusService {
 	public List<Customer> findAll() throws Exception{
 		return cusJoinDao.selectAll();
 	}
-	//
 	
-		
+	/*
+	//이름, 연락처 입력후 아이디 찾기
+		public Customer findId(String cus_name, String cus_phone) throws Exception{						
+			return cusJoinDao.selectByNamePhone();
+	}
 
+	
+	//아이디, 이름 입력후 비밀번호 찾기
+	public Customer findPassword(String cus_id, String cus_name)throws Exception{
+		return cusJoinDao.selectByIdName();
+	}
+		
+*/
 }
