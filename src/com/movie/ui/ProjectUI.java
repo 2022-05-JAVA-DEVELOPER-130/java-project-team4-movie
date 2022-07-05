@@ -96,32 +96,32 @@ public class ProjectUI extends JFrame {
 		homePanel.add(btnNewButton_7);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\2022-05-JAVA-DEVELOPER\\git-repositories\\java-project-team4-movie\\src\\images\\movie2.jpg"));
+		lblNewLabel.setIcon(new ImageIcon(ProjectUI.class.getResource("/images/movie2.jpg")));
 		lblNewLabel.setBounds(200, 129, 122, 190);
 		homePanel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\2022-05-JAVA-DEVELOPER\\git-repositories\\java-project-team4-movie\\src\\images\\movie3.jpg"));
+		lblNewLabel_1.setIcon(new ImageIcon(ProjectUI.class.getResource("/images/movie3.jpg")));
 		lblNewLabel_1.setBounds(360, 140, 122, 165);
 		homePanel.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\2022-05-JAVA-DEVELOPER\\git-repositories\\java-project-team4-movie\\src\\images\\movie4.jpg"));
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon(ProjectUI.class.getResource("/images/movie4.jpg")));
 		lblNewLabel_2.setBounds(518, 136, 122, 176);
 		homePanel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon("C:\\2022-05-JAVA-DEVELOPER\\git-repositories\\java-project-team4-movie\\src\\images\\movie5.jpg"));
+		lblNewLabel_3.setIcon(new ImageIcon(ProjectUI.class.getResource("/images/movie5.jpg")));
 		lblNewLabel_3.setBounds(667, 148, 110, 157);
 		homePanel.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon("C:\\2022-05-JAVA-DEVELOPER\\git-repositories\\java-project-team4-movie\\src\\images\\movie1.jpg"));
+		lblNewLabel_4.setIcon(new ImageIcon(ProjectUI.class.getResource("/images/movie1.jpg")));
 		lblNewLabel_4.setBounds(31, 141, 134, 171);
 		homePanel.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("");
-		lblNewLabel_5.setIcon(new ImageIcon("C:\\2022-05-JAVA-DEVELOPER\\git-repositories\\java-project-team4-movie\\src\\com\\movie\\현정\\logo5.png"));
+		lblNewLabel_5.setIcon(new ImageIcon(ProjectUI.class.getResource("/com/movie/현정/logo5.png")));
 		lblNewLabel_5.setBounds(27, 20, 120, 51);
 		homePanel.add(lblNewLabel_5);
 		
@@ -290,7 +290,7 @@ public class ProjectUI extends JFrame {
 		panel_2.setLayout(null);
 		
 		JLabel lblNewLabel_6 = new JLabel("");
-		lblNewLabel_6.setIcon(new ImageIcon("C:\\2022-05-JAVA-DEVELOPER\\git-repositories\\java-project-team4-movie\\src\\images\\big_movie2.jpg"));
+		lblNewLabel_6.setIcon(new ImageIcon(ProjectUI.class.getResource("/images/big_movie2.jpg")));
 		lblNewLabel_6.setBounds(41, 40, 217, 305);
 		panel_2.add(lblNewLabel_6);
 		
@@ -299,7 +299,7 @@ public class ProjectUI extends JFrame {
 		panel_3.setLayout(null);
 		
 		JLabel lblNewLabel_7 = new JLabel("");
-		lblNewLabel_7.setIcon(new ImageIcon("C:\\2022-05-JAVA-DEVELOPER\\git-repositories\\java-project-team4-movie\\src\\images\\big_movie1.jpg"));
+		lblNewLabel_7.setIcon(new ImageIcon(ProjectUI.class.getResource("/images/big_movie1.jpg")));
 		lblNewLabel_7.setBounds(26, 44, 219, 307);
 		panel_3.add(lblNewLabel_7);
 		
@@ -308,7 +308,7 @@ public class ProjectUI extends JFrame {
 		panel_4.setLayout(null);
 		
 		JLabel lblNewLabel_12 = new JLabel("");
-		lblNewLabel_12.setIcon(new ImageIcon("C:\\2022-05-JAVA-DEVELOPER\\git-repositories\\java-project-team4-movie\\src\\images\\big_movie3.jpg"));
+		lblNewLabel_12.setIcon(new ImageIcon(ProjectUI.class.getResource("/images/big_movie3.jpg")));
 		lblNewLabel_12.setBounds(22, 34, 219, 344);
 		panel_4.add(lblNewLabel_12);
 		
@@ -317,7 +317,7 @@ public class ProjectUI extends JFrame {
 		panel_5.setLayout(null);
 		
 		JLabel lblNewLabel_13 = new JLabel("");
-		lblNewLabel_13.setIcon(new ImageIcon("C:\\2022-05-JAVA-DEVELOPER\\git-repositories\\java-project-team4-movie\\src\\images\\big_movie4.jpg"));
+		lblNewLabel_13.setIcon(new ImageIcon(ProjectUI.class.getResource("/images/big_movie4.jpg")));
 		lblNewLabel_13.setBounds(25, 40, 217, 346);
 		panel_5.add(lblNewLabel_13);
 		
