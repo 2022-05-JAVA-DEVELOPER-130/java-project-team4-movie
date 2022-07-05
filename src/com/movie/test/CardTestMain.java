@@ -1,6 +1,6 @@
 package com.movie.test;
 
-import src.com.movie.dto.CardInfo;
+import com.movie.dto.CardInfo;
 
 public class CardTestMain {
 

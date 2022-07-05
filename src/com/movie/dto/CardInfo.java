@@ -1,4 +1,4 @@
-package src.com.movie.dto;
+package com.movie.dto;
 
 public class CardInfo {
 	String card_name;

@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 
 import javax.sql.DataSource;
 
-import src.com.movie.dto.CardInfo;
+import com.movie.dto.CardInfo;
 
 public class CardInfoDao {
 String card_name;
