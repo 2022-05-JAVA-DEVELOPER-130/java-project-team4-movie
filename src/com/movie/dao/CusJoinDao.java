@@ -76,7 +76,7 @@ public class CusJoinDao {
 		pstmt.setString(4, cusDto.getCus_gender());
 		pstmt.setString(5, cusDto.getCus_phone());
 		pstmt.setString(6, cusDto.getCus_email());
-		pstmt.setString(7, cusDto.getCus_password());
+		pstmt.setString(7, cusDto.getCus_id());
 
 		int rowCount = pstmt.executeUpdate();
 
@@ -168,6 +168,7 @@ public class CusJoinDao {
 		return findPassword;
 
 	}
+	
 	
 	public ArrayList<Customer> selectAll() throws Exception {
 		Connection con = dataSource.getConnection();
