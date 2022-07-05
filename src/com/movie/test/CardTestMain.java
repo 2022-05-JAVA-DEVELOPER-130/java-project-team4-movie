@@ -1,6 +1,6 @@
-package 프로젝트;
+package com.movie.test;
 
-import 프로젝트.CardInfo;
+import src.com.movie.dto.CardInfo;
 
 public class CardTestMain {
 
@@ -14,16 +14,6 @@ public class CardTestMain {
 		CardInfo insertCardInfo7=new CardInfo("기업");
 		
 		CardInfo cardinfo=new CardInfo();
-
-		cardinfo.insertCardInfo(insertCardInfo1);
-		cardinfo.insertCardInfo(insertCardInfo2);
-		cardinfo.insertCardInfo(insertCardInfo3);
-		cardinfo.insertCardInfo(insertCardInfo4);
-		cardinfo.insertCardInfo(insertCardInfo5);
-		cardinfo.insertCardInfo(insertCardInfo6);
-		cardinfo.insertCardInfo(insertCardInfo7);
-
-	
 	} 
 
 }

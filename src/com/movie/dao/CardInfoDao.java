@@ -1,11 +1,11 @@
-package src.com.movie.dao;
-
-
+package com.movie.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import javax.sql.DataSource;
+
+import src.com.movie.dto.CardInfo;
 
 public class CardInfoDao {
 String card_name;
