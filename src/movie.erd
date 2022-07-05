@@ -633,7 +633,7 @@
                         <supportSize>true</supportSize>
                         <type>12</type>
                       </columnType>
-                      <size>20</size>
+                      <size>50</size>
                       <notNull>false</notNull>
                       <primaryKey>false</primaryKey>
                       <description></description>
@@ -644,7 +644,7 @@
                       <columnName>m_genre</columnName>
                       <logicalName>m_genre</logicalName>
                       <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[4]/columnType"/>
-                      <size>10</size>
+                      <size>30</size>
                       <notNull>false</notNull>
                       <primaryKey>false</primaryKey>
                       <description></description>
@@ -676,7 +676,7 @@
                         <supportSize>true</supportSize>
                         <type>12</type>
                       </columnType>
-                      <size>10</size>
+                      <size>30</size>
                       <notNull>false</notNull>
                       <primaryKey>false</primaryKey>
                       <description></description>
@@ -687,7 +687,7 @@
                       <columnName>m_end_time</columnName>
                       <logicalName>m_end_time</logicalName>
                       <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[7]/columnType"/>
-                      <size>10</size>
+                      <size>30</size>
                       <notNull>false</notNull>
                       <primaryKey>false</primaryKey>
                       <description></description>
@@ -713,7 +713,12 @@
                     <net.java.amateras.db.visual.model.ColumnModel>
                       <columnName>m_introduce</columnName>
                       <logicalName>m_introduce</logicalName>
-                      <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[4]/columnType"/>
+                      <columnType class="net.java.amateras.db.dialect.ColumnType">
+                        <name>VARCHAR2</name>
+                        <logicalName>String</logicalName>
+                        <supportSize>true</supportSize>
+                        <type>12</type>
+                      </columnType>
                       <size>2000</size>
                       <notNull>false</notNull>
                       <primaryKey>false</primaryKey>
