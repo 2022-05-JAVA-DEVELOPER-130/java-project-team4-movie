@@ -28,6 +28,8 @@ public class PaymentSelect {
 		pstmt.setString(1, id);
 		ResultSet rs = pstmt.executeQuery();
 		int total_price=0;
+		
+		
 		if(rs.next()) {
 			
 			int adult_price = rs.getInt("adult_price");
@@ -42,7 +44,7 @@ public class PaymentSelect {
 		}
 		return total_price;
 	}
-	
+
 	
 	  public String selectByID(String id) throws Exception{
 		  String ddd =  "";
@@ -55,7 +57,7 @@ public class PaymentSelect {
 		ArrayList<Seat> aa = new ArrayList<Seat>(); 
 		if(rs.next()) {
 			int payment_no = rs.getInt("payment_no");
-			Date payment_date = rs.getDate("payment_date");
+			Date payment_date = rs.getDate("paymen2t_date");
 			String card_name = rs.getString("card_name");
 			String cus_id = rs.getString("cus_id");
 			int adult_price = rs.getInt("adult_price");
@@ -67,9 +69,9 @@ public class PaymentSelect {
 			
 			
 			payment = new Payment(payment_no, payment_date, card_name, adult_member_count, child_member_count, cus_id, totalPrice, aa);
-			String aaa = ("예매번호 : " + payment_no + ", \n결제일자 : " + payment_date + ", \n카드 :" + card_name
-					+ ", \n성인 수 : " + adult_member_count + ", \n청소년 수 :" + child_member_count
-			+ ", \nID : " + cus_id + "\n좌석 : ");
+			String aaa = ("예매번호 : " + payment_no + " \n결제일자 : " + payment_date + " \n카드 :" + card_name
+					+ " \n성인 수 : " + adult_member_count + " \n청소년 수 :" + child_member_count
+			+ " \nID : " + cus_id + "\n좌석 : ");
 			do {
 				payment.getSeatList().add(new Seat(rs.getInt("seat_no"),
 													rs.getInt("seat_arrange"),
@@ -87,7 +89,7 @@ public class PaymentSelect {
 				
 			}while(rs.next());
 		
-			String ccc = ("\n회차 : " + movie.getHallName() + "\n영화이름 : " + movie.getM_Name() + "\n시작시간" + movie.getM_Start_Time() + "\n종료시간 : " + movie.getM_End_Time());
+			String ccc = ("\n회차 : " + movie.getHallName() + "\n영화이름 : " + movie.getM_Name() + "\n시작시간 : " + movie.getM_Start_Time() + "\n종료시간 : " + movie.getM_End_Time());
 			ddd = aaa+bbb+ccc;
 			
 		}

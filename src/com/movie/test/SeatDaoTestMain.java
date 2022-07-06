@@ -19,8 +19,7 @@ public class SeatDaoTestMain {
 		System.out.println("3.아이디로 예매좌석 호출");
 		System.out.println(seatDao.selectById("jeonghun"));
 
-
-//		System.out.println("5.전체좌석 출력");
-//		System.out.println(">> "+seatDao.selectAll("2회차"));
+		System.out.println("4.전체좌석 출력");
+		System.out.println(">> "+seatDao.selectAll("2회차"));
 }
 }

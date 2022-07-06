@@ -39,4 +39,6 @@ public class PaymentSQL {
 	public final static String SELECT_PRICE_BY_CUSID = 
 	"SELECT p.payment_no, p.payment_date, p.card_name, m.m_name, p.cus_id, m.hall_name, s.seat_no, s.seat_arrange, s.seat_valid, m.m_start_time, m.m_end_time, pi.adult_price, p.adult_member_count, pi.child_price, p.child_member_count, p.card_name, sysdate FROM payment p join seat s on p.seat_no = s.seat_no join movie_hall m on s.hall_name = m.hall_name join price_info pi on m.price_no = pi.price_no where p.cus_id = ?";
 
+	public final static String SELECT_COUPON_PRICE_BY_CUSID = 
+	"SELECT p.payment_no, p.payment_date, p.card_name, m.m_name, p.cus_id, m.hall_name, s.seat_no, s.seat_arrange, s.seat_valid, m.m_start_time, m.m_end_time, pi.adult_price, p.adult_member_count, pi.child_price, p.child_member_count, coupon_effect,p.card_name, sysdate FROM payment p join seat s on p.seat_no = s.seat_no join movie_hall m on s.hall_name = m.hall_name join price_info pi on m.price_no = pi.price_no where p.cus_id = ?";
 }
