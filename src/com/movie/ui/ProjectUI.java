@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import com.movie.dto.Customer;
 import com.movie.service.CusService;
 import com.movie.service.MovieService;
+import com.movie.성민.PaymentSelect;
 
 import javax.swing.JTabbedPane;
 import javax.swing.ImageIcon;
@@ -48,6 +49,7 @@ public class ProjectUI extends JFrame {
 	
 	MovieService movieService = new MovieService();
 	CusService cusService = new CusService();
+	PaymentSelect paymentSelect = new PaymentSelect();
 	
 	private Customer loginCus = null;
 	private int PayCount = 3;
@@ -199,10 +201,13 @@ public class ProjectUI extends JFrame {
 				try {
 					
 					cusNameTF.setText(loginCus.getCus_name());
-//					cusNicknameTF.getText();
+					cusNicknameTF.setText(loginCus.getCus_nickname());
+					cusEmailTF.setText(loginCus.getCus_email());
+					cusBrithTF.setText(loginCus.getCus_birthday()+"");
+					cusPhoneTF.setText(loginCus.getCus_phone());
 					
-//					String cus_name = cusNameTF.getName();
-//					String cus_nickname = cusNicknameTF.getText();
+					cusResTF.setText(paymentSelect.selectByID(loginCus.getCus_id()));
+	
 					
 				} catch (Exception e1) {
 					
@@ -688,31 +693,31 @@ public class ProjectUI extends JFrame {
 		
 		cusNameTF = new JTextField();
 		cusNameTF.setColumns(10);
-		cusNameTF.setBounds(242, 83, 116, 21);
+		cusNameTF.setBounds(242, 83, 140, 21);
 		myPanel.add(cusNameTF);
 		
 		cusNicknameTF = new JTextField();
 		cusNicknameTF.setColumns(10);
-		cusNicknameTF.setBounds(242, 126, 116, 21);
+		cusNicknameTF.setBounds(242, 126, 140, 21);
 		myPanel.add(cusNicknameTF);
 		
 		cusBrithTF = new JTextField();
 		cusBrithTF.setColumns(10);
-		cusBrithTF.setBounds(242, 171, 116, 21);
+		cusBrithTF.setBounds(242, 171, 140, 21);
 		myPanel.add(cusBrithTF);
 		
 		cusPhoneTF = new JTextField();
 		cusPhoneTF.setColumns(10);
-		cusPhoneTF.setBounds(242, 227, 116, 21);
+		cusPhoneTF.setBounds(242, 227, 140, 21);
 		myPanel.add(cusPhoneTF);
 		
 		cusEmailTF = new JTextField();
 		cusEmailTF.setColumns(10);
-		cusEmailTF.setBounds(242, 279, 116, 21);
+		cusEmailTF.setBounds(242, 279, 140, 21);
 		myPanel.add(cusEmailTF);
 		
-		JTextPane cusResTF = new JTextPane();
-		cusResTF.setBounds(446, 111, 158, 181);
+		cusResTF = new JTextPane();
+		cusResTF.setBounds(446, 111, 194, 203);
 		myPanel.add(cusResTF);
 		
 		JButton btnNewButton_2_2 = new JButton("회원정보수정");
@@ -744,51 +749,41 @@ public class ProjectUI extends JFrame {
 		lblNewLabel_26.setBounds(296, 292, 70, 15);
 		updatePanel.add(lblNewLabel_26);
 		
-		JRadioButton rdbtnNewRadioButton_5 = new JRadioButton("남");
-		rdbtnNewRadioButton_5.setBounds(387, 217, 47, 23);
-		updatePanel.add(rdbtnNewRadioButton_5);
+		JRadioButton mymaleRBt = new JRadioButton("남");
+		mymaleRBt.setBounds(387, 217, 47, 23);
+		updatePanel.add(mymaleRBt);
 		
-		JRadioButton rdbtnNewRadioButton_5_1 = new JRadioButton("여");
-		rdbtnNewRadioButton_5_1.setBounds(456, 217, 47, 23);
-		updatePanel.add(rdbtnNewRadioButton_5_1);
+		JRadioButton myfemaleRBt = new JRadioButton("여");
+		myfemaleRBt.setBounds(456, 217, 47, 23);
+		updatePanel.add(myfemaleRBt);
 		
-		textField_10 = new JTextField();
-		textField_10.setColumns(10);
-		textField_10.setBounds(387, 73, 116, 21);
-		updatePanel.add(textField_10);
+		mynicknameTF = new JTextField();
+		mynicknameTF.setColumns(10);
+		mynicknameTF.setBounds(387, 73, 116, 21);
+		updatePanel.add(mynicknameTF);
 		
-		textField_11 = new JTextField();
-		textField_11.setColumns(10);
-		textField_11.setBounds(387, 111, 116, 21);
-		updatePanel.add(textField_11);
+		mybirthTF = new JTextField();
+		mybirthTF.setColumns(10);
+		mybirthTF.setBounds(387, 179, 116, 21);
+		updatePanel.add(mybirthTF);
 		
-		textField_12 = new JTextField();
-		textField_12.setColumns(10);
-		textField_12.setBounds(387, 179, 116, 21);
-		updatePanel.add(textField_12);
-		
-		textField_13 = new JTextField();
-		textField_13.setColumns(10);
-		textField_13.setBounds(387, 289, 116, 21);
-		updatePanel.add(textField_13);
+		myphoneTF = new JTextField();
+		myphoneTF.setColumns(10);
+		myphoneTF.setBounds(387, 289, 116, 21);
+		updatePanel.add(myphoneTF);
 		
 		JLabel lblNewLabel_38 = new JLabel("패스워드확인");
 		lblNewLabel_38.setBounds(296, 143, 87, 15);
 		updatePanel.add(lblNewLabel_38);
 		
-		textField_14 = new JTextField();
-		textField_14.setColumns(10);
-		textField_14.setBounds(387, 142, 116, 21);
-		updatePanel.add(textField_14);
-		
 		JLabel lblNewLabel_39 = new JLabel("이메일");
 		lblNewLabel_39.setBounds(296, 260, 57, 15);
 		updatePanel.add(lblNewLabel_39);
 		
-		textField_15 = new JTextField();
-		textField_15.setColumns(10);
-		textField_15.setBounds(387, 257, 116, 21);
-		updatePanel.add(textField_15);
+		myemailTF = new JTextField();
+		myemailTF.setColumns(10);
+		myemailTF.setBounds(387, 257, 116, 21);
+		updatePanel.add(myemailTF);
 		
 		JLabel lblNewLabel_40 = new JLabel("");
 		lblNewLabel_40.setIcon(new ImageIcon(ProjectUI.class.getResource("/com/movie/현정/logo5.png")));
@@ -802,6 +797,14 @@ public class ProjectUI extends JFrame {
 		JButton btnNewButton_3 = new JButton("정보수정완료");
 		btnNewButton_3.setBounds(456, 353, 116, 23);
 		updatePanel.add(btnNewButton_3);
+		
+		mypasswordTF1 = new JPasswordField();
+		mypasswordTF1.setBounds(387, 108, 116, 23);
+		updatePanel.add(mypasswordTF1);
+		
+		mypasswordTF2 = new JPasswordField();
+		mypasswordTF2.setBounds(387, 140, 116, 23);
+		updatePanel.add(mypasswordTF2);
 		
 		JPanel moviePanel = new JPanel();
 		moviePanel.setBackground(Color.WHITE);
@@ -1144,12 +1147,13 @@ public class ProjectUI extends JFrame {
 	private JTextField cusBrithTF;
 	private JTextField cusPhoneTF;
 	private JTextField cusEmailTF;
-	private JTextField textField_10;
-	private JTextField textField_11;
-	private JTextField textField_12;
-	private JTextField textField_13;
-	private JTextField textField_14;
-	private JTextField textField_15;
+	private JTextField mynicknameTF;
+	private JTextField mybirthTF;
+	private JTextField myphoneTF;
+	private JTextField myemailTF;
+	private JPasswordField mypasswordTF1;
+	private JPasswordField mypasswordTF2;
+	private JTextPane cusResTF;
 	
 	public void seatList() {
 		

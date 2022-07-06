@@ -44,7 +44,8 @@ public class PaymentSelect {
 	}
 	
 	
-	  public Payment selectByID(String id) throws Exception{
+	  public String selectByID(String id) throws Exception{
+		  String ddd =  "";
 		Payment payment = new Payment();
 		Movie movie = new Movie();
 		Connection con = dataSource.getConnection();
@@ -62,12 +63,13 @@ public class PaymentSelect {
 			int adult_member_count = rs.getInt("adult_member_count");
 			int child_member_count = rs.getInt("child_member_count");
 			int totalPrice = (adult_price*adult_member_count) + (child_price*child_member_count);
+			String bbb = "";
 			
 			
 			payment = new Payment(payment_no, payment_date, card_name, adult_member_count, child_member_count, cus_id, totalPrice, aa);
-			System.out.print("예매번호 : " + payment_no + ", <p>결제일자 : " + payment_date + ", <p>카드 :" + card_name
-					+ ", <p>성인 수 : " + adult_member_count + ", <p>청소년 수 :" + child_member_count
-			+ ", <p>ID : " + cus_id + "<p>좌석 : ");
+			String aaa = ("예매번호 : " + payment_no + ", \n결제일자 : " + payment_date + ", \n카드 :" + card_name
+					+ ", \n성인 수 : " + adult_member_count + ", \n청소년 수 :" + child_member_count
+			+ ", \nID : " + cus_id + "\n좌석 : ");
 			do {
 				payment.getSeatList().add(new Seat(rs.getInt("seat_no"),
 													rs.getInt("seat_arrange"),
@@ -81,15 +83,15 @@ public class PaymentSelect {
 						rs.getString("m_name"),
 						rs.getString("m_start_time"),
 						rs.getString("m_end_time"));
-				System.out.print(rs.getInt("seat_no") + "번 ");
+				bbb += (rs.getInt("seat_no") + "번 ");
 				
 			}while(rs.next());
 		
-			System.out.println("<p>회차 : " + movie.getHallName() + "<p>영화이름 : " + movie.getM_Name() + "<p>시작시간" + movie.getM_Start_Time() + "<p>종료시간 : " + movie.getM_End_Time());
-			
+			String ccc = ("\n회차 : " + movie.getHallName() + "\n영화이름 : " + movie.getM_Name() + "\n시작시간" + movie.getM_Start_Time() + "\n종료시간 : " + movie.getM_End_Time());
+			ddd = aaa+bbb+ccc;
 			
 		}
-		return payment;
+		return ddd;
 	}
 	 
 	

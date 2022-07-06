@@ -11,9 +11,8 @@ public class PaymentTestMain {
 		int a = pay.selectByPrice("seongmin");
 		System.out.println(a);
 		
-		
-		Payment p = pay.selectByID("seongmin");
-		System.out.println(p);
+		String aa = pay.selectByID("seongmin");
+		System.out.println(aa);
 		
 	}
 
