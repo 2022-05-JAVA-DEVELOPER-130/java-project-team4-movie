@@ -33,6 +33,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JTextPane;
 
 public class ProjectUI extends JFrame {
 	
@@ -51,6 +52,7 @@ public class ProjectUI extends JFrame {
 	private Customer loginCus = null;
 	private int PayCount = 3;
 	private String hall_name = "";
+	private String gender =null;
 	/**
 	 * Launch the application.
 	 */
@@ -71,17 +73,21 @@ public class ProjectUI extends JFrame {
 	 * Create the frame.
 	 */
 	public ProjectUI() {
+		setFont(new Font("바탕체", Font.BOLD, 14));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 820, 520);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
 		mainTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		mainTabbedPane.setBackground(Color.WHITE);
 		contentPane.add(mainTabbedPane, BorderLayout.CENTER);
 		
 		JPanel homePanel = new JPanel();
+		homePanel.setBackground(Color.WHITE);
 		mainTabbedPane.addTab("예매 홈", null, homePanel, null);
 		homePanel.setLayout(null);
 		
@@ -92,7 +98,7 @@ public class ProjectUI extends JFrame {
 				movieTabbedPane.setSelectedIndex(0);
 			}
 		});
-		movie1Btn.setBounds(59, 376, 97, 23);
+		movie1Btn.setBounds(42, 360, 97, 23);
 		homePanel.add(movie1Btn);
 		
 		JButton movie2Btn = new JButton("예매하기");
@@ -102,7 +108,7 @@ public class ProjectUI extends JFrame {
 				movieTabbedPane.setSelectedIndex(1);
 			}
 		});
-		movie2Btn.setBounds(204, 376, 97, 23);
+		movie2Btn.setBounds(187, 360, 97, 23);
 		homePanel.add(movie2Btn);
 		
 		JButton movie3Btn = new JButton("예매하기");
@@ -112,7 +118,7 @@ public class ProjectUI extends JFrame {
 				movieTabbedPane.setSelectedIndex(2);
 			}
 		});
-		movie3Btn.setBounds(357, 376, 97, 23);
+		movie3Btn.setBounds(340, 360, 97, 23);
 		homePanel.add(movie3Btn);
 		
 		JButton movie4Btn = new JButton("예매하기");
@@ -122,7 +128,7 @@ public class ProjectUI extends JFrame {
 				movieTabbedPane.setSelectedIndex(3);
 			}
 		});
-		movie4Btn.setBounds(506, 376, 97, 23);
+		movie4Btn.setBounds(489, 360, 97, 23);
 		homePanel.add(movie4Btn);
 		
 		JButton movie5Btn = new JButton("예매하기");
@@ -132,7 +138,7 @@ public class ProjectUI extends JFrame {
 				movieTabbedPane.setSelectedIndex(4);
 			}
 		});
-		movie5Btn.setBounds(662, 376, 97, 23);
+		movie5Btn.setBounds(645, 360, 97, 23);
 		homePanel.add(movie5Btn);
 		
 		loginBtn = new JButton("login");
@@ -157,27 +163,27 @@ public class ProjectUI extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(ProjectUI.class.getResource("/images/movie2.jpg")));
-		lblNewLabel.setBounds(200, 101, 122, 190);
+		lblNewLabel.setBounds(183, 85, 122, 190);
 		homePanel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(ProjectUI.class.getResource("/images/movie3.jpg")));
-		lblNewLabel_1.setBounds(350, 114, 122, 165);
+		lblNewLabel_1.setBounds(333, 98, 122, 165);
 		homePanel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon(ProjectUI.class.getResource("/images/movie4.jpg")));
-		lblNewLabel_2.setBounds(497, 109, 122, 176);
+		lblNewLabel_2.setBounds(489, 98, 110, 165);
 		homePanel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setIcon(new ImageIcon(ProjectUI.class.getResource("/images/movie5.jpg")));
-		lblNewLabel_3.setBounds(649, 117, 110, 157);
+		lblNewLabel_3.setBounds(632, 101, 110, 157);
 		homePanel.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("");
 		lblNewLabel_4.setIcon(new ImageIcon(ProjectUI.class.getResource("/images/movie1.jpg")));
-		lblNewLabel_4.setBounds(54, 112, 134, 171);
+		lblNewLabel_4.setBounds(37, 96, 134, 171);
 		homePanel.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("");
@@ -197,31 +203,31 @@ public class ProjectUI extends JFrame {
 		
 		JLabel lblNewLabel_11 = new JLabel("탑건-매버릭");
 		lblNewLabel_11.setFont(new Font("굴림", Font.BOLD, 15));
-		lblNewLabel_11.setBounds(64, 292, 97, 20);
+		lblNewLabel_11.setBounds(47, 276, 97, 20);
 		homePanel.add(lblNewLabel_11);
 		
 		JLabel lblNewLabel_28 = new JLabel("토르 - 러브 앤 썬더");
 		lblNewLabel_28.setFont(new Font("굴림", Font.BOLD, 15));
-		lblNewLabel_28.setBounds(192, 287, 143, 28);
+		lblNewLabel_28.setBounds(175, 271, 143, 28);
 		homePanel.add(lblNewLabel_28);
 		
 		JLabel lblNewLabel_29 = new JLabel("헤어질 결심");
 		lblNewLabel_29.setFont(new Font("굴림", Font.BOLD, 15));
-		lblNewLabel_29.setBounds(368, 286, 108, 32);
+		lblNewLabel_29.setBounds(351, 270, 108, 32);
 		homePanel.add(lblNewLabel_29);
 		
 		JLabel lblNewLabel_30 = new JLabel("마녀");
 		lblNewLabel_30.setFont(new Font("굴림", Font.BOLD, 15));
-		lblNewLabel_30.setBounds(541, 284, 81, 36);
+		lblNewLabel_30.setBounds(524, 268, 81, 36);
 		homePanel.add(lblNewLabel_30);
 		
 		JLabel lblNewLabel_31 = new JLabel("범죄도시2");
 		lblNewLabel_31.setFont(new Font("굴림", Font.BOLD, 15));
-		lblNewLabel_31.setBounds(668, 288, 115, 25);
+		lblNewLabel_31.setBounds(651, 272, 115, 25);
 		homePanel.add(lblNewLabel_31);
 		
 		JLabel movie1time = new JLabel("");
-		movie1time.setBounds(67, 310, 111, 56);
+		movie1time.setBounds(50, 294, 111, 56);
 		homePanel.add(movie1time);
 		try {
 			movie1time.setText("<html>"+movieService.findBymoviehall("1회차").getM_Start_Time()+ "<p>~ " + movieService.findBymoviehall("1회차").getM_End_Time());
@@ -229,7 +235,7 @@ public class ProjectUI extends JFrame {
 		}
 		
 		JLabel movie2time = new JLabel("");
-		movie2time.setBounds(221, 310, 111, 56);
+		movie2time.setBounds(204, 294, 111, 56);
 		homePanel.add(movie2time);
 		try {
 			movie2time.setText("<html>"+movieService.findBymoviehall("2회차").getM_Start_Time()+ "<p>~ " + movieService.findBymoviehall("2회차").getM_End_Time());
@@ -237,7 +243,7 @@ public class ProjectUI extends JFrame {
 		}
 		
 		JLabel movie3time = new JLabel("");
-		movie3time.setBounds(368, 313, 111, 56);
+		movie3time.setBounds(351, 297, 111, 56);
 		homePanel.add(movie3time);
 		try {
 			movie3time.setText("<html>"+movieService.findBymoviehall("3회차").getM_Start_Time()+ "<p>~ " + movieService.findBymoviehall("3회차").getM_End_Time());
@@ -245,7 +251,7 @@ public class ProjectUI extends JFrame {
 		}
 		
 		JLabel movie4time = new JLabel("");
-		movie4time.setBounds(507, 312, 111, 56);
+		movie4time.setBounds(490, 296, 111, 56);
 		homePanel.add(movie4time);
 		try {
 			movie4time.setText("<html>"+movieService.findBymoviehall("4회차").getM_Start_Time()+ "<p>~ " + movieService.findBymoviehall("4회차").getM_End_Time());
@@ -253,33 +259,33 @@ public class ProjectUI extends JFrame {
 		}
 		
 		JLabel movie5time = new JLabel("");
-		movie5time.setBounds(662, 313, 111, 56);
+		movie5time.setBounds(645, 297, 111, 56);
 		homePanel.add(movie5time);
 		try {
 			movie5time.setText("<html>"+movieService.findBymoviehall("5회차").getM_Start_Time()+ "<p>~ " + movieService.findBymoviehall("5회차").getM_End_Time());
 			
 			JLabel reaminseat1 = new JLabel("");
-			reaminseat1.setBounds(55, 405, 102, 31);
+			reaminseat1.setBounds(42, 388, 102, 31);
 			homePanel.add(reaminseat1);
 			reaminseat1.setText("남은좌석 : " + movieService.findBymoviehall("1회차").getRemainSeat());
 			
 			JLabel reaminseat2 = new JLabel("");
-			reaminseat2.setBounds(206, 404, 102, 31);
+			reaminseat2.setBounds(189, 388, 102, 31);
 			homePanel.add(reaminseat2);
 			reaminseat2.setText("남은좌석 : " + movieService.findBymoviehall("2회차").getRemainSeat());
 			
 			JLabel reaminseat3 = new JLabel("");
-			reaminseat3.setBounds(364, 405, 102, 31);
+			reaminseat3.setBounds(347, 389, 102, 31);
 			homePanel.add(reaminseat3);
 			reaminseat3.setText("남은좌석 : " + movieService.findBymoviehall("3회차").getRemainSeat());
 			
 			JLabel reaminseat4 = new JLabel("");
-			reaminseat4.setBounds(514, 405, 102, 31);
+			reaminseat4.setBounds(497, 389, 102, 31);
 			homePanel.add(reaminseat4);
 			reaminseat4.setText("남은좌석 : " + movieService.findBymoviehall("4회차").getRemainSeat());
 			
 			JLabel reaminseat5 = new JLabel("");
-			reaminseat5.setBounds(666, 404, 102, 31);
+			reaminseat5.setBounds(649, 388, 102, 31);
 			homePanel.add(reaminseat5);
 			reaminseat5.setText("남은좌석 : " + movieService.findBymoviehall("5회차").getRemainSeat());
 		} catch (Exception e3) {
@@ -288,6 +294,72 @@ public class ProjectUI extends JFrame {
 		JPanel cusPanel = new JPanel();
 		mainTabbedPane.addTab("회원페이지", null, cusPanel, null);
 		cusPanel.setLayout(new BorderLayout(0, 0));
+		
+		JPanel myPanel_1 = new JPanel();
+		myPanel_1.setLayout(null);
+		myPanel_1.setBackground(Color.WHITE);
+		cusPanel.add(myPanel_1, BorderLayout.NORTH);
+		
+		JLabel lblNewLabel_17 = new JLabel("");
+		lblNewLabel_17.setBounds(12, 10, 73, 52);
+		myPanel_1.add(lblNewLabel_17);
+		
+		JLabel lblNewLabel_32 = new JLabel("이름");
+		lblNewLabel_32.setBounds(173, 86, 57, 15);
+		myPanel_1.add(lblNewLabel_32);
+		
+		JLabel lblNewLabel_33 = new JLabel("닉네임");
+		lblNewLabel_33.setBounds(173, 129, 57, 15);
+		myPanel_1.add(lblNewLabel_33);
+		
+		JLabel lblNewLabel_34 = new JLabel("생년월일");
+		lblNewLabel_34.setBounds(173, 174, 57, 15);
+		myPanel_1.add(lblNewLabel_34);
+		
+		JLabel lblNewLabel_35 = new JLabel("연락처");
+		lblNewLabel_35.setBounds(173, 230, 57, 15);
+		myPanel_1.add(lblNewLabel_35);
+		
+		JLabel lblNewLabel_36 = new JLabel("이메일");
+		lblNewLabel_36.setBounds(173, 282, 57, 15);
+		myPanel_1.add(lblNewLabel_36);
+		
+		JLabel lblNewLabel_37 = new JLabel("예매내역");
+		lblNewLabel_37.setBounds(446, 86, 57, 15);
+		myPanel_1.add(lblNewLabel_37);
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(242, 83, 116, 21);
+		myPanel_1.add(textField);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(242, 126, 116, 21);
+		myPanel_1.add(textField_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(242, 171, 116, 21);
+		myPanel_1.add(textField_2);
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		textField_3.setBounds(242, 227, 116, 21);
+		myPanel_1.add(textField_3);
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		textField_4.setBounds(242, 279, 116, 21);
+		myPanel_1.add(textField_4);
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setBounds(446, 111, 158, 181);
+		myPanel_1.add(textPane);
+		
+		JButton btnNewButton_2 = new JButton("회원정보수정");
+		btnNewButton_2.setBounds(359, 354, 116, 23);
+		myPanel_1.add(btnNewButton_2);
 		
 		cusTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		cusPanel.add(cusTabbedPane, BorderLayout.CENTER);
@@ -382,6 +454,13 @@ public class ProjectUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(maleRadioButton.isSelected()) {
+					if(maleRadioButton.isSelected()) {
+						gender = "M";
+						genderinfolabel.setText("");
+						
+					}else {
+						gender = null;
+					}
 					femaleRadioButton.setSelected(false);
 				}
 			}
@@ -395,6 +474,12 @@ public class ProjectUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(femaleRadioButton.isSelected()) {
+					if(femaleRadioButton.isSelected()) {
+						gender = "F";
+						genderinfolabel.setText("");
+					}else {
+						gender = null;
+					}
 					maleRadioButton.setSelected(false);
 				}
 			}
@@ -402,10 +487,10 @@ public class ProjectUI extends JFrame {
 		femaleRadioButton.setBounds(627, 226, 66, 23);
 		JoinPanel.add(femaleRadioButton);
 		
-		JLabel lblNewLabel_10 = new JLabel("*");
-		lblNewLabel_10.setForeground(Color.RED);
-		lblNewLabel_10.setBounds(149, 239, 183, 17);
-		JoinPanel.add(lblNewLabel_10);
+		JLabel passwordCLB = new JLabel("*");
+		passwordCLB.setForeground(Color.RED);
+		passwordCLB.setBounds(149, 239, 183, 17);
+		JoinPanel.add(passwordCLB);
 		//회원가입
 		JButton btnNewButton_1_1 = new JButton("회원가입");
 		btnNewButton_1_1.addActionListener(new ActionListener() {
@@ -413,28 +498,28 @@ public class ProjectUI extends JFrame {
 				try {
 				String id =idTextField.getText();
 				String password = passwordField.getText();
+				String passwordC = passwordFieldC.getText();
 				String nickname = nicknameTextField.getText();
 				String name = nameTextField.getText();
 				String phone = phoneTextField.getText();
 				String date ;
 				date = birthTextField.getText();
-				String gender ="";
+				
 				String email = emailTextField.getText();
 					Date birth = new SimpleDateFormat("yyyyMMdd").parse(date);
-				if(maleRadioButton.isSelected()) {
-					gender = "M";
-					genderinfolabel.setText("");
 					
-				}else if(femaleRadioButton.isSelected()) {
-					gender = "F";
-					genderinfolabel.setText("");
-				}else {
-					genderinfolabel.setText("성별을 선택해주세요");
-				}
 				
+				
+				if(password.equals(passwordC)) {
+					passwordCLB.setText("* 비밀번호일치");
+				} else {
+					passwordCLB.setText("* 비밀번호불일치");
+					return;
+					
+				}
 				Customer cus = new Customer(id, 1, nickname, name, password, birth, gender, phone, email, 0, 1);
 				boolean a = cusService.addCustomer(cus);
-				if(a) {
+				if(a && gender != null) {
 					JOptionPane.showMessageDialog(null, "회원가입이 완료되었습니다.");
 					mainTabbedPane.setSelectedIndex(0);
 				}else {
@@ -479,9 +564,9 @@ public class ProjectUI extends JFrame {
 		passwordField.setBounds(173, 173, 116, 21);
 		JoinPanel.add(passwordField);
 		
-		passwordField_1 = new JPasswordField();
-		passwordField_1.setBounds(173, 211, 116, 21);
-		JoinPanel.add(passwordField_1);
+		passwordFieldC = new JPasswordField();
+		passwordFieldC.setBounds(173, 211, 116, 21);
+		JoinPanel.add(passwordFieldC);
 		
 		genderinfolabel = new JLabel("");
 		genderinfolabel.setForeground(Color.RED);
@@ -491,7 +576,7 @@ public class ProjectUI extends JFrame {
 		JPanel loginPanel = new JPanel();
 		cusTabbedPane.addTab("로그인", null, loginPanel, null);
 		loginPanel.setLayout(null);
-		loginPanel.setBackground(new Color(255, 192, 203));
+		loginPanel.setBackground(new Color(255, 240, 245));
 		
 		JLabel loginIdLB_1 = new JLabel("ID");
 		loginIdLB_1.setFont(new Font("굴림", Font.PLAIN, 13));
@@ -554,58 +639,158 @@ public class ProjectUI extends JFrame {
 		loginPanel.add(loginPasswordField);
 		
 		JPanel myPanel = new JPanel();
-		cusTabbedPane.addTab("마이페이지", null, myPanel, null);
 		myPanel.setLayout(null);
+		myPanel.setBackground(Color.WHITE);
+		cusTabbedPane.addTab("마이페이지", null, myPanel, null);
 		
-		JLabel lblNewLabel_22 = new JLabel("이름");
-		lblNewLabel_22.setBounds(46, 37, 57, 15);
-		myPanel.add(lblNewLabel_22);
+		JLabel lblNewLabel_17_1 = new JLabel("");
+		lblNewLabel_17_1.setIcon(new ImageIcon(ProjectUI.class.getResource("/com/movie/현정/logo5.png")));
+		lblNewLabel_17_1.setBounds(12, 10, 73, 52);
+		myPanel.add(lblNewLabel_17_1);
 		
-		JLabel lblNewLabel_23 = new JLabel("생년월일");
-		lblNewLabel_23.setBounds(46, 89, 57, 15);
-		myPanel.add(lblNewLabel_23);
+		JLabel lblNewLabel_32_1 = new JLabel("이름");
+		lblNewLabel_32_1.setBounds(173, 86, 57, 15);
+		myPanel.add(lblNewLabel_32_1);
 		
-		JLabel lblNewLabel_24 = new JLabel("이메일");
-		lblNewLabel_24.setBounds(46, 146, 57, 15);
-		myPanel.add(lblNewLabel_24);
+		JLabel lblNewLabel_33_1 = new JLabel("닉네임");
+		lblNewLabel_33_1.setBounds(173, 129, 57, 15);
+		myPanel.add(lblNewLabel_33_1);
+		
+		JLabel lblNewLabel_34_1 = new JLabel("생년월일");
+		lblNewLabel_34_1.setBounds(173, 174, 57, 15);
+		myPanel.add(lblNewLabel_34_1);
+		
+		JLabel lblNewLabel_35_1 = new JLabel("연락처");
+		lblNewLabel_35_1.setBounds(173, 230, 57, 15);
+		myPanel.add(lblNewLabel_35_1);
+		
+		JLabel lblNewLabel_36_1 = new JLabel("이메일");
+		lblNewLabel_36_1.setBounds(173, 282, 57, 15);
+		myPanel.add(lblNewLabel_36_1);
+		
+		JLabel lblNewLabel_37_1 = new JLabel("예매내역");
+		lblNewLabel_37_1.setBounds(446, 86, 57, 15);
+		myPanel.add(lblNewLabel_37_1);
+		
+		textField_5 = new JTextField();
+		textField_5.setColumns(10);
+		textField_5.setBounds(242, 83, 116, 21);
+		myPanel.add(textField_5);
+		
+		textField_6 = new JTextField();
+		textField_6.setColumns(10);
+		textField_6.setBounds(242, 126, 116, 21);
+		myPanel.add(textField_6);
+		
+		textField_7 = new JTextField();
+		textField_7.setColumns(10);
+		textField_7.setBounds(242, 171, 116, 21);
+		myPanel.add(textField_7);
+		
+		textField_8 = new JTextField();
+		textField_8.setColumns(10);
+		textField_8.setBounds(242, 227, 116, 21);
+		myPanel.add(textField_8);
+		
+		textField_9 = new JTextField();
+		textField_9.setColumns(10);
+		textField_9.setBounds(242, 279, 116, 21);
+		myPanel.add(textField_9);
+		
+		JTextPane textPane_1 = new JTextPane();
+		textPane_1.setBounds(446, 111, 158, 181);
+		myPanel.add(textPane_1);
+		
+		JButton btnNewButton_2_2 = new JButton("회원정보수정");
+		btnNewButton_2_2.setBounds(359, 354, 116, 23);
+		myPanel.add(btnNewButton_2_2);
+		
+		JPanel updatePanel = new JPanel();
+		updatePanel.setLayout(null);
+		updatePanel.setBackground(Color.WHITE);
+		cusTabbedPane.addTab("회원정보수정", null, updatePanel, null);
+		
+		JLabel lblNewLabel_22 = new JLabel("닉네임");
+		lblNewLabel_22.setBounds(296, 73, 57, 15);
+		updatePanel.add(lblNewLabel_22);
+		
+		JLabel lblNewLabel_23 = new JLabel("패스워드");
+		lblNewLabel_23.setBounds(296, 111, 57, 15);
+		updatePanel.add(lblNewLabel_23);
+		
+		JLabel lblNewLabel_24 = new JLabel("생년월일");
+		lblNewLabel_24.setBounds(296, 182, 57, 15);
+		updatePanel.add(lblNewLabel_24);
 		
 		JLabel lblNewLabel_25 = new JLabel("성별");
-		lblNewLabel_25.setBounds(46, 204, 57, 15);
-		myPanel.add(lblNewLabel_25);
+		lblNewLabel_25.setBounds(296, 221, 57, 15);
+		updatePanel.add(lblNewLabel_25);
 		
 		JLabel lblNewLabel_26 = new JLabel("휴대폰번호");
-		lblNewLabel_26.setBounds(46, 256, 70, 15);
-		myPanel.add(lblNewLabel_26);
+		lblNewLabel_26.setBounds(296, 292, 70, 15);
+		updatePanel.add(lblNewLabel_26);
 		
 		JRadioButton rdbtnNewRadioButton_5 = new JRadioButton("남");
-		rdbtnNewRadioButton_5.setBounds(117, 204, 47, 23);
-		myPanel.add(rdbtnNewRadioButton_5);
+		rdbtnNewRadioButton_5.setBounds(387, 217, 47, 23);
+		updatePanel.add(rdbtnNewRadioButton_5);
 		
 		JRadioButton rdbtnNewRadioButton_5_1 = new JRadioButton("여");
-		rdbtnNewRadioButton_5_1.setBounds(168, 204, 47, 23);
-		myPanel.add(rdbtnNewRadioButton_5_1);
+		rdbtnNewRadioButton_5_1.setBounds(456, 217, 47, 23);
+		updatePanel.add(rdbtnNewRadioButton_5_1);
+		
+		textField_10 = new JTextField();
+		textField_10.setColumns(10);
+		textField_10.setBounds(387, 73, 116, 21);
+		updatePanel.add(textField_10);
 		
 		textField_11 = new JTextField();
-		textField_11.setBounds(115, 34, 116, 21);
-		myPanel.add(textField_11);
 		textField_11.setColumns(10);
+		textField_11.setBounds(387, 111, 116, 21);
+		updatePanel.add(textField_11);
 		
 		textField_12 = new JTextField();
-		textField_12.setBounds(115, 86, 116, 21);
-		myPanel.add(textField_12);
 		textField_12.setColumns(10);
+		textField_12.setBounds(387, 179, 116, 21);
+		updatePanel.add(textField_12);
 		
 		textField_13 = new JTextField();
-		textField_13.setBounds(115, 143, 116, 21);
-		myPanel.add(textField_13);
 		textField_13.setColumns(10);
+		textField_13.setBounds(387, 289, 116, 21);
+		updatePanel.add(textField_13);
+		
+		JLabel lblNewLabel_38 = new JLabel("패스워드확인");
+		lblNewLabel_38.setBounds(296, 143, 87, 15);
+		updatePanel.add(lblNewLabel_38);
 		
 		textField_14 = new JTextField();
-		textField_14.setBounds(115, 253, 116, 21);
-		myPanel.add(textField_14);
 		textField_14.setColumns(10);
+		textField_14.setBounds(387, 142, 116, 21);
+		updatePanel.add(textField_14);
+		
+		JLabel lblNewLabel_39 = new JLabel("이메일");
+		lblNewLabel_39.setBounds(296, 260, 57, 15);
+		updatePanel.add(lblNewLabel_39);
+		
+		textField_15 = new JTextField();
+		textField_15.setColumns(10);
+		textField_15.setBounds(387, 257, 116, 21);
+		updatePanel.add(textField_15);
+		
+		JLabel lblNewLabel_40 = new JLabel("");
+		lblNewLabel_40.setIcon(new ImageIcon(ProjectUI.class.getResource("/com/movie/현정/logo5.png")));
+		lblNewLabel_40.setBounds(12, 10, 75, 47);
+		updatePanel.add(lblNewLabel_40);
+		
+		JButton btnNewButton_1 = new JButton("회원탈퇴");
+		btnNewButton_1.setBounds(231, 353, 97, 23);
+		updatePanel.add(btnNewButton_1);
+		
+		JButton btnNewButton_3 = new JButton("정보수정완료");
+		btnNewButton_3.setBounds(456, 353, 116, 23);
+		updatePanel.add(btnNewButton_3);
 		
 		JPanel moviePanel = new JPanel();
+		moviePanel.setBackground(Color.WHITE);
 		mainTabbedPane.addTab("영화상세", null, moviePanel, null);
 		moviePanel.setLayout(new BorderLayout(0, 0));
 		
@@ -613,6 +798,7 @@ public class ProjectUI extends JFrame {
 		moviePanel.add(movieTabbedPane, BorderLayout.CENTER);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Color.WHITE);
 		movieTabbedPane.addTab("영화1", null, panel_2, null);
 		panel_2.setLayout(null);
 		
@@ -642,6 +828,7 @@ public class ProjectUI extends JFrame {
 		}
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(Color.WHITE);
 		movieTabbedPane.addTab("영화2", null, panel_3, null);
 		panel_3.setLayout(null);
 		
@@ -671,6 +858,7 @@ public class ProjectUI extends JFrame {
 		}
 		
 		JPanel panel_4 = new JPanel();
+		panel_4.setBackground(Color.WHITE);
 		movieTabbedPane.addTab("영화3", null, panel_4, null);
 		panel_4.setLayout(null);
 		
@@ -699,6 +887,7 @@ public class ProjectUI extends JFrame {
 		}
 		
 		JPanel panel_5 = new JPanel();
+		panel_5.setBackground(Color.WHITE);
 		movieTabbedPane.addTab("영화4", null, panel_5, null);
 		panel_5.setLayout(null);
 		
@@ -727,6 +916,7 @@ public class ProjectUI extends JFrame {
 		}
 		
 		JPanel panel_6 = new JPanel();
+		panel_6.setBackground(Color.WHITE);
 		movieTabbedPane.addTab("영화5", null, panel_6, null);
 		panel_6.setLayout(null);
 		
@@ -755,6 +945,7 @@ public class ProjectUI extends JFrame {
 		}
 		
 		JPanel seatPanel = new JPanel();
+		seatPanel.setBackground(Color.WHITE);
 		mainTabbedPane.addTab("좌석선택", null, seatPanel, null);
 		seatPanel.setLayout(null);
 		
@@ -812,6 +1003,7 @@ public class ProjectUI extends JFrame {
 		
 		
 		JPanel payPanel = new JPanel();
+		payPanel.setBackground(Color.WHITE);
 		mainTabbedPane.addTab("결제페이지", null, payPanel, null);
 		payPanel.setLayout(null);
 		
@@ -910,15 +1102,11 @@ public class ProjectUI extends JFrame {
 	}
 	JButton[] buttons;
 	private JTextField totalPriceTB;
-	private JTextField textField_11;
-	private JTextField textField_12;
-	private JTextField textField_13;
-	private JTextField textField_14;
 	private JTextField nicknameTextField;
 	private JRadioButton femaleRadioButton;
 	private JRadioButton maleRadioButton;
 	private JPasswordField passwordField;
-	private JPasswordField passwordField_1;
+	private JPasswordField passwordFieldC;
 	private JPasswordField loginPasswordField;
 	private JTabbedPane mainTabbedPane;
 	private JTabbedPane cusTabbedPane;
@@ -932,6 +1120,22 @@ public class ProjectUI extends JFrame {
 	private JComboBox adultCB;
 	private JComboBox cardCB;
 	private JRadioButton depositRBtn;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTextField textField_7;
+	private JTextField textField_8;
+	private JTextField textField_9;
+	private JTextField textField_10;
+	private JTextField textField_11;
+	private JTextField textField_12;
+	private JTextField textField_13;
+	private JTextField textField_14;
+	private JTextField textField_15;
 	
 	public void seatList() {
 		
@@ -982,11 +1186,10 @@ public class ProjectUI extends JFrame {
 	
 	public void logoutProcess() {
 		this.loginCus = null;
-		setTitle("");
+		setTitle("ITWILL CINEMA");
 		
 		cusTabbedPane.setEnabledAt(0,true);
 		cusTabbedPane.setEnabledAt(1,true);
-		cusTabbedPane.setEnabledAt(2,false);
 		
 		joinBtn.setEnabled(true);
 		loginBtn.setEnabled(true);
