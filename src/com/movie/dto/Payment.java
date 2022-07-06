@@ -12,11 +12,29 @@ public class Payment {
 	private int child_member_count;
 	private String cus_id;
 	private ArrayList<Seat> seatList = new ArrayList<Seat>();
+	private int seat_no;
+	private int totalPrice;
 
 	public Payment() {
 		// TODO Auto-generated constructor stub
 	}
+//select용
+	public Payment(int payment_no, Date payment_date, String card_name, int adult_member_count, int child_member_count,
+			String cus_id, int totalPrice, ArrayList<Seat> seatList) {
+		super();
+		this.payment_no = payment_no;
+		this.payment_date = payment_date;
+		this.card_name = card_name;
+		this.adult_member_count = adult_member_count;
+		this.child_member_count = child_member_count;
+		this.cus_id = cus_id;
+		this.totalPrice = totalPrice;
+		this.seatList = seatList;
+	}
 
+	
+	
+	//insert용
 	public Payment(int payment_no, Date payment_date, String card_name, int adult_member_count, int child_member_count,
 			String cus_id, ArrayList<Seat> seatList) {
 		super();
@@ -27,6 +45,7 @@ public class Payment {
 		this.child_member_count = child_member_count;
 		this.cus_id = cus_id;
 		this.seatList = seatList;
+		
 	}
 
 	public int getPayment_no() {
@@ -92,8 +111,6 @@ public class Payment {
 				+ ", cus_id=" + cus_id + ", seatList=" + seatList + "]";
 	}
 	
-
-
 
 
 }

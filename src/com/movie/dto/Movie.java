@@ -18,6 +18,18 @@ public class Movie {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	
+	public Movie(String hall_name, String m_Name, String m_Start_Time, String m_End_Time) {
+		super();
+		this.hall_name = hall_name;
+		this.m_Name = m_Name;
+		this.m_Start_Time = m_Start_Time;
+		this.m_End_Time = m_End_Time;
+	}
+
+
+
 	public Movie(String hallName, int totalSeatCount, int remainSeat, String m_Name, String m_Genre, int m_Positive_Age,
 			String m_Start_Time, String m_End_Time, String m_Image, String m_Introduce, int price_no) {
 		super();

@@ -153,7 +153,7 @@ public class PaymentDao {
 	}
 	
 	public List<Payment> selectAllByCusId(String cus_id) throws Exception{
-		List<Payment> paymentList = new ArrayList<Payment>();
+		ArrayList<Payment> paymentList = new ArrayList<Payment>();
 		Connection con=dataSource.getConnection();
 		PreparedStatement pstmt=con.prepareStatement(PaymentSQL.SELECT_BY_CUSID);
 		pstmt.setString(1, cus_id);
