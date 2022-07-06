@@ -8,7 +8,7 @@ public class PaymentService {
 	public PaymentService() {
 		paymentDao=new PaymentDao();
 	}
-	
+	/*
 	public Payment findByNo(int p_no) throws Exception{
 		return paymentDao.selectByNo(p_no);
 	}
@@ -16,7 +16,7 @@ public class PaymentService {
 	public int deleteByNo(int p_no) throws Exception{
 		return paymentDao.deleteByNo(p_no);
 	}
-	
+	*/
 	
 	
 	

@@ -6,8 +6,8 @@ public class PaymentTestMain {
 		
 		PaymentSelect pay = new PaymentSelect();
 		
-		pay.select();
-		
+		int a = pay.selectByPrice("seongmin");
+		System.out.println(a);
 		
 		
 	}

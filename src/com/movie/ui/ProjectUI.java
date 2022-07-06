@@ -47,6 +47,7 @@ public class ProjectUI extends JFrame {
 	
 	MovieService movieService = new MovieService();
 	CusService cusService = new CusService();
+	
 	private Customer loginCus = null;
 	private int PayCount = 3;
 	private String hall_name = "";
@@ -135,6 +136,12 @@ public class ProjectUI extends JFrame {
 		homePanel.add(movie5Btn);
 		
 		loginBtn = new JButton("login");
+		loginBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mainTabbedPane.setSelectedIndex(1);
+				cusTabbedPane.setSelectedIndex(1);
+			}
+		});
 		loginBtn.setBounds(599, 21, 73, 32);
 		homePanel.add(loginBtn);
 		
@@ -181,6 +188,7 @@ public class ProjectUI extends JFrame {
 		myPageBtn = new JButton("MyPage");
 		myPageBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				mainTabbedPane.setSelectedIndex(1);
 				cusTabbedPane.setSelectedIndex(2);
 			}
 		});
@@ -791,7 +799,10 @@ public class ProjectUI extends JFrame {
 		JButton btnNewButton = new JButton("다음");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String adult = (String)adultCB.getSelectedItem();
+				String child = (String)childCB.getSelectedItem();
 				mainTabbedPane.setSelectedIndex(4);
+				totalPriceTB.setText(adult);
 			}
 		});
 		btnNewButton.setBounds(587, 353, 97, 23);
@@ -829,7 +840,7 @@ public class ProjectUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(depositRBtn.isSelected()) {
-					cardCB.setEnabled(true);
+					cardCB.setEnabled(false);
 					cardRBtn.setSelected(false);
 					PayCount = 1;
 				}

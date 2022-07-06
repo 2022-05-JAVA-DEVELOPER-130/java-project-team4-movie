@@ -17,7 +17,7 @@ public class PaymentDao {
 	public PaymentDao() {
 		dataSource = new DataSource();
 	}
-	
+	/*
 	public int insertPayment(Payment payment) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(PaymentSQL.PAYMENT_INSERT);
@@ -85,4 +85,5 @@ public class PaymentDao {
 		
 		return rowCount;
 	}
+	*/
 }
