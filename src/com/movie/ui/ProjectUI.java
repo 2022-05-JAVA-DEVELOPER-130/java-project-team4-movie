@@ -24,6 +24,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.JRadioButton;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
@@ -1018,15 +1020,12 @@ public class ProjectUI extends JFrame {
 			JButton seatSelectBtn = new JButton("예매하기");
 			seatSelectBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					
 					mainTabbedPane.setSelectedIndex(3);
 					hall_name = "1회차";
 					try {
-						ArrayList<Seat> seat = (ArrayList)seatService.findAllByhallName(hall_name);
-						for (Seat seat2 : seat) {
-							if(seat2.getSeat_valid() == 0) {
-								
-							}
-						}
+						seatReservation(hall_name);
+						
 					} catch (Exception e1) {
 						System.out.println("오오류류");
 					}
@@ -1066,12 +1065,7 @@ public class ProjectUI extends JFrame {
 			movie2Label.setText("<html>" + movieService.findBymoviehall("2회차").getM_Introduce());
 
 			JButton seatSelectBtn = new JButton("예매하기");
-			seatSelectBtn.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					mainTabbedPane.setSelectedIndex(3);
-					hall_name = "2회차";
-				}
-			});
+			
 			seatSelectBtn.setBounds(642, 360, 97, 23);
 			panel_3.add(seatSelectBtn);
 			
@@ -1110,6 +1104,12 @@ public class ProjectUI extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					mainTabbedPane.setSelectedIndex(3);
 					hall_name = "3회차";
+					try {
+						seatReservation(hall_name);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 			});
 			seatSelectBtn.setBounds(621, 355, 97, 23);
@@ -1149,6 +1149,12 @@ public class ProjectUI extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					mainTabbedPane.setSelectedIndex(3);
 					hall_name = "4회차";
+					try {
+						seatReservation(hall_name);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 			});
 			seatSelectBtn.setBounds(622, 364, 97, 23);
@@ -1188,6 +1194,12 @@ public class ProjectUI extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					mainTabbedPane.setSelectedIndex(3);
 					hall_name = "5회차";
+					try {
+						seatReservation(hall_name);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 			});
 			seatSelectBtn.setBounds(625, 358, 97, 23);
@@ -1355,8 +1367,7 @@ public class ProjectUI extends JFrame {
 
 			/********** 서비스생성 ***********/
 			/**********************/
-			seatReservation();
-			
+			seatReservation("1회차");
 			logoutProcess();
 			ArrayList<Seat> seat = new ArrayList<Seat>();
 		} catch (Exception e1) {
@@ -1412,9 +1423,13 @@ public class ProjectUI extends JFrame {
 	private JTextField findPwNameTF;
 	
 		
-	public void seatReservation() throws Exception{
-		ArrayList<Seat> seat = (ArrayList)seatService.findAllByhallName("1회차");
+	
+	
+	public void seatReservation(String hall_name) throws Exception{
+		ArrayList<Seat> seat = (ArrayList)seatService.findAllByhallName(hall_name);
 		seatSelectPanel.remove(seatSelectCHK1_1);
+		
+		
 	for(int i=0; i < seat.size(); i++) {
 		JCheckBox seatSelectCHK1 = new JCheckBox("");
 		seatSelectCHK1.setToolTipText(1+i+"");
@@ -1443,6 +1458,7 @@ public class ProjectUI extends JFrame {
 		*/
 		}
 	}
+	
 	
 
 	// 로그인 메소드
