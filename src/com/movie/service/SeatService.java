@@ -37,5 +37,8 @@ public class SeatService {
 		return seatDao.selectAll(hall_name);
 	}
 	
+	public int updateSeat(String cus_id, String hall_name, int seat_arrange) throws Exception{
+		return seatDao.update(cus_id, hall_name, seat_arrange);
+	}
 	
 }

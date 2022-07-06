@@ -30,6 +30,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
@@ -41,6 +42,7 @@ import javax.swing.JPasswordField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTextPane;
+import javax.swing.JCheckBox;
 
 public class ProjectUI extends JFrame {
 
@@ -912,6 +914,16 @@ public class ProjectUI extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					mainTabbedPane.setSelectedIndex(3);
 					hall_name = "1회차";
+					try {
+						ArrayList<Seat> seat = (ArrayList)seatService.findAllByhallName(hall_name);
+						for (Seat seat2 : seat) {
+							if(seat2.getSeat_valid() == 0) {
+								
+							}
+						}
+					} catch (Exception e1) {
+						System.out.println("오오류류");
+					}
 				}
 			});
 			seatSelectBtn.setBounds(619, 360, 97, 23);
@@ -1124,29 +1136,18 @@ public class ProjectUI extends JFrame {
 		seatSelectPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		seatSelectPanel.setBounds(48, 88, 379, 324);
 		seatPanel.add(seatSelectPanel);
-		seatSelectPanel.setLayout(new GridLayout(0, 5, 10, 13));
-
-		JButton btnNewButton_10 = new JButton("");
-		btnNewButton_10.setIcon(new ImageIcon(ProjectUI.class.getResource("/images/user.png")));
-		seatSelectPanel.add(btnNewButton_10);
+		seatSelectPanel.setLayout(new GridLayout(0, 5, 0, 0));
+		
+		
+		
+		
+		seatSelectCHK1_1 = new JCheckBox("1");
+		seatSelectPanel.add(seatSelectCHK1_1);
+		
+		
 
 		JButton btnNewButton = new JButton("다음");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String adult = (String) adultCB.getSelectedItem();
-				String child = (String) childCB.getSelectedItem();
-				int a = Integer.parseInt(adult);
-				int c = Integer.parseInt(child);
-				try {
-					PriceInfo price = priceInfoDao.priceSelectByNo(hall_name);
-					totalPriceTB.setText((a * price.getAdult_price()) + (c * price.getChild_price()) + "");
-
-				} catch (Exception e1) {
-				}
-				mainTabbedPane.setSelectedIndex(4);
-
-			}
-		});
+		
 		btnNewButton.setBounds(587, 353, 97, 23);
 		seatPanel.add(btnNewButton);
 
@@ -1247,11 +1248,11 @@ public class ProjectUI extends JFrame {
 		try {
 
 			/********** 서비스생성 ***********/
-			seatService = new SeatService();
 			/**********************/
-
-			seatList();
-
+			seatReservation();
+			
+			logoutProcess();
+			ArrayList<Seat> seat = new ArrayList<Seat>();
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -1297,50 +1298,42 @@ public class ProjectUI extends JFrame {
 	private JTextPane cusResTF;
 
 	/*************** Service선언 ************/
-	List<JButton> buttons;
-	List<JButton> remain_buttons=new ArrayList<JButton>();;
-	List<JButton> select_buttons=new ArrayList<JButton>();;
-	private SeatService seatService;
-
-	public void seatList() throws Exception {
-		remain_buttons.clear();
-		select_buttons.clear();
+	SeatService seatService = new SeatService();
+	private JCheckBox seatSelectCHK1_1;
+	
 		
-		seatSelectPanel.removeAll();
-		ArrayList<Seat> seatList = (ArrayList) seatService.findAllByhallName("1회차");
-		
-		
-		for (int i = 0; i < seatList.size(); i++) {
-			Seat seat = seatList.get(i);
-			JButton btnNewButton_10 = new JButton("");
-			if (seat.getSeat_valid() == 0) {
-				btnNewButton_10.setEnabled(false);
-			}else {
-				btnNewButton_10.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						JButton source = (JButton) e.getSource();
-						String no = source.getToolTipText();
-						System.out.println((source.getToolTipText()));
-						//btnNewButton_10.setEnabled(false);
-						select_buttons.add(source);
-						remain_buttons.remove(source);
-						
-					
-					}
-				});
-				remain_buttons.add(btnNewButton_10);
-			}
-			btnNewButton_10.setToolTipText(seat.getSeat_arrange() + "");
+	public void seatReservation() throws Exception{
+		ArrayList<Seat> seat = (ArrayList)seatService.findAllByhallName("1회차");
+		seatSelectPanel.remove(seatSelectCHK1_1);
+	for(int i=0; i < seat.size(); i++) {
+		JCheckBox seatSelectCHK1 = new JCheckBox("");
+		seatSelectCHK1.setToolTipText(1+i+"");
+		seatSelectCHK1.setText(1+i+"");
 
-			btnNewButton_10.setIcon(new ImageIcon(ProjectUI.class.getResource("/images/user.png")));
-			
-			seatSelectPanel.add(btnNewButton_10);
-
+		seatSelectPanel.add(seatSelectCHK1);
+		if(seat.get(i).getSeat_valid() == 0) {
+			seatSelectCHK1.setSelected(true);
+			seatSelectCHK1.setEnabled(false);
 		}
-
-		logoutProcess();
-
+		
+		
+		/*
+		seatSelectCHK1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int a = Integer.parseInt(seatSelectCHK1.getText());
+				try {
+					seatService.updateSeat(loginCus.getCus_id(), hall_name, a);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		*/
+		}
 	}
+	
 
 	// 로그인 메소드
 	public void loginProcess(String id) throws Exception {
