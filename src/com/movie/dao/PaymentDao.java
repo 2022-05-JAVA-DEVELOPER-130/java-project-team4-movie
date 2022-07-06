@@ -130,74 +130,63 @@ public class PaymentDao {
 		return seatList;
 	}
 
-	public List<Payment> selectAllList() throws Exception{
+	public List<Payment> selectAllList() throws Exception {
 		List<Payment> paymentList = new ArrayList<Payment>();
-		Connection con=dataSource.getConnection();
-		PreparedStatement pstmt=con.prepareStatement(PaymentSQL.PAYMENT_SELECT_ALL);
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(PaymentSQL.PAYMENT_SELECT_ALL);
 		ResultSet rs = pstmt.executeQuery();
-		while(rs.next()) {
-			paymentList.add(new Payment(rs.getInt("payment_no"),
-										rs.getDate("payment_date"),
-										rs.getString("card_name"),
-										rs.getInt("adult_member_count"),
-										rs.getInt("child_member_count"),
-										rs.getNString("cus_id"),
-										null
-					));
+		while (rs.next()) {
+			paymentList.add(new Payment(rs.getInt("payment_no"), rs.getDate("payment_date"), rs.getString("card_name"),
+					rs.getInt("adult_member_count"), rs.getInt("child_member_count"), rs.getNString("cus_id"), null));
 		}
 		rs.close();
 		pstmt.close();
 		con.close();
 		return paymentList;
-		
+
 	}
-	
+
 	public List<Payment> selectAllByCusId(String cus_id) throws Exception{
-		List<Payment> paymentList = new ArrayList<Payment>();
+		ArrayList<Payment> paymentList = new ArrayList<Payment>();
 		Connection con=dataSource.getConnection();
 		PreparedStatement pstmt=con.prepareStatement(PaymentSQL.SELECT_BY_CUSID);
 		pstmt.setString(1, cus_id);
 		ResultSet rs = pstmt.executeQuery();
-		while(rs.next()) {
-			paymentList.add(new Payment(rs.getInt("payment_no"),
-										rs.getDate("payment_date"),
-										rs.getString("card_name"),
-										rs.getInt("adult_member_count"),
-										rs.getInt("child_member_count"),
-										rs.getNString("cus_id"),
-										null
-					));
+		while (rs.next()) {
+			paymentList.add(new Payment(rs.getInt("payment_no"), rs.getDate("payment_date"), rs.getString("card_name"),
+					rs.getInt("adult_member_count"), rs.getInt("child_member_count"), rs.getNString("cus_id"), null));
 		}
 		rs.close();
 		pstmt.close();
 		con.close();
 		return paymentList;
+
+	}
+
+	public Payment showDetails(String cus_id) throws Exception {
+		Payment payment = null;
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(PaymentSQL.SELECT_BY_CUSID_ALL);
+		pstmt.setString(1, cus_id);
+		ResultSet rs = pstmt.executeQuery();
+	
+		if (rs.next()) {
+			payment = new Payment(rs.getInt("payment_no"), rs.getDate("payment_date"), rs.getString("card_name"),
+					rs.getInt("adult_member_count"), rs.getInt("child_member_count"), rs.getString("cus_id"), null);
+			do {
+				payment.getSeatList().add(new Seat(rs.getInt("seat_no"), rs.getInt("seat_arrange"),
+						rs.getInt("seat_valid"), rs.getString("hall_name"), rs.getString("cus_id"),
+						new Movie(rs.getString("hall_name"), rs.getInt("total_seat_count"), rs.getInt("remain_seat"),
+								rs.getString("m_name"), rs.getString("m_genre"), rs.getInt("m_positive_age"),
+								rs.getString("m_start_time"), rs.getString("m_end_time"), rs.getString("m_image"),
+								rs.getString("m_introduce"), rs.getInt("price_no"))));
+			} while (rs.next());
+		}
+
 		
+		return payment;
+
 	}
 	
-//	public Payment selectById(String cus_id) throws Exception{
-//		Payment findCus = null;
-//		Connection con=dataSource.getConnection();
-//		PreparedStatement pstmt=con.prepareStatement(PaymentSQL.SELECT_BY_CUSID);
-//		pstmt.setString(1, cus_id);
-//		ResultSet rs = pstmt.executeQuery();
-//
-//		while(rs.next()) {
-//				findCus =
-//						new Payment(rs.getInt("payment_no"),
-//								rs.getDate("payment_date"),
-//								rs.getString("card_name"),
-//								rs.getInt("adult_member_count"),
-//								rs.getInt("child_member_count"),
-//								rs.getNString("cus_id"),
-//								null);
-//			
-//		}
-//		rs.close();
-//		pstmt.close();
-//		con.close();
-//		return findCus;
-//		
-//	}
 
 }

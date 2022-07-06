@@ -11,6 +11,20 @@ public class Seat {
 	public Seat() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	
+
+	public Seat(int seat_no, int seat_arrange, int seat_valid, Movie movie) {
+		super();
+		this.seat_no = seat_no;
+		this.seat_arrange = seat_arrange;
+		this.seat_valid = seat_valid;
+		this.movie = movie;
+	}
+
+
+
 
 	public Seat(int seat_no, int seat_arrange, int seat_valid, String hall_name, String cus_id, Movie movie) {
 		super();

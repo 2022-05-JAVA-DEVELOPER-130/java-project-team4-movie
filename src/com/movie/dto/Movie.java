@@ -3,8 +3,8 @@ package com.movie.dto;
 public class Movie {
 
 	private String hall_name;
-	private int totalSeatCount;
-	private int remainSeat;
+	private int total_Seat_Count;
+	private int remain_Seat;
 	private String m_Name;
 	private String m_Genre;
 	private int m_Positive_Age;
@@ -18,12 +18,24 @@ public class Movie {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	
+	public Movie(String hall_name, String m_Name, String m_Start_Time, String m_End_Time) {
+		super();
+		this.hall_name = hall_name;
+		this.m_Name = m_Name;
+		this.m_Start_Time = m_Start_Time;
+		this.m_End_Time = m_End_Time;
+	}
+
+
+
 	public Movie(String hallName, int totalSeatCount, int remainSeat, String m_Name, String m_Genre, int m_Positive_Age,
 			String m_Start_Time, String m_End_Time, String m_Image, String m_Introduce, int price_no) {
 		super();
 		this.hall_name = hallName;
-		this.totalSeatCount = totalSeatCount;
-		this.remainSeat = remainSeat;
+		this.total_Seat_Count = totalSeatCount;
+		this.remain_Seat = remainSeat;
 		this.m_Name = m_Name;
 		this.m_Genre = m_Genre;
 		this.m_Positive_Age = m_Positive_Age;
@@ -43,19 +55,19 @@ public class Movie {
 	}
 
 	public int getTotalSeatCount() {
-		return totalSeatCount;
+		return total_Seat_Count;
 	}
 
 	public void setTotalSeatCount(int totalSeatCount) {
-		this.totalSeatCount = totalSeatCount;
+		this.total_Seat_Count = totalSeatCount;
 	}
 
 	public int getRemainSeat() {
-		return remainSeat;
+		return remain_Seat;
 	}
 
 	public void setRemainSeat(int remainSeat) {
-		this.remainSeat = remainSeat;
+		this.remain_Seat = remainSeat;
 	}
 
 	public String getM_Name() {
@@ -124,7 +136,7 @@ public class Movie {
 
 	@Override
 	public String toString() {
-		return "Movie [hallName=" + hall_name + ", totalSeatCount=" + totalSeatCount + ", remainSeat=" + remainSeat
+		return "Movie [hallName=" + hall_name + ", totalSeatCount=" + total_Seat_Count + ", remainSeat=" + remain_Seat
 				+ ", m_Name=" + m_Name + ", m_Genre=" + m_Genre + ", m_Positive_Age=" + m_Positive_Age
 				+ ", m_Start_Time=" + m_Start_Time + ", m_End_Time=" + m_End_Time + ", m_Image=" + m_Image
 				+ ", m_Introduce=" + m_Introduce + ", price_no=" + price_no + "]";

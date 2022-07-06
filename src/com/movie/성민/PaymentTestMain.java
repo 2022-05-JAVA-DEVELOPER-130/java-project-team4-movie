@@ -1,5 +1,7 @@
 package com.movie.성민;
 
+import com.movie.dto.Payment;
+
 public class PaymentTestMain {
 
 	public static void main(String[] args)throws Exception {
@@ -9,6 +11,9 @@ public class PaymentTestMain {
 		int a = pay.selectByPrice("seongmin");
 		System.out.println(a);
 		
+		
+		Payment p = pay.selectByID("seongmin");
+		System.out.println(p);
 		
 	}
 
