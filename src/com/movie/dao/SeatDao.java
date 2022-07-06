@@ -49,8 +49,21 @@ public class SeatDao {
 //		
 //		
 //	}
-
+	
 	public int remainResultSelect(String hall_name) throws Exception {
+		int count =0;
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(SeatSQL.MOVIE_HALL_SEAT);
+		pstmt.setString(1, hall_name);
+		ResultSet rs = pstmt.executeQuery();
+		if(rs.next()) {
+			count = rs.getInt("remain_seat");
+		}
+		
+		return count;
+	}
+
+	public int remainResultSelectCount(String hall_name) throws Exception {
 		int count =0;
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(SeatSQL.MOVIE_HALL_SEAT);
@@ -63,7 +76,9 @@ public class SeatDao {
 		return count;
 		
 	}
-
+	
+		
+	
 	public List<Seat> selectById(String cus_id) throws Exception {
 		ArrayList<Seat> findList = new ArrayList<Seat>();
 		Connection con = dataSource.getConnection();

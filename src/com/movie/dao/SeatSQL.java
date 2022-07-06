@@ -13,5 +13,7 @@ public class SeatSQL {
 	
 	public final static String SEAT_PAYMENT_NO_UPDATE = "update seat set payment_no = (select max(payment_no) from payment) where hall_name = ? and seat_arrange = ?";
 	
-	public final static String MOVIE_HALL_SEAT = "select remain_seat from movie_hall where hall_name = ?";
+	public final static String MOVIE_HALL_SEAT_COUNT = "select remain_seat from movie_hall where hall_name = ?";
+	
+	public final static String MOVIE_HALL_SEAT = "select * from movie_hall where hall_name = ?";
 }

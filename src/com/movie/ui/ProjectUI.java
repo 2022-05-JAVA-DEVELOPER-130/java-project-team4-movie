@@ -7,9 +7,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.movie.dao.PriceInfoDao;
 import com.movie.dto.Customer;
+import com.movie.dto.PriceInfo;
 import com.movie.service.CusService;
 import com.movie.service.MovieService;
+import com.movie.service.SeatService;
 import com.movie.성민.PaymentSelect;
 
 import javax.swing.JTabbedPane;
@@ -50,6 +53,7 @@ public class ProjectUI extends JFrame {
 	MovieService movieService = new MovieService();
 	CusService cusService = new CusService();
 	PaymentSelect paymentSelect = new PaymentSelect();
+	PriceInfoDao priceInfoDao = new PriceInfoDao();
 	
 	private Customer loginCus = null;
 	private int PayCount = 3;
@@ -1031,8 +1035,16 @@ public class ProjectUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String adult = (String)adultCB.getSelectedItem();
 				String child = (String)childCB.getSelectedItem();
+				int a = Integer.parseInt(adult);
+				int c = Integer.parseInt(child);
+				try {
+				PriceInfo price = priceInfoDao.priceSelectByNo(hall_name);
+				totalPriceTB.setText((a * price.getAdult_price()) + (c * price.getChild_price())+ "");
+				
+				} catch (Exception e1) {
+				}
 				mainTabbedPane.setSelectedIndex(4);
-				totalPriceTB.setText(adult);
+				
 			}
 		});
 		btnNewButton.setBounds(587, 353, 97, 23);
@@ -1137,7 +1149,9 @@ public class ProjectUI extends JFrame {
 		lblNewLabel_21.setBounds(550, 134, 57, 15);
 		payPanel.add(lblNewLabel_21);
 		seatList();
-		
+		/**********서비스생성***********/
+		seatService=new SeatService();
+		/**********************/
 	}
 	JButton[] buttons;
 	private JTextField totalPriceTB;
@@ -1177,8 +1191,12 @@ public class ProjectUI extends JFrame {
 	private JPasswordField mypasswordTF2;
 	private JTextPane cusResTF;
 	
+	/***************Service선언************/
+	private SeatService seatService;
+	
+	
 	public void seatList() {
-		
+		seatService.
 		for(int i=0;i<15;i++) {
 			JButton btnNewButton_10 = new JButton("");
 			btnNewButton_10.setToolTipText(i+"");
