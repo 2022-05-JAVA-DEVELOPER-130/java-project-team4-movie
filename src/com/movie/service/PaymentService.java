@@ -77,7 +77,13 @@ public class PaymentService {
 	}
 		
 		
+
+
+	public int insertPayment(String selectedItem, int parseInt, int parseInt2, String cus_id, int i)throws Exception {
+		Payment payment = new Payment(selectedItem, parseInt, parseInt2,cus_id, i);
+		return paymentDao.insetReservation(payment);
 		
+	}
 		
 		
 		

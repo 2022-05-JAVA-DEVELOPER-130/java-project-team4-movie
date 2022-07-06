@@ -19,10 +19,14 @@ public class PaymentSQL {
 	 "DELETE FROM payment WHERE payment_no=?";
 
 	public final static String PAYMENT_INSERT =
-	"INSERT INTO payment(pament_no, payment_date, card_name, adult_member_count, child_member_count, cus_id) VALUES (payment_payment_no_SEQ.next, sysdate, ?, ?, ?, ?)";
+	"INSERT INTO payment(payment_no, payment_date, card_name, adult_member_count, child_member_count, cus_id) VALUES (payment_no_SEQ.nextval, sysdate, ?, ?, ?, ?)";
+	
+	public final static String PAYMENT_INSERT2 =
+			"INSERT INTO payment(payment_no, card_name, adult_member_count, child_member_count, cus_id, seat_no) VALUES (payment_no_SEQ.nextval, ?, ?, ?, ?, ?)";
+	
 
 	public final static String PAYMENT_INSERT_BY_SEATNO =
-	"INSERT INTO seat(seat_no, seat_arrange, seat_valid, hall_name) VALUES (SEAT_SEAT_NO_SEQ.nextval, ?, ?, ?)";
+	"INSERT INTO seat(seat_no, seat_arrange, seat_valid, hall_name) VALUES (SEAT_NO_SEQ.nextval, ?, ?, ?)";
 
 	public final static String SELECT_BY_CUSID =
 	"SELECT * FROM payment WHERE cus_id=?";

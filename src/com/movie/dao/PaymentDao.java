@@ -69,6 +69,28 @@ public class PaymentDao {
 		return rowCount;
 	}
 
+	public int insetReservation(Payment payment) throws Exception {
+		Connection con = null;
+		PreparedStatement pstmt1 = null;
+		
+		
+			con = dataSource.getConnection();
+			
+			pstmt1 = con.prepareStatement(PaymentSQL.PAYMENT_INSERT2);
+			pstmt1.setString(1, payment.getCard_name());
+			pstmt1.setInt(2, payment.getAdult_member_count());
+			pstmt1.setInt(3, payment.getChild_member_count());
+			pstmt1.setString(4, payment.getCus_id());
+			pstmt1.setInt(5, payment.getSeat_no());
+			
+			int rowCount = pstmt1.executeUpdate();
+			pstmt1.close();
+			con.close();
+		return rowCount;
+	}
+	
+	
+	
 	/*
 	 * 주문생성
 	 */

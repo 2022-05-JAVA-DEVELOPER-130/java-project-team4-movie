@@ -125,6 +125,30 @@ public class SeatDao {
 	}
 	
 	
+	
+	public int selectAllint(String hall_name) throws Exception {
+		ArrayList<Seat> allList = new ArrayList<Seat>();
+		int a = 0;
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(SeatSQL.SEAT_SELECT_ALL);
+		pstmt.setString(1, hall_name);
+		ResultSet rs=pstmt.executeQuery();
+		while(rs.next()) {
+			allList.add(new Seat(rs.getInt("seat_no"), 
+							  rs.getInt("seat_arrange"),
+							  rs.getInt("seat_valid"),
+							  rs.getString("hall_name"),
+							  rs.getString("cus_id"),
+							  null));
+			a = rs.getInt("seat_valid");
+		}
+		rs.close();
+		pstmt.close();
+		con.close();
+		
+		return a;
+		
+	}
 
 
 	}

@@ -57,7 +57,7 @@ public class PaymentSelect {
 		ArrayList<Seat> aa = new ArrayList<Seat>(); 
 		if(rs.next()) {
 			int payment_no = rs.getInt("payment_no");
-			Date payment_date = rs.getDate("paymen2t_date");
+			Date payment_date = rs.getDate("payment_date");
 			String card_name = rs.getString("card_name");
 			String cus_id = rs.getString("cus_id");
 			int adult_price = rs.getInt("adult_price");
@@ -85,7 +85,7 @@ public class PaymentSelect {
 						rs.getString("m_name"),
 						rs.getString("m_start_time"),
 						rs.getString("m_end_time"));
-				bbb += (rs.getInt("seat_no") + "번 ");
+				bbb += (rs.getInt("seat_arrange") + "번 ");
 				
 			}while(rs.next());
 		

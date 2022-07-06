@@ -41,4 +41,9 @@ public class SeatService {
 		return seatDao.update(cus_id, hall_name, seat_arrange);
 	}
 	
+	public int findAllint(String hall_name) throws Exception{
+		return seatDao.selectAllint(hall_name);
+	}
+	
+	
 }

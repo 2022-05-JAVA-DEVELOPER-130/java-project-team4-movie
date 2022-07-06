@@ -9,10 +9,12 @@ import javax.swing.border.EmptyBorder;
 
 import com.movie.dao.PriceInfoDao;
 import com.movie.dto.Customer;
+import com.movie.dto.Payment;
 import com.movie.dto.PriceInfo;
 import com.movie.dto.Seat;
 import com.movie.service.CusService;
 import com.movie.service.MovieService;
+import com.movie.service.PaymentService;
 import com.movie.service.SeatService;
 import com.movie.성민.PaymentSelect;
 
@@ -108,8 +110,13 @@ public class ProjectUI extends JFrame {
 		JButton movie1Btn = new JButton("예매하기");
 		movie1Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mainTabbedPane.setSelectedIndex(2);
-				movieTabbedPane.setSelectedIndex(0);
+				if (login == 20) {
+					mainTabbedPane.setSelectedIndex(2);
+					movieTabbedPane.setSelectedIndex(0);
+				} else {
+					JOptionPane.showMessageDialog(null, "로그인이 필요합니다");
+					
+				}
 			}
 		});
 		movie1Btn.setBounds(42, 360, 97, 23);
@@ -118,8 +125,13 @@ public class ProjectUI extends JFrame {
 		JButton movie2Btn = new JButton("예매하기");
 		movie2Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mainTabbedPane.setSelectedIndex(2);
-				movieTabbedPane.setSelectedIndex(1);
+				if (login == 20) {
+					mainTabbedPane.setSelectedIndex(2);
+					movieTabbedPane.setSelectedIndex(1);
+				} else {
+					JOptionPane.showMessageDialog(null, "로그인이 필요합니다");
+					
+				}
 			}
 		});
 		movie2Btn.setBounds(187, 360, 97, 23);
@@ -128,8 +140,13 @@ public class ProjectUI extends JFrame {
 		JButton movie3Btn = new JButton("예매하기");
 		movie3Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mainTabbedPane.setSelectedIndex(2);
-				movieTabbedPane.setSelectedIndex(2);
+				if (login == 20) {
+					mainTabbedPane.setSelectedIndex(2);
+					movieTabbedPane.setSelectedIndex(2);
+				} else {
+					JOptionPane.showMessageDialog(null, "로그인이 필요합니다");
+					
+				}
 			}
 		});
 		movie3Btn.setBounds(340, 360, 97, 23);
@@ -138,8 +155,13 @@ public class ProjectUI extends JFrame {
 		JButton movie4Btn = new JButton("예매하기");
 		movie4Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mainTabbedPane.setSelectedIndex(2);
-				movieTabbedPane.setSelectedIndex(3);
+				if (login == 20) {
+					mainTabbedPane.setSelectedIndex(2);
+					movieTabbedPane.setSelectedIndex(3);
+				} else {
+					JOptionPane.showMessageDialog(null, "로그인이 필요합니다");
+					
+				}
 			}
 		});
 		movie4Btn.setBounds(489, 360, 97, 23);
@@ -148,8 +170,13 @@ public class ProjectUI extends JFrame {
 		JButton movie5Btn = new JButton("예매하기");
 		movie5Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mainTabbedPane.setSelectedIndex(2);
-				movieTabbedPane.setSelectedIndex(4);
+				if (login == 20) {
+					mainTabbedPane.setSelectedIndex(2);
+					movieTabbedPane.setSelectedIndex(4);
+				} else {
+					JOptionPane.showMessageDialog(null, "로그인이 필요합니다");
+					
+				}
 			}
 		});
 		movie5Btn.setBounds(645, 360, 97, 23);
@@ -158,8 +185,10 @@ public class ProjectUI extends JFrame {
 		loginBtn = new JButton("login");
 		loginBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mainTabbedPane.setSelectedIndex(1);
-				cusTabbedPane.setSelectedIndex(1);
+				
+					mainTabbedPane.setSelectedIndex(1);
+					cusTabbedPane.setSelectedIndex(1);
+				
 			}
 		});
 		loginBtn.setBounds(599, 21, 73, 32);
@@ -297,32 +326,27 @@ public class ProjectUI extends JFrame {
 			movie5time.setText("<html>" + movieService.findBymoviehall("5회차").getM_Start_Time() + "<p>~ "
 					+ movieService.findBymoviehall("5회차").getM_End_Time());
 
-			JLabel reaminseat1 = new JLabel("");
-			reaminseat1.setBounds(42, 388, 102, 31);
-			homePanel.add(reaminseat1);
-			reaminseat1.setText("남은좌석 : " + movieService.findBymoviehall("1회차").getRemainSeat());
-
-			JLabel reaminseat2 = new JLabel("");
-			reaminseat2.setBounds(189, 388, 102, 31);
-			homePanel.add(reaminseat2);
-			reaminseat2.setText("남은좌석 : " + movieService.findBymoviehall("2회차").getRemainSeat());
-
-			JLabel reaminseat3 = new JLabel("");
-			reaminseat3.setBounds(347, 389, 102, 31);
-			homePanel.add(reaminseat3);
-			reaminseat3.setText("남은좌석 : " + movieService.findBymoviehall("3회차").getRemainSeat());
-
-			JLabel reaminseat4 = new JLabel("");
-			reaminseat4.setBounds(497, 389, 102, 31);
-			homePanel.add(reaminseat4);
-			reaminseat4.setText("남은좌석 : " + movieService.findBymoviehall("4회차").getRemainSeat());
-
-			JLabel reaminseat5 = new JLabel("");
-			reaminseat5.setBounds(649, 388, 102, 31);
-			homePanel.add(reaminseat5);
-			reaminseat5.setText("남은좌석 : " + movieService.findBymoviehall("5회차").getRemainSeat());
 		} catch (Exception e3) {
 		}
+		reaminseat1 = new JLabel("");
+		reaminseat1.setBounds(42, 388, 102, 31);
+		homePanel.add(reaminseat1);
+
+		reaminseat2 = new JLabel("");
+		reaminseat2.setBounds(189, 388, 102, 31);
+		homePanel.add(reaminseat2);
+
+		reaminseat3 = new JLabel("");
+		reaminseat3.setBounds(347, 389, 102, 31);
+		homePanel.add(reaminseat3);
+
+		reaminseat4 = new JLabel("");
+		reaminseat4.setBounds(497, 389, 102, 31);
+		homePanel.add(reaminseat4);
+
+		reaminseat5 = new JLabel("");
+		reaminseat5.setBounds(649, 388, 102, 31);
+		homePanel.add(reaminseat5);
 
 		JPanel cusPanel = new JPanel();
 		mainTabbedPane.addTab("회원페이지", null, cusPanel, null);
@@ -397,7 +421,7 @@ public class ProjectUI extends JFrame {
 		cusTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		cusPanel.add(cusTabbedPane, BorderLayout.CENTER);
 
-		JPanel JoinPanel = new JPanel();
+		JoinPanel = new JPanel();
 		cusTabbedPane.addTab("회원가입", null, JoinPanel, null);
 		JoinPanel.setLayout(null);
 		JoinPanel.setBackground(Color.WHITE);
@@ -603,7 +627,7 @@ public class ProjectUI extends JFrame {
 		genderinfolabel.setBounds(466, 258, 223, 15);
 		JoinPanel.add(genderinfolabel);
 
-		JPanel loginPanel = new JPanel();
+		loginPanel = new JPanel();
 		cusTabbedPane.addTab("로그인", null, loginPanel, null);
 		loginPanel.setLayout(null);
 		loginPanel.setBackground(new Color(255, 240, 245));
@@ -666,25 +690,25 @@ public class ProjectUI extends JFrame {
 		loginPasswordField = new JPasswordField();
 		loginPasswordField.setBounds(383, 262, 116, 18);
 		loginPanel.add(loginPasswordField);
-		
+
 		JButton findIdPWBtn = new JButton("아이디,패스워드찾기");
 		findIdPWBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				mainTabbedPane.setSelectedIndex(1);
 				cusTabbedPane.setSelectedIndex(4);
-				
+
 			}
 		});
 		findIdPWBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 			}
 		});
 		findIdPWBtn.setBounds(299, 358, 191, 23);
 		loginPanel.add(findIdPWBtn);
 
-		JPanel myPanel = new JPanel();
+		myPanel = new JPanel();
 		myPanel.setLayout(null);
 		myPanel.setBackground(Color.WHITE);
 		cusTabbedPane.addTab("마이페이지", null, myPanel, null);
@@ -744,7 +768,7 @@ public class ProjectUI extends JFrame {
 		myPanel.add(cusEmailTF);
 
 		cusResTF = new JTextPane();
-		cusResTF.setBounds(446, 111, 194, 203);
+		cusResTF.setBounds(446, 111, 263, 191);
 		myPanel.add(cusResTF);
 
 		JButton btnNewButton_2_2 = new JButton("회원정보수정");
@@ -758,7 +782,7 @@ public class ProjectUI extends JFrame {
 		btnNewButton_2_2.setBounds(359, 354, 116, 23);
 		myPanel.add(btnNewButton_2_2);
 
-		JPanel updatePanel = new JPanel();
+		updatePanel = new JPanel();
 		updatePanel.setLayout(null);
 		updatePanel.setBackground(Color.WHITE);
 		cusTabbedPane.addTab("회원정보수정", null, updatePanel, null);
@@ -823,7 +847,7 @@ public class ProjectUI extends JFrame {
 		lblNewLabel_40.setIcon(new ImageIcon(ProjectUI.class.getResource("/com/movie/현정/logo5.png")));
 		lblNewLabel_40.setBounds(12, 10, 75, 47);
 		updatePanel.add(lblNewLabel_40);
-		
+
 		JLabel updateCusPWLB = new JLabel("*");
 		updateCusPWLB.setForeground(new Color(255, 0, 0));
 		updateCusPWLB.setBounds(515, 143, 87, 15);
@@ -833,13 +857,15 @@ public class ProjectUI extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					String cus_id = loginCus.getCus_id();
-					cusService.deleteInfo(cus_id);
-
+					
+					cusService.deleteInfo(loginCus.getCus_id());
 					loginCus = null;
+					
+					
 					cusTabbedPane.setSelectedIndex(1);
 					mainTabbedPane.setSelectedIndex(0);
 					logoutProcess();
+					JOptionPane.showMessageDialog(null, "회원탈퇴 되었습니다.");
 				} catch (Exception e1) {
 
 				}
@@ -852,31 +878,32 @@ public class ProjectUI extends JFrame {
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-				String cus_password = mypasswordTF1.getText();
-				String cus_passwordC = mypasswordTF2.getText();
-				
-				loginCus.setCus_nickname(mynicknameTF.getText());
-				loginCus.setCus_password(mypasswordTF1.getText());
-				loginCus.setCus_password(mypasswordTF2.getText());
-				loginCus.setCus_email(myemailTF.getText());
-				loginCus.setCus_phone(myphoneTF.getText());
-				
-				loginCus.setCus_birthday(new SimpleDateFormat("yyyyMMdd").parse(mybirthTF.getText()));
-				
-				if(mypasswordTF1.getText().equals(mypasswordTF2.getText())) {
-					updateCusPWLB.setText("* 비밀번호 일치");
-					JOptionPane.showMessageDialog(null, "정보수정이 완료되었습니다.");
-					cusService.updateInfo(loginCus);
-					
-				} else {
-					updateCusPWLB.setText("* 비밀번호 불일치");
-					JOptionPane.showMessageDialog(null, "비밀번호를 일치시켜주세요.");
-					
-					return;
+					String cus_password = mypasswordTF1.getText();
+					String cus_passwordC = mypasswordTF2.getText();
+
+					loginCus.setCus_nickname(mynicknameTF.getText());
+					loginCus.setCus_password(mypasswordTF1.getText());
+					loginCus.setCus_password(mypasswordTF2.getText());
+					loginCus.setCus_email(myemailTF.getText());
+					loginCus.setCus_phone(myphoneTF.getText());
+
+					loginCus.setCus_birthday(new SimpleDateFormat("yyyyMMdd").parse(mybirthTF.getText()));
+
+					if (mypasswordTF1.getText().equals(mypasswordTF2.getText())) {
+						updateCusPWLB.setText("* 비밀번호 일치");
+						JOptionPane.showMessageDialog(null, "정보수정이 완료되었습니다.");
+						cusService.updateInfo(loginCus);
+						mainTabbedPane.setSelectedIndex(0);
+
+					} else {
+						updateCusPWLB.setText("* 비밀번호 불일치");
+						JOptionPane.showMessageDialog(null, "비밀번호를 일치시켜주세요.");
+
+						return;
+					}
+				} catch (Exception e1) {
+
 				}
-			}catch (Exception e1){
-				
-			}
 			}
 		});
 		btnNewButton_3.setBounds(456, 353, 116, 23);
@@ -889,33 +916,33 @@ public class ProjectUI extends JFrame {
 		mypasswordTF2 = new JPasswordField();
 		mypasswordTF2.setBounds(387, 140, 116, 23);
 		updatePanel.add(mypasswordTF2);
-		
-		JPanel findIdPWPanel = new JPanel();
+
+		findIdPWPanel = new JPanel();
 		findIdPWPanel.setBackground(Color.WHITE);
 		findIdPWPanel.setLayout(null);
 		cusTabbedPane.addTab("찾기", null, findIdPWPanel, null);
-		
+
 		JLabel lblNewLabel_10 = new JLabel("");
 		lblNewLabel_10.setBackground(Color.WHITE);
 		lblNewLabel_10.setIcon(new ImageIcon(ProjectUI.class.getResource("/com/movie/현정/logo5.png")));
 		lblNewLabel_10.setBounds(12, 10, 75, 52);
 		findIdPWPanel.add(lblNewLabel_10);
-		
+
 		JLabel lblNewLabel_41 = new JLabel("아이디찾기");
 		lblNewLabel_41.setFont(new Font("굴림", Font.BOLD, 15));
 		lblNewLabel_41.setBounds(175, 133, 77, 27);
 		findIdPWPanel.add(lblNewLabel_41);
-		
+
 		findIdNameTF = new JTextField();
 		findIdNameTF.setColumns(10);
 		findIdNameTF.setBounds(305, 111, 116, 21);
 		findIdPWPanel.add(findIdNameTF);
-		
+
 		findIdPhoneTF = new JTextField();
 		findIdPhoneTF.setColumns(10);
 		findIdPhoneTF.setBounds(305, 155, 116, 21);
 		findIdPWPanel.add(findIdPhoneTF);
-		
+
 		JButton findIdBtn = new JButton("아이디찾기");
 		findIdBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -924,12 +951,11 @@ public class ProjectUI extends JFrame {
 					String phone = findIdPhoneTF.getText();
 
 					String result = cusService.findId(name, phone);
-					if(result != null) {
+					if (result != null) {
 						JOptionPane.showMessageDialog(null, result + "");
 					} else {
 						JOptionPane.showMessageDialog(null, "성함, 연락처를 모두 올바르게 입력해주세요.");
 					}
-
 
 				} catch (Exception e1) {
 
@@ -938,61 +964,61 @@ public class ProjectUI extends JFrame {
 		});
 		findIdBtn.setBounds(505, 136, 116, 23);
 		findIdPWPanel.add(findIdBtn);
-		
+
 		JLabel lblNewLabel_42 = new JLabel("비밀번호찾기");
 		lblNewLabel_42.setFont(new Font("굴림", Font.BOLD, 15));
 		lblNewLabel_42.setBounds(175, 280, 97, 27);
 		findIdPWPanel.add(lblNewLabel_42);
-		
+
 		findPwIdTF = new JTextField();
 		findPwIdTF.setColumns(10);
 		findPwIdTF.setBounds(305, 259, 116, 21);
 		findIdPWPanel.add(findPwIdTF);
-		
+
 		findPwNameTF = new JTextField();
 		findPwNameTF.setColumns(10);
 		findPwNameTF.setBounds(305, 305, 116, 21);
 		findIdPWPanel.add(findPwNameTF);
-		
+
 		JButton findPWBtn = new JButton("비밀번호찾기");
 		findPWBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					String id = findPwIdTF.getText();
 					String name = findPwNameTF.getText();
-					
+
 					String result = cusService.findPassword(id, name);
-					if( result != null) {
-						JOptionPane.showMessageDialog(null, result+"");
+					if (result != null) {
+						JOptionPane.showMessageDialog(null, result + "");
 					} else {
 						JOptionPane.showMessageDialog(null, "아이디, 성함 모두 올바르게 입력해주세요.");
 					}
-					
-				}catch (Exception e1){
-					
+
+				} catch (Exception e1) {
+
 				}
 			}
 		});
 		findPWBtn.setBounds(505, 283, 116, 23);
 		findIdPWPanel.add(findPWBtn);
-		
+
 		JLabel lblNewLabel_43 = new JLabel("이름");
 		lblNewLabel_43.setBounds(305, 96, 57, 15);
 		findIdPWPanel.add(lblNewLabel_43);
-		
+
 		JLabel lblNewLabel_44 = new JLabel("연락처");
 		lblNewLabel_44.setBounds(305, 142, 57, 15);
 		findIdPWPanel.add(lblNewLabel_44);
-		
+
 		JLabel lblNewLabel_45 = new JLabel("아이디");
 		lblNewLabel_45.setBounds(305, 245, 57, 15);
 		findIdPWPanel.add(lblNewLabel_45);
-		
+
 		JLabel lblNewLabel_46 = new JLabel("이름");
 		lblNewLabel_46.setBounds(305, 290, 57, 15);
 		findIdPWPanel.add(lblNewLabel_46);
-		
-		JPanel moviePanel = new JPanel();
+
+		moviePanel = new JPanel();
 		moviePanel.setBackground(Color.WHITE);
 		mainTabbedPane.addTab("영화상세", null, moviePanel, null);
 		moviePanel.setLayout(new BorderLayout(0, 0));
@@ -1020,20 +1046,101 @@ public class ProjectUI extends JFrame {
 			JButton seatSelectBtn = new JButton("예매하기");
 			seatSelectBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+
 					mainTabbedPane.setSelectedIndex(3);
 					hall_name = "1회차";
 					try {
-						seatReservation(hall_name);
-						
+						movieService.remainUpdate(hall_name);
+						ArrayList<Seat> seat = (ArrayList) seatService.findAllByhallName(hall_name);
+						if (seat.get(0).getSeat_valid() == 0) {
+							seatSelectCHK.setSelected(true);
+							seatSelectCHK.setEnabled(false);
+						} else {
+							seatSelectCHK.setSelected(false);
+							seatSelectCHK.setEnabled(true);
+						}
+
+						if (seat.get(1).getSeat_valid() == 0) {
+							seatSelectCHK2.setSelected(true);
+							seatSelectCHK2.setEnabled(false);
+						} else {
+							seatSelectCHK2.setSelected(false);
+							seatSelectCHK2.setEnabled(true);
+						}
+
+						if (seat.get(2).getSeat_valid() == 0) {
+							seatSelectCHK3.setSelected(true);
+							seatSelectCHK3.setEnabled(false);
+						} else {
+							seatSelectCHK3.setSelected(false);
+							seatSelectCHK3.setEnabled(true);
+						}
+
+						if (seat.get(3).getSeat_valid() == 0) {
+							seatSelectCHK4.setSelected(true);
+							seatSelectCHK4.setEnabled(false);
+						} else {
+							seatSelectCHK4.setSelected(false);
+							seatSelectCHK4.setEnabled(true);
+						}
+
+						if (seat.get(4).getSeat_valid() == 0) {
+							seatSelectCHK5.setSelected(true);
+							seatSelectCHK5.setEnabled(false);
+						} else {
+							seatSelectCHK5.setSelected(false);
+							seatSelectCHK5.setEnabled(true);
+						}
+
+						if (seat.get(5).getSeat_valid() == 0) {
+							seatSelectCHK6.setSelected(true);
+							seatSelectCHK6.setEnabled(false);
+						} else {
+							seatSelectCHK6.setSelected(false);
+							seatSelectCHK6.setEnabled(true);
+						}
+
+						if (seat.get(6).getSeat_valid() == 0) {
+							seatSelectCHK7.setSelected(true);
+							seatSelectCHK7.setEnabled(false);
+						} else {
+							seatSelectCHK7.setSelected(false);
+							seatSelectCHK7.setEnabled(true);
+						}
+
+						if (seat.get(7).getSeat_valid() == 0) {
+							seatSelectCHK8.setSelected(true);
+							seatSelectCHK8.setEnabled(false);
+						} else {
+							seatSelectCHK8.setSelected(false);
+							seatSelectCHK8.setEnabled(true);
+						}
+
+						if (seat.get(8).getSeat_valid() == 0) {
+							seatSelectCHK9.setSelected(true);
+							seatSelectCHK9.setEnabled(false);
+						} else {
+							seatSelectCHK9.setSelected(false);
+							seatSelectCHK9.setEnabled(true);
+						}
+
+						if (seat.get(9).getSeat_valid() == 0) {
+							seatSelectCHK10.setSelected(true);
+							seatSelectCHK10.setEnabled(false);
+						} else {
+							seatSelectCHK10.setSelected(false);
+							seatSelectCHK10.setEnabled(true);
+						}
+
 					} catch (Exception e1) {
-						System.out.println("오오류류");
+						e1.printStackTrace();
 					}
+
 				}
 			});
 			seatSelectBtn.setBounds(619, 360, 97, 23);
 			panel_2.add(seatSelectBtn);
-			
+
 			JButton movieMainBtn1 = new JButton("홈으로");
 			movieMainBtn1.addMouseListener(new MouseAdapter() {
 				@Override
@@ -1064,16 +1171,109 @@ public class ProjectUI extends JFrame {
 		try {
 			movie2Label.setText("<html>" + movieService.findBymoviehall("2회차").getM_Introduce());
 
-			JButton seatSelectBtn = new JButton("예매하기");
-			
-			seatSelectBtn.setBounds(642, 360, 97, 23);
-			panel_3.add(seatSelectBtn);
-			
+			seatSelectBtn_1 = new JButton("예매하기");
+			seatSelectBtn_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					mainTabbedPane.setSelectedIndex(3);
+					hall_name = "2회차";
+					try {
+						movieService.remainUpdate(hall_name);
+						ArrayList<Seat> seat = (ArrayList) seatService.findAllByhallName(hall_name);
+						if (seat.get(0).getSeat_valid() == 0) {
+							seatSelectCHK.setSelected(true);
+							seatSelectCHK.setEnabled(false);
+						} else {
+							seatSelectCHK.setSelected(false);
+							seatSelectCHK.setEnabled(true);
+						}
+
+						if (seat.get(1).getSeat_valid() == 0) {
+							seatSelectCHK2.setSelected(true);
+							seatSelectCHK2.setEnabled(false);
+						} else {
+							seatSelectCHK2.setSelected(false);
+							seatSelectCHK2.setEnabled(true);
+						}
+
+						if (seat.get(2).getSeat_valid() == 0) {
+							seatSelectCHK3.setSelected(true);
+							seatSelectCHK3.setEnabled(false);
+						} else {
+							seatSelectCHK3.setSelected(false);
+							seatSelectCHK3.setEnabled(true);
+						}
+
+						if (seat.get(3).getSeat_valid() == 0) {
+							seatSelectCHK4.setSelected(true);
+							seatSelectCHK4.setEnabled(false);
+						} else {
+							seatSelectCHK4.setSelected(false);
+							seatSelectCHK4.setEnabled(true);
+						}
+
+						if (seat.get(4).getSeat_valid() == 0) {
+							seatSelectCHK5.setSelected(true);
+							seatSelectCHK5.setEnabled(false);
+						} else {
+							seatSelectCHK5.setSelected(false);
+							seatSelectCHK5.setEnabled(true);
+						}
+
+						if (seat.get(5).getSeat_valid() == 0) {
+							seatSelectCHK6.setSelected(true);
+							seatSelectCHK6.setEnabled(false);
+						} else {
+							seatSelectCHK6.setSelected(false);
+							seatSelectCHK6.setEnabled(true);
+						}
+
+						if (seat.get(6).getSeat_valid() == 0) {
+							seatSelectCHK7.setSelected(true);
+							seatSelectCHK7.setEnabled(false);
+						} else {
+							seatSelectCHK7.setSelected(false);
+							seatSelectCHK7.setEnabled(true);
+						}
+
+						if (seat.get(7).getSeat_valid() == 0) {
+							seatSelectCHK8.setSelected(true);
+							seatSelectCHK8.setEnabled(false);
+						} else {
+							seatSelectCHK8.setSelected(false);
+							seatSelectCHK8.setEnabled(true);
+						}
+
+						if (seat.get(8).getSeat_valid() == 0) {
+							seatSelectCHK9.setSelected(true);
+							seatSelectCHK9.setEnabled(false);
+						} else {
+							seatSelectCHK9.setSelected(false);
+							seatSelectCHK9.setEnabled(true);
+						}
+
+						if (seat.get(9).getSeat_valid() == 0) {
+							seatSelectCHK10.setSelected(true);
+							seatSelectCHK10.setEnabled(false);
+						} else {
+							seatSelectCHK10.setSelected(false);
+							seatSelectCHK10.setEnabled(true);
+						}
+
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+				}
+			});
+
+			seatSelectBtn_1.setBounds(642, 360, 97, 23);
+			panel_3.add(seatSelectBtn_1);
+
 			JButton movieMainBtn2 = new JButton("홈으로");
 			movieMainBtn2.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					mainTabbedPane.setSelectedIndex(0);
+
 				}
 			});
 			movieMainBtn2.setBounds(77, 361, 97, 23);
@@ -1105,16 +1305,97 @@ public class ProjectUI extends JFrame {
 					mainTabbedPane.setSelectedIndex(3);
 					hall_name = "3회차";
 					try {
-						seatReservation(hall_name);
+						movieService.remainUpdate(hall_name);
+						ArrayList<Seat> seat = (ArrayList) seatService.findAllByhallName(hall_name);
+						if (seat.get(0).getSeat_valid() == 0) {
+							seatSelectCHK.setSelected(true);
+							seatSelectCHK.setEnabled(false);
+						} else {
+							seatSelectCHK.setSelected(false);
+							seatSelectCHK.setEnabled(true);
+						}
+
+						if (seat.get(1).getSeat_valid() == 0) {
+							seatSelectCHK2.setSelected(true);
+							seatSelectCHK2.setEnabled(false);
+						} else {
+							seatSelectCHK2.setSelected(false);
+							seatSelectCHK2.setEnabled(true);
+						}
+
+						if (seat.get(2).getSeat_valid() == 0) {
+							seatSelectCHK3.setSelected(true);
+							seatSelectCHK3.setEnabled(false);
+						} else {
+							seatSelectCHK3.setSelected(false);
+							seatSelectCHK3.setEnabled(true);
+						}
+
+						if (seat.get(3).getSeat_valid() == 0) {
+							seatSelectCHK4.setSelected(true);
+							seatSelectCHK4.setEnabled(false);
+						} else {
+							seatSelectCHK4.setSelected(false);
+							seatSelectCHK4.setEnabled(true);
+						}
+
+						if (seat.get(4).getSeat_valid() == 0) {
+							seatSelectCHK5.setSelected(true);
+							seatSelectCHK5.setEnabled(false);
+						} else {
+							seatSelectCHK5.setSelected(false);
+							seatSelectCHK5.setEnabled(true);
+						}
+
+						if (seat.get(5).getSeat_valid() == 0) {
+							seatSelectCHK6.setSelected(true);
+							seatSelectCHK6.setEnabled(false);
+						} else {
+							seatSelectCHK6.setSelected(false);
+							seatSelectCHK6.setEnabled(true);
+						}
+
+						if (seat.get(6).getSeat_valid() == 0) {
+							seatSelectCHK7.setSelected(true);
+							seatSelectCHK7.setEnabled(false);
+						} else {
+							seatSelectCHK7.setSelected(false);
+							seatSelectCHK7.setEnabled(true);
+						}
+
+						if (seat.get(7).getSeat_valid() == 0) {
+							seatSelectCHK8.setSelected(true);
+							seatSelectCHK8.setEnabled(false);
+						} else {
+							seatSelectCHK8.setSelected(false);
+							seatSelectCHK8.setEnabled(true);
+						}
+
+						if (seat.get(8).getSeat_valid() == 0) {
+							seatSelectCHK9.setSelected(true);
+							seatSelectCHK9.setEnabled(false);
+						} else {
+							seatSelectCHK9.setSelected(false);
+							seatSelectCHK9.setEnabled(true);
+						}
+
+						if (seat.get(9).getSeat_valid() == 0) {
+							seatSelectCHK10.setSelected(true);
+							seatSelectCHK10.setEnabled(false);
+						} else {
+							seatSelectCHK10.setSelected(false);
+							seatSelectCHK10.setEnabled(true);
+						}
+
 					} catch (Exception e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
+
 				}
 			});
 			seatSelectBtn.setBounds(621, 355, 97, 23);
 			panel_4.add(seatSelectBtn);
-			
+
 			JButton movieMainBtn3 = new JButton("홈으로");
 			movieMainBtn3.addMouseListener(new MouseAdapter() {
 				@Override
@@ -1150,16 +1431,97 @@ public class ProjectUI extends JFrame {
 					mainTabbedPane.setSelectedIndex(3);
 					hall_name = "4회차";
 					try {
-						seatReservation(hall_name);
+						movieService.remainUpdate(hall_name);
+						ArrayList<Seat> seat = (ArrayList) seatService.findAllByhallName(hall_name);
+						if (seat.get(0).getSeat_valid() == 0) {
+							seatSelectCHK.setSelected(true);
+							seatSelectCHK.setEnabled(false);
+						} else {
+							seatSelectCHK.setSelected(false);
+							seatSelectCHK.setEnabled(true);
+						}
+
+						if (seat.get(1).getSeat_valid() == 0) {
+							seatSelectCHK2.setSelected(true);
+							seatSelectCHK2.setEnabled(false);
+						} else {
+							seatSelectCHK2.setSelected(false);
+							seatSelectCHK2.setEnabled(true);
+						}
+
+						if (seat.get(2).getSeat_valid() == 0) {
+							seatSelectCHK3.setSelected(true);
+							seatSelectCHK3.setEnabled(false);
+						} else {
+							seatSelectCHK3.setSelected(false);
+							seatSelectCHK3.setEnabled(true);
+						}
+
+						if (seat.get(3).getSeat_valid() == 0) {
+							seatSelectCHK4.setSelected(true);
+							seatSelectCHK4.setEnabled(false);
+						} else {
+							seatSelectCHK4.setSelected(false);
+							seatSelectCHK4.setEnabled(true);
+						}
+
+						if (seat.get(4).getSeat_valid() == 0) {
+							seatSelectCHK5.setSelected(true);
+							seatSelectCHK5.setEnabled(false);
+						} else {
+							seatSelectCHK5.setSelected(false);
+							seatSelectCHK5.setEnabled(true);
+						}
+
+						if (seat.get(5).getSeat_valid() == 0) {
+							seatSelectCHK6.setSelected(true);
+							seatSelectCHK6.setEnabled(false);
+						} else {
+							seatSelectCHK6.setSelected(false);
+							seatSelectCHK6.setEnabled(true);
+						}
+
+						if (seat.get(6).getSeat_valid() == 0) {
+							seatSelectCHK7.setSelected(true);
+							seatSelectCHK7.setEnabled(false);
+						} else {
+							seatSelectCHK7.setSelected(false);
+							seatSelectCHK7.setEnabled(true);
+						}
+
+						if (seat.get(7).getSeat_valid() == 0) {
+							seatSelectCHK8.setSelected(true);
+							seatSelectCHK8.setEnabled(false);
+						} else {
+							seatSelectCHK8.setSelected(false);
+							seatSelectCHK8.setEnabled(true);
+						}
+
+						if (seat.get(8).getSeat_valid() == 0) {
+							seatSelectCHK9.setSelected(true);
+							seatSelectCHK9.setEnabled(false);
+						} else {
+							seatSelectCHK9.setSelected(false);
+							seatSelectCHK9.setEnabled(true);
+						}
+
+						if (seat.get(9).getSeat_valid() == 0) {
+							seatSelectCHK10.setSelected(true);
+							seatSelectCHK10.setEnabled(false);
+						} else {
+							seatSelectCHK10.setSelected(false);
+							seatSelectCHK10.setEnabled(true);
+						}
+
 					} catch (Exception e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
+
 				}
 			});
 			seatSelectBtn.setBounds(622, 364, 97, 23);
 			panel_5.add(seatSelectBtn);
-			
+
 			JButton movieMainBtn4 = new JButton("홈으로");
 			movieMainBtn4.addMouseListener(new MouseAdapter() {
 				@Override
@@ -1195,16 +1557,97 @@ public class ProjectUI extends JFrame {
 					mainTabbedPane.setSelectedIndex(3);
 					hall_name = "5회차";
 					try {
-						seatReservation(hall_name);
+						movieService.remainUpdate(hall_name);
+						ArrayList<Seat> seat = (ArrayList) seatService.findAllByhallName(hall_name);
+						if (seat.get(0).getSeat_valid() == 0) {
+							seatSelectCHK.setSelected(true);
+							seatSelectCHK.setEnabled(false);
+						} else {
+							seatSelectCHK.setSelected(false);
+							seatSelectCHK.setEnabled(true);
+						}
+
+						if (seat.get(1).getSeat_valid() == 0) {
+							seatSelectCHK2.setSelected(true);
+							seatSelectCHK2.setEnabled(false);
+						} else {
+							seatSelectCHK2.setSelected(false);
+							seatSelectCHK2.setEnabled(true);
+						}
+
+						if (seat.get(2).getSeat_valid() == 0) {
+							seatSelectCHK3.setSelected(true);
+							seatSelectCHK3.setEnabled(false);
+						} else {
+							seatSelectCHK3.setSelected(false);
+							seatSelectCHK3.setEnabled(true);
+						}
+
+						if (seat.get(3).getSeat_valid() == 0) {
+							seatSelectCHK4.setSelected(true);
+							seatSelectCHK4.setEnabled(false);
+						} else {
+							seatSelectCHK4.setSelected(false);
+							seatSelectCHK4.setEnabled(true);
+						}
+
+						if (seat.get(4).getSeat_valid() == 0) {
+							seatSelectCHK5.setSelected(true);
+							seatSelectCHK5.setEnabled(false);
+						} else {
+							seatSelectCHK5.setSelected(false);
+							seatSelectCHK5.setEnabled(true);
+						}
+
+						if (seat.get(5).getSeat_valid() == 0) {
+							seatSelectCHK6.setSelected(true);
+							seatSelectCHK6.setEnabled(false);
+						} else {
+							seatSelectCHK6.setSelected(false);
+							seatSelectCHK6.setEnabled(true);
+						}
+
+						if (seat.get(6).getSeat_valid() == 0) {
+							seatSelectCHK7.setSelected(true);
+							seatSelectCHK7.setEnabled(false);
+						} else {
+							seatSelectCHK7.setSelected(false);
+							seatSelectCHK7.setEnabled(true);
+						}
+
+						if (seat.get(7).getSeat_valid() == 0) {
+							seatSelectCHK8.setSelected(true);
+							seatSelectCHK8.setEnabled(false);
+						} else {
+							seatSelectCHK8.setSelected(false);
+							seatSelectCHK8.setEnabled(true);
+						}
+
+						if (seat.get(8).getSeat_valid() == 0) {
+							seatSelectCHK9.setSelected(true);
+							seatSelectCHK9.setEnabled(false);
+						} else {
+							seatSelectCHK9.setSelected(false);
+							seatSelectCHK9.setEnabled(true);
+						}
+
+						if (seat.get(9).getSeat_valid() == 0) {
+							seatSelectCHK10.setSelected(true);
+							seatSelectCHK10.setEnabled(false);
+						} else {
+							seatSelectCHK10.setSelected(false);
+							seatSelectCHK10.setEnabled(true);
+						}
+
 					} catch (Exception e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
+
 				}
 			});
 			seatSelectBtn.setBounds(625, 358, 97, 23);
 			panel_6.add(seatSelectBtn);
-			
+
 			JButton movieMainBtn5 = new JButton("홈으로");
 			movieMainBtn5.addMouseListener(new MouseAdapter() {
 				@Override
@@ -1217,7 +1660,7 @@ public class ProjectUI extends JFrame {
 		} catch (Exception e1) {
 		}
 
-		JPanel seatPanel = new JPanel();
+		seatPanel = new JPanel();
 		seatPanel.setBackground(Color.WHITE);
 		mainTabbedPane.addTab("좌석선택", null, seatPanel, null);
 		seatPanel.setLayout(null);
@@ -1255,21 +1698,140 @@ public class ProjectUI extends JFrame {
 		seatSelectPanel.setBounds(48, 88, 379, 324);
 		seatPanel.add(seatSelectPanel);
 		seatSelectPanel.setLayout(new GridLayout(0, 5, 0, 0));
-		
-		
-		
-		
-		seatSelectCHK1_1 = new JCheckBox("1");
-		seatSelectPanel.add(seatSelectCHK1_1);
-		
-		
+
+		seatSelectCHK = new JCheckBox("1");
+		seatSelectPanel.add(seatSelectCHK);
+
+		seatSelectCHK2 = new JCheckBox("2");
+		seatSelectPanel.add(seatSelectCHK2);
+
+		seatSelectCHK3 = new JCheckBox("3");
+		seatSelectPanel.add(seatSelectCHK3);
+
+		seatSelectCHK4 = new JCheckBox("4");
+		seatSelectPanel.add(seatSelectCHK4);
+
+		seatSelectCHK5 = new JCheckBox("5");
+		seatSelectPanel.add(seatSelectCHK5);
+
+		seatSelectCHK6 = new JCheckBox("6");
+		seatSelectPanel.add(seatSelectCHK6);
+
+		seatSelectCHK7 = new JCheckBox("7");
+		seatSelectPanel.add(seatSelectCHK7);
+
+		seatSelectCHK8 = new JCheckBox("8");
+		seatSelectPanel.add(seatSelectCHK8);
+
+		seatSelectCHK9 = new JCheckBox("9");
+		seatSelectPanel.add(seatSelectCHK9);
+
+		seatSelectCHK10 = new JCheckBox("10");
+		seatSelectPanel.add(seatSelectCHK10);
 
 		JButton btnNewButton = new JButton("다음");
-		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					PriceInfo price = priceInfoDao.priceSelectByNo(hall_name);
+					int a = (adultCB.getSelectedIndex() * price.getAdult_price())
+							+ (childCB.getSelectedIndex() * price.getChild_price());
+					totalPriceTB.setText(a + "");
+					mainTabbedPane.setSelectedIndex(4);
+					ArrayList<Seat> seat = new ArrayList<Seat>(seatService.findAllByhallName(hall_name));
+					resevationSeat = new ArrayList<Integer>();
+					int ArrayCount = 0;
+					if (seatSelectCHK.isSelected() && seat.get(0).getSeat_valid() == 1) {
+						seatService.updateSeat(loginCus.getCus_id(), hall_name,
+								Integer.parseInt(seatSelectCHK.getText()));
+						seatSelectCHK.setEnabled(false);
+						ArrayCount = 1;
+						resevationSeat.add(ArrayCount);
+					}
+
+					if (seatSelectCHK2.isSelected() && seat.get(1).getSeat_valid() == 1) {
+						ArrayCount = seatService.updateSeat(loginCus.getCus_id(), hall_name,
+								Integer.parseInt(seatSelectCHK2.getText()));
+						seatSelectCHK2.setEnabled(false);
+						ArrayCount = 2;
+						resevationSeat.add(ArrayCount);
+					}
+
+					if (seatSelectCHK3.isSelected() && seat.get(2).getSeat_valid() == 1) {
+						ArrayCount = seatService.updateSeat(loginCus.getCus_id(), hall_name,
+								Integer.parseInt(seatSelectCHK3.getText()));
+						seatSelectCHK3.setEnabled(false);
+						ArrayCount = 3;
+						resevationSeat.add(ArrayCount);
+					}
+
+					if (seatSelectCHK4.isSelected() && seat.get(3).getSeat_valid() == 1) {
+						ArrayCount = seatService.updateSeat(loginCus.getCus_id(), hall_name,
+								Integer.parseInt(seatSelectCHK4.getText()));
+						seatSelectCHK4.setEnabled(false);
+						ArrayCount = 4;
+						resevationSeat.add(ArrayCount);
+					}
+
+					if (seatSelectCHK5.isSelected() && seat.get(4).getSeat_valid() == 1) {
+						ArrayCount = seatService.updateSeat(loginCus.getCus_id(), hall_name,
+								Integer.parseInt(seatSelectCHK5.getText()));
+						seatSelectCHK5.setEnabled(false);
+						ArrayCount = 5;
+						resevationSeat.add(ArrayCount);
+					}
+
+					if (seatSelectCHK6.isSelected() && seat.get(5).getSeat_valid() == 1) {
+						ArrayCount = seatService.updateSeat(loginCus.getCus_id(), hall_name,
+								Integer.parseInt(seatSelectCHK6.getText()));
+						seatSelectCHK6.setEnabled(false);
+						ArrayCount = 6;
+						resevationSeat.add(ArrayCount);
+					}
+
+					if (seatSelectCHK7.isSelected() && seat.get(6).getSeat_valid() == 1) {
+						ArrayCount = seatService.updateSeat(loginCus.getCus_id(), hall_name,
+								Integer.parseInt(seatSelectCHK7.getText()));
+						seatSelectCHK7.setEnabled(false);
+						ArrayCount = 7;
+						resevationSeat.add(ArrayCount);
+					}
+
+					if (seatSelectCHK8.isSelected() && seat.get(7).getSeat_valid() == 1) {
+						ArrayCount = seatService.updateSeat(loginCus.getCus_id(), hall_name,
+								Integer.parseInt(seatSelectCHK8.getText()));
+						seatSelectCHK8.setEnabled(false);
+						ArrayCount = 8;
+						resevationSeat.add(ArrayCount);
+					}
+
+					if (seatSelectCHK9.isSelected() && seat.get(8).getSeat_valid() == 1) {
+						ArrayCount = seatService.updateSeat(loginCus.getCus_id(), hall_name,
+								Integer.parseInt(seatSelectCHK9.getText()));
+						seatSelectCHK9.setEnabled(false);
+						ArrayCount = 9;
+						resevationSeat.add(ArrayCount);
+					}
+
+					if (seatSelectCHK10.isSelected() && seat.get(9).getSeat_valid() == 1) {
+						ArrayCount = seatService.updateSeat(loginCus.getCus_id(), hall_name,
+								Integer.parseInt(seatSelectCHK10.getText()));
+						seatSelectCHK10.setEnabled(false);
+						ArrayCount = 10;
+						resevationSeat.add(ArrayCount);
+					}
+
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+
 		btnNewButton.setBounds(587, 353, 97, 23);
 		seatPanel.add(btnNewButton);
 
-		JPanel payPanel = new JPanel();
+		payPanel = new JPanel();
 		payPanel.setBackground(Color.WHITE);
 		mainTabbedPane.addTab("결제페이지", null, payPanel, null);
 		payPanel.setLayout(null);
@@ -1314,7 +1876,7 @@ public class ProjectUI extends JFrame {
 
 		cardCB = new JComboBox();
 		cardCB.setEnabled(false);
-		cardCB.setModel(new DefaultComboBoxModel(new String[] { "국민", "신한", "농협", "롯데", "현대", "삼성", "기업" }));
+		cardCB.setModel(new DefaultComboBoxModel(new String[] {"국민", "신한", "농협", "우리", "IBK", "기업"}));
 		cardCB.setBounds(214, 129, 57, 23);
 		payPanel.add(cardCB);
 
@@ -1337,6 +1899,51 @@ public class ProjectUI extends JFrame {
 		payPanel.add(lblNewLabel_20);
 
 		JButton btnNewButton_11 = new JButton("결제하기");
+		btnNewButton_11.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PaymentService paymentService = new PaymentService();
+				// paymentService.insertPayment(new Payment());
+				cardCB.getSelectedItem();
+				adultCB.getSelectedItem();
+				childCB.getSelectedItem();
+				loginCus.getCus_id();
+
+				try {
+					for (int i = 0; i < resevationSeat.size(); i++) {
+						
+							int seatno = 0;
+
+							if (hall_name.equals("2회차")) {
+								seatno = i + 10;
+							}
+							if (hall_name.equals("3회차")) {
+								seatno = i + 20;
+							}
+							if (hall_name.equals("4회차")) {
+								seatno = i + 30;
+							}
+							if (hall_name.equals("5회차")) {
+								seatno = i + 40;
+							}
+						
+							
+							paymentService.insertPayment((String) cardCB.getSelectedItem(),
+									Integer.parseInt(adultCB.getSelectedItem() + ""),
+									Integer.parseInt(childCB.getSelectedItem() + ""), loginCus.getCus_id(), seatno);
+						
+
+					}
+					seatUpdate();
+					JOptionPane.showMessageDialog(null, "결제가 완료되었습니다.");
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+
+				}
+				mainTabbedPane.setSelectedIndex(0);
+
+			}
+		});
 		btnNewButton_11.setBounds(401, 283, 104, 44);
 		payPanel.add(btnNewButton_11);
 
@@ -1367,8 +1974,9 @@ public class ProjectUI extends JFrame {
 
 			/********** 서비스생성 ***********/
 			/**********************/
-			seatReservation("1회차");
+			// seatReservation("1회차");
 			logoutProcess();
+			seatUpdate();
 			ArrayList<Seat> seat = new ArrayList<Seat>();
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
@@ -1416,50 +2024,95 @@ public class ProjectUI extends JFrame {
 
 	/*************** Service선언 ************/
 	SeatService seatService = new SeatService();
-	private JCheckBox seatSelectCHK1_1;
 	private JTextField findIdNameTF;
 	private JTextField findIdPhoneTF;
 	private JTextField findPwIdTF;
 	private JTextField findPwNameTF;
-	
-		
-	
-	
-	public void seatReservation(String hall_name) throws Exception{
-		ArrayList<Seat> seat = (ArrayList)seatService.findAllByhallName(hall_name);
-		seatSelectPanel.remove(seatSelectCHK1_1);
-		
-		
-	for(int i=0; i < seat.size(); i++) {
-		JCheckBox seatSelectCHK1 = new JCheckBox("");
-		seatSelectCHK1.setToolTipText(1+i+"");
-		seatSelectCHK1.setText(1+i+"");
+	JCheckBox seatSelectCHK1;
+	private JButton seatSelectBtn_1;
+	private JCheckBox seatSelectCHK2;
+	private JCheckBox seatSelectCHK3;
+	private JCheckBox seatSelectCHK4;
+	private JCheckBox seatSelectCHK5;
+	private JCheckBox seatSelectCHK6;
+	private JCheckBox seatSelectCHK7;
+	private JCheckBox seatSelectCHK8;
+	private JCheckBox seatSelectCHK9;
+	private JCheckBox seatSelectCHK10;
+	private JCheckBox seatSelectCHK;
+	private JLabel reaminseat1;
+	private JLabel reaminseat2;
+	private JLabel reaminseat3;
+	private JLabel reaminseat4;
+	private JLabel reaminseat5;
+	ArrayList<Seat> seat;
+	ArrayList<Integer> resevationSeat;
+	private int login = 10;
+	private JPanel moviePanel;
+	private JPanel seatPanel;
+	private JPanel payPanel;
+	private JPanel findIdPWPanel;
+	private JPanel updatePanel;
+	private JPanel myPanel;
+	private JPanel loginPanel;
+	private JPanel JoinPanel;
 
-		seatSelectPanel.add(seatSelectCHK1);
-		if(seat.get(i).getSeat_valid() == 0) {
-			seatSelectCHK1.setSelected(true);
-			seatSelectCHK1.setEnabled(false);
-		}
-		
-		
-		/*
-		seatSelectCHK1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				int a = Integer.parseInt(seatSelectCHK1.getText());
-				try {
-					seatService.updateSeat(loginCus.getCus_id(), hall_name, a);
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
-		*/
-		}
+	/*
+	 * public void seatReservation(String hall_name) throws Exception {
+	 * ArrayList<Seat> seat = (ArrayList) seatService.findAllByhallName(hall_name);
+	 * seatSelectPanel.remove(seatSelectCHK1_1);
+	 * 
+	 * for (int i = 0; i < seat.size(); i++) { seatSelectCHK1 = new JCheckBox("");
+	 * seatSelectCHK1.setToolTipText(1 + i + ""); seatSelectCHK1.setText(1 + i +
+	 * ""); seatSelectPanel.add(seatSelectCHK1);
+	 * 
+	 * if (seat.get(i).getSeat_valid() == 0) { seatSelectCHK1.setSelected(true);
+	 * seatSelectCHK1.setEnabled(false); }
+	 * 
+	 * 
+	 * 
+	 * }
+	 */
+	/*
+	 * seatSelectBtn_1.addActionListener(new ActionListener() { public void
+	 * actionPerformed(ActionEvent e) { mainTabbedPane.setSelectedIndex(3); try {
+	 * String hall_name = "2회차"; ArrayList<Seat> seat = new ArrayList<>(); seat =
+	 * (ArrayList) seatService.findAllByhallName(hall_name);
+	 * System.out.println(seat);
+	 * 
+	 * seatSelectCHK1.setSelected(false); seatSelectCHK1.setEnabled(true);
+	 * 
+	 * for (int i = 0; i < seat.size(); i++) { if(i<=10) {
+	 * seatSelectCHK1.setSelected(false); seatSelectCHK1.setEnabled(true); }
+	 * 
+	 * if (seat.get(i).getSeat_valid() == 0) { seatSelectCHK1.setSelected(true);
+	 * seatSelectCHK1.setEnabled(false); } } } catch (Exception e1) {
+	 * e1.printStackTrace(); } } }); 98
+	 * 
+	 * 
+	 * /* seatSelectCHK1.addMouseListener(new MouseAdapter() {
+	 * 
+	 * @Override public void mouseClicked(MouseEvent e) { int a =
+	 * Integer.parseInt(seatSelectCHK1.getText()); try {
+	 * seatService.updateSeat(loginCus.getCus_id(), hall_name, a); } catch
+	 * (Exception e1) { // TODO Auto-generated catch block e1.printStackTrace(); } }
+	 * });
+	 * 
+	 * 
+	 * }
+	 */
+	public void seatUpdate() throws Exception {
+		movieService.remainUpdate("1회차");
+		movieService.remainUpdate("2회차");
+		movieService.remainUpdate("3회차");
+		movieService.remainUpdate("4회차");
+		movieService.remainUpdate("5회차");
+		reaminseat1.setText("남은좌석 : " + movieService.findBymoviehall("1회차").getRemainSeat());
+		reaminseat2.setText("남은좌석 : " + movieService.findBymoviehall("2회차").getRemainSeat());
+		reaminseat3.setText("남은좌석 : " + movieService.findBymoviehall("3회차").getRemainSeat());
+		reaminseat4.setText("남은좌석 : " + movieService.findBymoviehall("4회차").getRemainSeat());
+		reaminseat5.setText("남은좌석 : " + movieService.findBymoviehall("5회차").getRemainSeat());
 	}
-	
-	
 
 	// 로그인 메소드
 	public void loginProcess(String id) throws Exception {
@@ -1475,6 +2128,7 @@ public class ProjectUI extends JFrame {
 		joinBtn.setEnabled(false);
 		loginBtn.setEnabled(false);
 		myPageBtn.setEnabled(true);
+		login = 20;
 
 	}
 
@@ -1488,6 +2142,9 @@ public class ProjectUI extends JFrame {
 		joinBtn.setEnabled(true);
 		loginBtn.setEnabled(true);
 		myPageBtn.setEnabled(false);
+		
+		login = 10;
+		
 
 	}
 }

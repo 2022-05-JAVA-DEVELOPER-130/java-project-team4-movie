@@ -1,5 +1,7 @@
 package com.movie.test;
 
+import java.util.ArrayList;
+
 import com.movie.dao.PaymentDao;
 import com.movie.dto.Payment;
 import com.movie.service.PaymentService;
@@ -32,5 +34,10 @@ public class PaymentTestMain {
 		
 		System.out.println("6. cus_id로 예매 상세내역 확인");
 		System.out.println(payment.detail("seongmin"));
+		
+		System.out.println(payment.insertPayment("국민",1,1,"seongmin",48));
+		
+		
+		
 	}
 }

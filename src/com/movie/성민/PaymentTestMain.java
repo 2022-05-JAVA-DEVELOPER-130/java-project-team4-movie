@@ -14,6 +14,10 @@ public class PaymentTestMain {
 		String aa = pay.selectByID("seongmin");
 		System.out.println(aa);
 		
+		
+		
 	}
+	
+	
 
 }

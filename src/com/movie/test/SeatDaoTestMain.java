@@ -26,6 +26,6 @@ public class SeatDaoTestMain {
 		SeatService seatService = new SeatService();
 		System.out.println(seatService.findAllByhallName("1회차"));
 		
-		
+		System.out.println("ㅁㅁ" + seatService.updateSeat("123", "4회차", 38));
 }
 }

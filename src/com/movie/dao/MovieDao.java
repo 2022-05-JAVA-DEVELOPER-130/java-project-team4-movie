@@ -54,4 +54,17 @@ public class MovieDao {
 		return movieList;
 	}
 
+	public int remainSeatUpdate(String hall_name) throws Exception{
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement("update movie_hall set remain_seat = (select sum(seat_valid) from seat where hall_name = ?) where hall_name = ?");
+		pstmt.setString(1, hall_name);
+		pstmt.setString(2, hall_name);
+		int rowCount = pstmt.executeUpdate();
+		pstmt.close();
+		con.close();
+		return rowCount;
+	}
+	
+	
+	
 }

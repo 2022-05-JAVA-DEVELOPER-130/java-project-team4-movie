@@ -22,4 +22,9 @@ public class MovieService {
 		
 		return movieDao.selectAll();
 	}
+	
+	public int remainUpdate(String hall_name) throws Exception{
+		return movieDao.remainSeatUpdate(hall_name);
+	}
+	
 }

@@ -34,6 +34,22 @@ public class Payment {
 
 	
 	
+	
+	
+	public int getSeat_no() {
+		return seat_no;
+	}
+	public void setSeat_no(int seat_no) {
+		this.seat_no = seat_no;
+	}
+	public Payment(String card_name, int adult_member_count, int child_member_count, String cus_id, int seat_no) {
+		super();
+		this.card_name = card_name;
+		this.adult_member_count = adult_member_count;
+		this.child_member_count = child_member_count;
+		this.cus_id = cus_id;
+		this.seat_no = seat_no;
+	}
 	//insert용
 	public Payment(int payment_no, Date payment_date, String card_name, int adult_member_count, int child_member_count,
 			String cus_id, ArrayList<Seat> seatList) {
