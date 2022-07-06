@@ -52,6 +52,7 @@ public class ProjectUI extends JFrame {
 	private Customer loginCus = null;
 	private int PayCount = 3;
 	private String hall_name = "";
+	private String gender =null;
 	/**
 	 * Launch the application.
 	 */
@@ -453,6 +454,13 @@ public class ProjectUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(maleRadioButton.isSelected()) {
+					if(maleRadioButton.isSelected()) {
+						gender = "M";
+						genderinfolabel.setText("");
+						
+					}else {
+						gender = null;
+					}
 					femaleRadioButton.setSelected(false);
 				}
 			}
@@ -466,6 +474,12 @@ public class ProjectUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(femaleRadioButton.isSelected()) {
+					if(femaleRadioButton.isSelected()) {
+						gender = "F";
+						genderinfolabel.setText("");
+					}else {
+						gender = null;
+					}
 					maleRadioButton.setSelected(false);
 				}
 			}
@@ -473,10 +487,10 @@ public class ProjectUI extends JFrame {
 		femaleRadioButton.setBounds(627, 226, 66, 23);
 		JoinPanel.add(femaleRadioButton);
 		
-		JLabel lblNewLabel_10 = new JLabel("*");
-		lblNewLabel_10.setForeground(Color.RED);
-		lblNewLabel_10.setBounds(149, 239, 183, 17);
-		JoinPanel.add(lblNewLabel_10);
+		JLabel passwordCLB = new JLabel("*");
+		passwordCLB.setForeground(Color.RED);
+		passwordCLB.setBounds(149, 239, 183, 17);
+		JoinPanel.add(passwordCLB);
 		//회원가입
 		JButton btnNewButton_1_1 = new JButton("회원가입");
 		btnNewButton_1_1.addActionListener(new ActionListener() {
@@ -484,28 +498,28 @@ public class ProjectUI extends JFrame {
 				try {
 				String id =idTextField.getText();
 				String password = passwordField.getText();
+				String passwordC = passwordFieldC.getText();
 				String nickname = nicknameTextField.getText();
 				String name = nameTextField.getText();
 				String phone = phoneTextField.getText();
 				String date ;
 				date = birthTextField.getText();
-				String gender ="";
+				
 				String email = emailTextField.getText();
 					Date birth = new SimpleDateFormat("yyyyMMdd").parse(date);
-				if(maleRadioButton.isSelected()) {
-					gender = "M";
-					genderinfolabel.setText("");
 					
-				}else if(femaleRadioButton.isSelected()) {
-					gender = "F";
-					genderinfolabel.setText("");
-				}else {
-					genderinfolabel.setText("성별을 선택해주세요");
-				}
 				
+				
+				if(password.equals(passwordC)) {
+					passwordCLB.setText("* 비밀번호일치");
+				} else {
+					passwordCLB.setText("* 비밀번호불일치");
+					return;
+					
+				}
 				Customer cus = new Customer(id, 1, nickname, name, password, birth, gender, phone, email, 0, 1);
 				boolean a = cusService.addCustomer(cus);
-				if(a) {
+				if(a && gender != null) {
 					JOptionPane.showMessageDialog(null, "회원가입이 완료되었습니다.");
 					mainTabbedPane.setSelectedIndex(0);
 				}else {
@@ -550,9 +564,9 @@ public class ProjectUI extends JFrame {
 		passwordField.setBounds(173, 173, 116, 21);
 		JoinPanel.add(passwordField);
 		
-		passwordField_1 = new JPasswordField();
-		passwordField_1.setBounds(173, 211, 116, 21);
-		JoinPanel.add(passwordField_1);
+		passwordFieldC = new JPasswordField();
+		passwordFieldC.setBounds(173, 211, 116, 21);
+		JoinPanel.add(passwordFieldC);
 		
 		genderinfolabel = new JLabel("");
 		genderinfolabel.setForeground(Color.RED);
@@ -1092,7 +1106,7 @@ public class ProjectUI extends JFrame {
 	private JRadioButton femaleRadioButton;
 	private JRadioButton maleRadioButton;
 	private JPasswordField passwordField;
-	private JPasswordField passwordField_1;
+	private JPasswordField passwordFieldC;
 	private JPasswordField loginPasswordField;
 	private JTabbedPane mainTabbedPane;
 	private JTabbedPane cusTabbedPane;
