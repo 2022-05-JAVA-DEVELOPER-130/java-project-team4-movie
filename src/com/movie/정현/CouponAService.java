@@ -11,7 +11,7 @@ public class CouponAService {
 		couponAdao =new CouponADao();
 	}
 	//쿠폰 선택?
-	public CouponA insertCouponNo(int coupon_no)throws Exception{
+	public CouponA selectCouponNo(int coupon_no)throws Exception{
 		return couponAdao.selectCoupon(coupon_no);
 }
 }
