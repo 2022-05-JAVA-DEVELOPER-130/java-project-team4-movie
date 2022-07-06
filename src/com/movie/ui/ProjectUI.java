@@ -489,7 +489,7 @@ public class ProjectUI extends JFrame {
 		
 		JLabel passwordCLB = new JLabel("*");
 		passwordCLB.setForeground(Color.RED);
-		passwordCLB.setBounds(149, 239, 183, 17);
+		passwordCLB.setBounds(172, 244, 124, 17);
 		JoinPanel.add(passwordCLB);
 		//회원가입
 		JButton btnNewButton_1_1 = new JButton("회원가입");
@@ -508,8 +508,6 @@ public class ProjectUI extends JFrame {
 				String email = emailTextField.getText();
 					Date birth = new SimpleDateFormat("yyyyMMdd").parse(date);
 					
-				
-				
 				if(password.equals(passwordC)) {
 					passwordCLB.setText("* 비밀번호일치");
 				} else {
