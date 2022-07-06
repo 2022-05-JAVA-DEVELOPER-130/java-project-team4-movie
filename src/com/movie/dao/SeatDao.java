@@ -49,8 +49,21 @@ public class SeatDao {
 //		
 //		
 //	}
-
+	
 	public int remainResultSelect(String hall_name) throws Exception {
+		int count =0;
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(SeatSQL.MOVIE_HALL_SEAT);
+		pstmt.setString(1, hall_name);
+		ResultSet rs = pstmt.executeQuery();
+		if(rs.next()) {
+			count = rs.getInt("remain_seat");
+		}
+		
+		return count;
+	}
+
+	public int remainResultSelectCount(String hall_name) throws Exception {
 		int count =0;
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(SeatSQL.MOVIE_HALL_SEAT);
@@ -63,7 +76,9 @@ public class SeatDao {
 		return count;
 		
 	}
-
+	
+		
+	
 	public List<Seat> selectById(String cus_id) throws Exception {
 		ArrayList<Seat> findList = new ArrayList<Seat>();
 		Connection con = dataSource.getConnection();
@@ -87,6 +102,27 @@ public class SeatDao {
 	
 	}
 
+	public List<Seat> selectAll(String hall_name) throws Exception {
+		ArrayList<Seat> allList = new ArrayList<Seat>();
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(SeatSQL.SEAT_SELECT_ALL);
+		pstmt.setString(1, hall_name);
+		ResultSet rs=pstmt.executeQuery();
+		while(rs.next()) {
+			allList.add(new Seat(rs.getInt("seat_no"), 
+							  rs.getInt("seat_arrange"),
+							  rs.getInt("seat_valid"),
+							  rs.getString("hall_name"),
+							  rs.getString("cus_id"),
+							  null));
+		}
+		rs.close();
+		pstmt.close();
+		con.close();
+		
+		return allList;
+		
+	}
 	
 	
 

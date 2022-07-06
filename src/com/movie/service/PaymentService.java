@@ -72,7 +72,9 @@ public class PaymentService {
 		return paymentDao.selectByPrice(cus_id);
 	}
 
-	
+	public int selectCouponByCusID(String cus_id) throws Exception {
+		return paymentDao.selectByCoupon(cus_id);
+	}
 		
 		
 		

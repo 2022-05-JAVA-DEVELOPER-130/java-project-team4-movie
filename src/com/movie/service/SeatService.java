@@ -23,7 +23,7 @@ public class SeatService {
 	 * 회차별 남은좌석수
 	 */
 	public int findRemain(String hall_name) throws Exception {
-		return seatDao.remainResultSelect(hall_name);
+		return seatDao.remainResultSelectCount(hall_name);
 	}
 	
 	/*
@@ -32,4 +32,10 @@ public class SeatService {
 	public List<Seat> findAll(String cus_id) throws Exception {
 		return seatDao.selectById(cus_id);
 	}
+	
+	public List<Seat> findAllByhallName(String hall_name) throws Exception{
+		return seatDao.selectAll(hall_name);
+	}
+	
+	
 }
