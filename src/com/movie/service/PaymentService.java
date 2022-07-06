@@ -67,7 +67,10 @@ public class PaymentService {
 		return paymentDao.showDetails(cus_id);
 	}
 		
-	
+	public int selectPriceByCusID(String cus_id) throws Exception {
+		return paymentDao.selectByPrice(cus_id);
+	}
+
 	
 		
 		
