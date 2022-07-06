@@ -721,6 +721,13 @@ public class ProjectUI extends JFrame {
 		myPanel.add(cusResTF);
 		
 		JButton btnNewButton_2_2 = new JButton("회원정보수정");
+		btnNewButton_2_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mainTabbedPane.setSelectedIndex(1);
+				cusTabbedPane.setSelectedIndex(3);
+				
+			}
+		});
 		btnNewButton_2_2.setBounds(359, 354, 116, 23);
 		myPanel.add(btnNewButton_2_2);
 		
@@ -791,6 +798,21 @@ public class ProjectUI extends JFrame {
 		updatePanel.add(lblNewLabel_40);
 		
 		JButton btnNewButton_1 = new JButton("회원탈퇴");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					String cus_id = loginCus.getCus_id();
+					cusService.deleteInfo(cus_id);
+					
+					loginCus = null;
+					cusTabbedPane.setSelectedIndex(1);
+					mainTabbedPane.setSelectedIndex(0);
+					logoutProcess();
+				}catch (Exception e1){
+					
+				}
+			}
+		});
 		btnNewButton_1.setBounds(231, 353, 97, 23);
 		updatePanel.add(btnNewButton_1);
 		

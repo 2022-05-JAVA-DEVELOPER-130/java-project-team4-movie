@@ -9,24 +9,20 @@ import com.movie.dto.PriceInfo;
 
 
 public class PriceInfoDao {
-	public void Pricedao(PriceInfo priceinfo) throws Exception{
-		String sql="insert into PriceInfo values(?,?,?)";
-		Connection conn=DriverManager.getConnection(sql);
-		PreparedStatement pstmt=conn.prepareStatement(sql);
-		pstmt.executeUpdate();
-		
-		String sql1="select * from PriceInfo values(?,?,?)";
+	public PriceInfo priceSelectByNo(String hall_name) throws Exception{
+		PriceInfo priceinfo = null;
+		String sql="select * from price_Info p join movie_hall m on p.price_no = m.price_no where hall_name = ?";
 		Connection con=DriverManager.getConnection(sql);
-		PreparedStatement pst=con.prepareStatement(sql1);
-		ResultSet rs=pstmt.executeQuery(sql1);
+		PreparedStatement pstmt=con.prepareStatement(sql);
+		pstmt.setString(1, hall_name);
+		ResultSet rs=pstmt.executeQuery();
 		if(rs.next()) {
-			int Price_no=rs.getInt(1);
-			int Adult_price=rs.getInt(2);
-			int Child_price=rs.getInt(3);
+			priceinfo = new PriceInfo(rs.getInt("price_no"), rs.getInt("adult_price"), rs.getInt("child_price"));
 			
-			rs.close();
-			conn.close();
 			
 		}
+		rs.close();
+		con.close();
+		return priceinfo;
 }
 }
