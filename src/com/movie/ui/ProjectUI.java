@@ -196,6 +196,20 @@ public class ProjectUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				mainTabbedPane.setSelectedIndex(1);
 				cusTabbedPane.setSelectedIndex(2);
+				try {
+					
+					cusNameTF.setText(loginCus.getCus_name());
+//					cusNicknameTF.getText();
+					
+//					String cus_name = cusNameTF.getName();
+//					String cus_nickname = cusNicknameTF.getText();
+					
+				} catch (Exception e1) {
+					
+					
+				}
+				
+				
 			}
 		});
 		myPageBtn.setBounds(680, 21, 97, 32);
@@ -641,63 +655,65 @@ public class ProjectUI extends JFrame {
 		myPanel.setBackground(Color.WHITE);
 		cusTabbedPane.addTab("마이페이지", null, myPanel, null);
 		
+		
+		
 		JLabel lblNewLabel_17_1 = new JLabel("");
 		lblNewLabel_17_1.setIcon(new ImageIcon(ProjectUI.class.getResource("/com/movie/현정/logo5.png")));
 		lblNewLabel_17_1.setBounds(12, 10, 73, 52);
 		myPanel.add(lblNewLabel_17_1);
 		
-		JLabel lblNewLabel_32_1 = new JLabel("이름");
-		lblNewLabel_32_1.setBounds(173, 86, 57, 15);
-		myPanel.add(lblNewLabel_32_1);
+		JLabel cusNameLB = new JLabel("이름");
+		cusNameLB.setBounds(173, 86, 57, 15);
+		myPanel.add(cusNameLB);
 		
-		JLabel lblNewLabel_33_1 = new JLabel("닉네임");
-		lblNewLabel_33_1.setBounds(173, 129, 57, 15);
-		myPanel.add(lblNewLabel_33_1);
+		JLabel cusNicknameLB = new JLabel("닉네임");
+		cusNicknameLB.setBounds(173, 129, 57, 15);
+		myPanel.add(cusNicknameLB);
 		
-		JLabel lblNewLabel_34_1 = new JLabel("생년월일");
-		lblNewLabel_34_1.setBounds(173, 174, 57, 15);
-		myPanel.add(lblNewLabel_34_1);
+		JLabel cusBirthLB = new JLabel("생년월일");
+		cusBirthLB.setBounds(173, 174, 57, 15);
+		myPanel.add(cusBirthLB);
 		
-		JLabel lblNewLabel_35_1 = new JLabel("연락처");
-		lblNewLabel_35_1.setBounds(173, 230, 57, 15);
-		myPanel.add(lblNewLabel_35_1);
+		JLabel cusPhoneLB = new JLabel("연락처");
+		cusPhoneLB.setBounds(173, 230, 57, 15);
+		myPanel.add(cusPhoneLB);
 		
-		JLabel lblNewLabel_36_1 = new JLabel("이메일");
-		lblNewLabel_36_1.setBounds(173, 282, 57, 15);
-		myPanel.add(lblNewLabel_36_1);
+		JLabel cusEmailLB = new JLabel("이메일");
+		cusEmailLB.setBounds(173, 282, 57, 15);
+		myPanel.add(cusEmailLB);
 		
-		JLabel lblNewLabel_37_1 = new JLabel("예매내역");
-		lblNewLabel_37_1.setBounds(446, 86, 57, 15);
-		myPanel.add(lblNewLabel_37_1);
+		JLabel cusResLB = new JLabel("예매내역");
+		cusResLB.setBounds(446, 86, 57, 15);
+		myPanel.add(cusResLB);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(242, 83, 116, 21);
-		myPanel.add(textField_5);
+		cusNameTF = new JTextField();
+		cusNameTF.setColumns(10);
+		cusNameTF.setBounds(242, 83, 116, 21);
+		myPanel.add(cusNameTF);
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(242, 126, 116, 21);
-		myPanel.add(textField_6);
+		cusNicknameTF = new JTextField();
+		cusNicknameTF.setColumns(10);
+		cusNicknameTF.setBounds(242, 126, 116, 21);
+		myPanel.add(cusNicknameTF);
 		
-		textField_7 = new JTextField();
-		textField_7.setColumns(10);
-		textField_7.setBounds(242, 171, 116, 21);
-		myPanel.add(textField_7);
+		cusBrithTF = new JTextField();
+		cusBrithTF.setColumns(10);
+		cusBrithTF.setBounds(242, 171, 116, 21);
+		myPanel.add(cusBrithTF);
 		
-		textField_8 = new JTextField();
-		textField_8.setColumns(10);
-		textField_8.setBounds(242, 227, 116, 21);
-		myPanel.add(textField_8);
+		cusPhoneTF = new JTextField();
+		cusPhoneTF.setColumns(10);
+		cusPhoneTF.setBounds(242, 227, 116, 21);
+		myPanel.add(cusPhoneTF);
 		
-		textField_9 = new JTextField();
-		textField_9.setColumns(10);
-		textField_9.setBounds(242, 279, 116, 21);
-		myPanel.add(textField_9);
+		cusEmailTF = new JTextField();
+		cusEmailTF.setColumns(10);
+		cusEmailTF.setBounds(242, 279, 116, 21);
+		myPanel.add(cusEmailTF);
 		
-		JTextPane textPane_1 = new JTextPane();
-		textPane_1.setBounds(446, 111, 158, 181);
-		myPanel.add(textPane_1);
+		JTextPane cusResTF = new JTextPane();
+		cusResTF.setBounds(446, 111, 158, 181);
+		myPanel.add(cusResTF);
 		
 		JButton btnNewButton_2_2 = new JButton("회원정보수정");
 		btnNewButton_2_2.setBounds(359, 354, 116, 23);
@@ -1123,11 +1139,11 @@ public class ProjectUI extends JFrame {
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
+	private JTextField cusNameTF;
+	private JTextField cusNicknameTF;
+	private JTextField cusBrithTF;
+	private JTextField cusPhoneTF;
+	private JTextField cusEmailTF;
 	private JTextField textField_10;
 	private JTextField textField_11;
 	private JTextField textField_12;
