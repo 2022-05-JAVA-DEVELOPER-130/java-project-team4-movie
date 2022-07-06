@@ -642,7 +642,7 @@ public class ProjectUI extends JFrame {
 
 			}
 		});
-		loginBtn_1.setBounds(266, 341, 97, 23);
+		loginBtn_1.setBounds(263, 308, 97, 23);
 		loginPanel.add(loginBtn_1);
 
 		JButton cancelBtn_1 = new JButton("취소");
@@ -651,7 +651,7 @@ public class ProjectUI extends JFrame {
 				mainTabbedPane.setSelectedIndex(0);
 			}
 		});
-		cancelBtn_1.setBounds(426, 341, 97, 23);
+		cancelBtn_1.setBounds(423, 308, 97, 23);
 		loginPanel.add(cancelBtn_1);
 
 		JLabel lblNewLabel_1_1 = new JLabel("");
@@ -662,6 +662,19 @@ public class ProjectUI extends JFrame {
 		loginPasswordField = new JPasswordField();
 		loginPasswordField.setBounds(383, 262, 116, 18);
 		loginPanel.add(loginPasswordField);
+		
+		JButton findPWBtn = new JButton("패스워드찾기");
+		findPWBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		findPWBtn.setBounds(263, 352, 107, 23);
+		loginPanel.add(findPWBtn);
+		
+		JButton findIdBtn = new JButton("아이디찾기");
+		findIdBtn.setBounds(423, 352, 97, 23);
+		loginPanel.add(findIdBtn);
 
 		JPanel myPanel = new JPanel();
 		myPanel.setLayout(null);
@@ -802,6 +815,11 @@ public class ProjectUI extends JFrame {
 		lblNewLabel_40.setIcon(new ImageIcon(ProjectUI.class.getResource("/com/movie/현정/logo5.png")));
 		lblNewLabel_40.setBounds(12, 10, 75, 47);
 		updatePanel.add(lblNewLabel_40);
+		
+		JLabel updateCusPWLB = new JLabel("*");
+		updateCusPWLB.setForeground(new Color(255, 0, 0));
+		updateCusPWLB.setBounds(515, 143, 87, 15);
+		updatePanel.add(updateCusPWLB);
 
 		JButton btnNewButton_1 = new JButton("회원탈퇴");
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -823,6 +841,36 @@ public class ProjectUI extends JFrame {
 		updatePanel.add(btnNewButton_1);
 
 		JButton btnNewButton_3 = new JButton("정보수정완료");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+				String cus_password = mypasswordTF1.getText();
+				String cus_passwordC = mypasswordTF2.getText();
+				
+				loginCus.setCus_nickname(mynicknameTF.getText());
+				loginCus.setCus_password(mypasswordTF1.getText());
+				loginCus.setCus_password(mypasswordTF2.getText());
+				loginCus.setCus_email(myemailTF.getText());
+				loginCus.setCus_phone(myphoneTF.getText());
+				
+				loginCus.setCus_birthday(new SimpleDateFormat("yyyyMMdd").parse(mybirthTF.getText()));
+				
+				if(mypasswordTF1.getText().equals(mypasswordTF2.getText())) {
+					updateCusPWLB.setText("* 비밀번호 일치");
+					JOptionPane.showMessageDialog(null, "정보수정이 완료되었습니다.");
+					cusService.updateInfo(loginCus);
+					
+				} else {
+					updateCusPWLB.setText("* 비밀번호 불일치");
+					JOptionPane.showMessageDialog(null, "비밀번호를 일치시켜주세요.");
+					
+					return;
+				}
+			}catch (Exception e1){
+				
+			}
+			}
+		});
 		btnNewButton_3.setBounds(456, 353, 116, 23);
 		updatePanel.add(btnNewButton_3);
 
@@ -833,7 +881,7 @@ public class ProjectUI extends JFrame {
 		mypasswordTF2 = new JPasswordField();
 		mypasswordTF2.setBounds(387, 140, 116, 23);
 		updatePanel.add(mypasswordTF2);
-
+		
 		JPanel moviePanel = new JPanel();
 		moviePanel.setBackground(Color.WHITE);
 		mainTabbedPane.addTab("영화상세", null, moviePanel, null);
@@ -868,6 +916,16 @@ public class ProjectUI extends JFrame {
 			});
 			seatSelectBtn.setBounds(619, 360, 97, 23);
 			panel_2.add(seatSelectBtn);
+			
+			JButton movieMainBtn1 = new JButton("홈으로");
+			movieMainBtn1.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					mainTabbedPane.setSelectedIndex(0);
+				}
+			});
+			movieMainBtn1.setBounds(86, 355, 97, 23);
+			panel_2.add(movieMainBtn1);
 		} catch (Exception e1) {
 			System.out.println("오류");
 		}
@@ -898,6 +956,16 @@ public class ProjectUI extends JFrame {
 			});
 			seatSelectBtn.setBounds(642, 360, 97, 23);
 			panel_3.add(seatSelectBtn);
+			
+			JButton movieMainBtn2 = new JButton("홈으로");
+			movieMainBtn2.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					mainTabbedPane.setSelectedIndex(0);
+				}
+			});
+			movieMainBtn2.setBounds(77, 361, 97, 23);
+			panel_3.add(movieMainBtn2);
 		} catch (Exception e1) {
 
 		}
@@ -928,6 +996,16 @@ public class ProjectUI extends JFrame {
 			});
 			seatSelectBtn.setBounds(621, 355, 97, 23);
 			panel_4.add(seatSelectBtn);
+			
+			JButton movieMainBtn3 = new JButton("홈으로");
+			movieMainBtn3.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					mainTabbedPane.setSelectedIndex(0);
+				}
+			});
+			movieMainBtn3.setBounds(75, 366, 97, 23);
+			panel_4.add(movieMainBtn3);
 		} catch (Exception e1) {
 		}
 
@@ -957,6 +1035,16 @@ public class ProjectUI extends JFrame {
 			});
 			seatSelectBtn.setBounds(622, 364, 97, 23);
 			panel_5.add(seatSelectBtn);
+			
+			JButton movieMainBtn4 = new JButton("홈으로");
+			movieMainBtn4.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					mainTabbedPane.setSelectedIndex(0);
+				}
+			});
+			movieMainBtn4.setBounds(80, 380, 97, 23);
+			panel_5.add(movieMainBtn4);
 		} catch (Exception e1) {
 		}
 
@@ -986,6 +1074,16 @@ public class ProjectUI extends JFrame {
 			});
 			seatSelectBtn.setBounds(625, 358, 97, 23);
 			panel_6.add(seatSelectBtn);
+			
+			JButton movieMainBtn5 = new JButton("홈으로");
+			movieMainBtn5.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					mainTabbedPane.setSelectedIndex(0);
+				}
+			});
+			movieMainBtn5.setBounds(76, 358, 97, 23);
+			panel_6.add(movieMainBtn5);
 		} catch (Exception e1) {
 		}
 

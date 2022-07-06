@@ -15,6 +15,19 @@ public class Customer {
 	private int cus_point;
 	private int coupon_no;
 	
+	
+	
+	public Customer(String cus_nickname, String cus_name, String cus_password, Date cus_birthday, 
+			String cus_phone, String cus_email) {
+		super();
+		this.cus_nickname = cus_nickname;
+		this.cus_name = cus_name;
+		this.cus_password = cus_password;
+		this.cus_birthday = cus_birthday;
+		this.cus_phone = cus_phone;
+		this.cus_email = cus_email;
+	}
+
 	public Customer(String cus_id, int cus_no, String cus_nickname, String cus_name, String cus_password,
 			Date cus_birthday, String cus_gender, String cus_phone, String cus_email, int cus_point, int coupon_no) {
 		super();
