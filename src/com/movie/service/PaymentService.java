@@ -26,6 +26,7 @@ public class PaymentService {
 		paymentDao = new PaymentDao();
 		movieDao = new MovieDao();
 		seatDao = new SeatDao();
+		
 	}
 	
 	/*

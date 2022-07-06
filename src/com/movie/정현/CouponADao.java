@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.movie.common.DataSource;
+import com.movie.dto.Payment;
 import com.movie.정현.CouponA;
 
 public class CouponADao {
@@ -31,7 +32,9 @@ public class CouponADao {
 		return findCoupon;
 	}
 	
-/*	
+	
+	
+/*
 public int insertCouponNo(int coupon_no, String coupon_name,int coupon_effect) throws Exception{
 		
 		Connection con= dataSource.getConnection();
