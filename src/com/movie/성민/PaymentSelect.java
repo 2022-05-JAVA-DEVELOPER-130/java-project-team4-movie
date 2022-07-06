@@ -28,6 +28,8 @@ public class PaymentSelect {
 		pstmt.setString(1, id);
 		ResultSet rs = pstmt.executeQuery();
 		int total_price=0;
+		
+		
 		if(rs.next()) {
 			
 			int adult_price = rs.getInt("adult_price");
@@ -54,7 +56,7 @@ public class PaymentSelect {
 		ArrayList<Seat> aa = new ArrayList<Seat>(); 
 		if(rs.next()) {
 			int payment_no = rs.getInt("payment_no");
-			Date payment_date = rs.getDate("payment_date");
+			Date payment_date = rs.getDate("paymen2t_date");
 			String card_name = rs.getString("card_name");
 			String cus_id = rs.getString("cus_id");
 			int adult_price = rs.getInt("adult_price");
