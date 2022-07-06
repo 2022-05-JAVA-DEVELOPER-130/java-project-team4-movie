@@ -41,12 +41,6 @@ public class PaymentService {
 		return paymentDao.deleteByPaymentNo(payment_no);
 		
 	}
-	/*
-	 * 예약목록 - 성민작업
-	 */
-//	public ArrayList<Payment> reservationList(String cus_id){
-//		return;
-//	}
 	
 	/*
 	 * 선택영화 주문목록
@@ -55,34 +49,23 @@ public class PaymentService {
 		return paymentDao.list(cus_id);
 	}
 	/*
-	 * 선택내용 정보출력
+	 * cus_id로 모든 예매내역 확인
 	 */
 	public List<Payment> selectByCusId(String cus_id) throws Exception {
 		return paymentDao.selectAllByCusId(cus_id);
 	}
 	/*
-	 * 모든 예약자 정보출력
+	 * 모든 회원 예매내역 확인
 	 */
 	public List<Payment> selectAll() throws Exception{
 		return paymentDao.selectAllList();
 	}
-		
-	
 	/*
-	 * 영화예약
+	 * cus_id로 예매한 영화내역 확인
 	 */
-//	public int create(String cus_id, String movie_hall, int adult_member_count, int child_member_count) throws Exception {
-//		Movie movie = movieDao.selectByHallName(movie_hall);
-//		Seat seat = new Seat(0, adult_member_count, child_member_count, null, null, null);
-//		ArrayList<Seat> seatList = new ArrayList<Seat>();
-//		seatList.add(seat);
-//		Payment newPayment =
-//				new Payment(0,
-//							null,
-//							seatList.get(0).getMovie().getPrice_no(),
-//							seatList.get(0).get);
-//		
-//		return 0;
+	public Payment detail(String cus_id) throws Exception {
+		return paymentDao.showDetails(cus_id);
+	}
 		
 	
 	

@@ -16,14 +16,17 @@ public class PaymentTestMain {
 
 		
 		System.out.println("2.결제취소");
-		System.out.println(">>" + payment.deletebyCusId("yeji"));
+		System.out.println(">>" + payment.deletebyCusId("junyeung"));
 
 		System.out.println("3.결제금액 출력");
 		
-		System.out.println("--------------");
+		System.out.println("4. 모든 예약자 확인");
 		System.out.println(payment.selectAll());
 
-		System.out.println("--------------");
-		System.out.println(payment.selectByCusId("jeonghun"));
+		System.out.println("5. cus_id로 회원별 모든 예약 확인");
+		System.out.println(payment.selectByCusId("junyeung"));
+		
+		System.out.println("6. cus_id로 예매 상세내역 확인");
+		System.out.println(payment.detail("seongmin"));
 	}
 }
