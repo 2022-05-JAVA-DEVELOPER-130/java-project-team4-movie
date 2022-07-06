@@ -665,18 +665,22 @@ public class ProjectUI extends JFrame {
 		loginPasswordField.setBounds(383, 262, 116, 18);
 		loginPanel.add(loginPasswordField);
 		
-		JButton findPWBtn = new JButton("패스워드찾기");
-		findPWBtn.addActionListener(new ActionListener() {
+		JButton findIdPWBtn = new JButton("아이디,패스워드찾기");
+		findIdPWBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				mainTabbedPane.setSelectedIndex(1);
+				cusTabbedPane.setSelectedIndex(4);
+				
+			}
+		});
+		findIdPWBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		findPWBtn.setBounds(263, 352, 107, 23);
-		loginPanel.add(findPWBtn);
-		
-		JButton findIdBtn = new JButton("아이디찾기");
-		findIdBtn.setBounds(423, 352, 97, 23);
-		loginPanel.add(findIdBtn);
+		findIdPWBtn.setBounds(299, 358, 191, 23);
+		loginPanel.add(findIdPWBtn);
 
 		JPanel myPanel = new JPanel();
 		myPanel.setLayout(null);
@@ -883,6 +887,108 @@ public class ProjectUI extends JFrame {
 		mypasswordTF2 = new JPasswordField();
 		mypasswordTF2.setBounds(387, 140, 116, 23);
 		updatePanel.add(mypasswordTF2);
+		
+		JPanel findIdPWPanel = new JPanel();
+		findIdPWPanel.setBackground(Color.WHITE);
+		findIdPWPanel.setLayout(null);
+		cusTabbedPane.addTab("찾기", null, findIdPWPanel, null);
+		
+		JLabel lblNewLabel_10 = new JLabel("");
+		lblNewLabel_10.setBackground(Color.WHITE);
+		lblNewLabel_10.setIcon(new ImageIcon(ProjectUI.class.getResource("/com/movie/현정/logo5.png")));
+		lblNewLabel_10.setBounds(12, 10, 75, 52);
+		findIdPWPanel.add(lblNewLabel_10);
+		
+		JLabel lblNewLabel_41 = new JLabel("아이디찾기");
+		lblNewLabel_41.setFont(new Font("굴림", Font.BOLD, 15));
+		lblNewLabel_41.setBounds(175, 133, 77, 27);
+		findIdPWPanel.add(lblNewLabel_41);
+		
+		findIdNameTF = new JTextField();
+		findIdNameTF.setColumns(10);
+		findIdNameTF.setBounds(305, 111, 116, 21);
+		findIdPWPanel.add(findIdNameTF);
+		
+		findIdPhoneTF = new JTextField();
+		findIdPhoneTF.setColumns(10);
+		findIdPhoneTF.setBounds(305, 155, 116, 21);
+		findIdPWPanel.add(findIdPhoneTF);
+		
+		JButton findIdBtn = new JButton("아이디찾기");
+		findIdBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					String name = findIdNameTF.getText();
+					String phone = findIdPhoneTF.getText();
+
+					String result = cusService.findId(name, phone);
+					if(result != null) {
+						JOptionPane.showMessageDialog(null, result + "");
+					} else {
+						JOptionPane.showMessageDialog(null, "성함, 연락처를 모두 올바르게 입력해주세요.");
+					}
+
+
+				} catch (Exception e1) {
+
+				}
+			}
+		});
+		findIdBtn.setBounds(505, 136, 116, 23);
+		findIdPWPanel.add(findIdBtn);
+		
+		JLabel lblNewLabel_42 = new JLabel("비밀번호찾기");
+		lblNewLabel_42.setFont(new Font("굴림", Font.BOLD, 15));
+		lblNewLabel_42.setBounds(175, 280, 97, 27);
+		findIdPWPanel.add(lblNewLabel_42);
+		
+		findPwIdTF = new JTextField();
+		findPwIdTF.setColumns(10);
+		findPwIdTF.setBounds(305, 259, 116, 21);
+		findIdPWPanel.add(findPwIdTF);
+		
+		findPwNameTF = new JTextField();
+		findPwNameTF.setColumns(10);
+		findPwNameTF.setBounds(305, 305, 116, 21);
+		findIdPWPanel.add(findPwNameTF);
+		
+		JButton findPWBtn = new JButton("비밀번호찾기");
+		findPWBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					String id = findPwIdTF.getText();
+					String name = findPwNameTF.getText();
+					
+					String result = cusService.findPassword(id, name);
+					if( result != null) {
+						JOptionPane.showMessageDialog(null, result+"");
+					} else {
+						JOptionPane.showMessageDialog(null, "아이디, 성함 모두 올바르게 입력해주세요.");
+					}
+					
+				}catch (Exception e1){
+					
+				}
+			}
+		});
+		findPWBtn.setBounds(505, 283, 116, 23);
+		findIdPWPanel.add(findPWBtn);
+		
+		JLabel lblNewLabel_43 = new JLabel("이름");
+		lblNewLabel_43.setBounds(305, 96, 57, 15);
+		findIdPWPanel.add(lblNewLabel_43);
+		
+		JLabel lblNewLabel_44 = new JLabel("연락처");
+		lblNewLabel_44.setBounds(305, 142, 57, 15);
+		findIdPWPanel.add(lblNewLabel_44);
+		
+		JLabel lblNewLabel_45 = new JLabel("아이디");
+		lblNewLabel_45.setBounds(305, 245, 57, 15);
+		findIdPWPanel.add(lblNewLabel_45);
+		
+		JLabel lblNewLabel_46 = new JLabel("이름");
+		lblNewLabel_46.setBounds(305, 290, 57, 15);
+		findIdPWPanel.add(lblNewLabel_46);
 		
 		JPanel moviePanel = new JPanel();
 		moviePanel.setBackground(Color.WHITE);
@@ -1300,6 +1406,10 @@ public class ProjectUI extends JFrame {
 	/*************** Service선언 ************/
 	SeatService seatService = new SeatService();
 	private JCheckBox seatSelectCHK1_1;
+	private JTextField findIdNameTF;
+	private JTextField findIdPhoneTF;
+	private JTextField findPwIdTF;
+	private JTextField findPwNameTF;
 	
 		
 	public void seatReservation() throws Exception{
