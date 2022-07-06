@@ -231,6 +231,27 @@ public class PaymentDao {
 		}
 		return total_price;
 	}
-	
+	public int selectByCoupon(String id) throws Exception {
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(PaymentSQL.SELECT_PRICE_BY_CUSID);
+		pstmt.setString(1, id);
+		ResultSet rs = pstmt.executeQuery();
+		int discount_total_price = 0;
+		
+
+		if (rs.next()) {
+
+			int adult_price = rs.getInt("adult_price");
+			int child_price = rs.getInt("child_price");
+			int adult_member_count = rs.getInt("adult_member_count");
+			int child_member_count = rs.getInt("child_member_count");
+			int coupon_effect = rs.getInt("coupon_effect");
+			
+			
+			discount_total_price = ((adult_price * adult_member_count) + (child_price * child_member_count))/coupon_effect;
+
+		}
+		return discount_total_price;
+	}
 
 }
