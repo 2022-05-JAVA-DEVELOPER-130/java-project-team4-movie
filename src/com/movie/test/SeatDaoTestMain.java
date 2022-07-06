@@ -1,6 +1,7 @@
 package com.movie.test;
 
 import com.movie.dao.SeatDao;
+import com.movie.service.SeatService;
 
 public class SeatDaoTestMain {
 
@@ -21,5 +22,10 @@ public class SeatDaoTestMain {
 
 		System.out.println("4.전체좌석 출력");
 		System.out.println(">> "+seatDao.selectAll("2회차"));
+		
+		SeatService seatService = new SeatService();
+		System.out.println(seatService.findAllByhallName("1회차"));
+		
+		
 }
 }

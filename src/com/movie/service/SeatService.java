@@ -33,4 +33,9 @@ public class SeatService {
 		return seatDao.selectById(cus_id);
 	}
 	
+	public List<Seat> findAllByhallName(String hall_name) throws Exception{
+		return seatDao.selectAll(hall_name);
+	}
+	
+	
 }
