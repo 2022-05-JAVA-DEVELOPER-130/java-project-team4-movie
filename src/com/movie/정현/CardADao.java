@@ -12,10 +12,10 @@ import com.movie.dto.CardInfo;
 
 public class CardADao {
 	private DataSource dataSource;
-	public CardADao() throws Exception{
+	public CardADao() {
 		dataSource= new DataSource();
 	}
-	
+	/*
 public int insertCardName(String card_name) throws Exception{
 		
 		Connection con= dataSource.getConnection();
@@ -28,13 +28,16 @@ public int insertCardName(String card_name) throws Exception{
 		con.close();
 		return rowCount;
 	}
-/*
+	*/
+
 public CardA selectCardName(String card_name) throws Exception {
 	CardA findCardName = null;
 
 	Connection con = dataSource.getConnection();
 	PreparedStatement pstmt = con.prepareStatement(CardASQL.Card2_SELECT_NAME);
+	
 	pstmt.setString(1, card_name);
+	
 	ResultSet rs = pstmt.executeQuery();
 	if (rs.next()) {
 		findCardName = new CardA(rs.getString("Card_name"));
@@ -44,5 +47,5 @@ public CardA selectCardName(String card_name) throws Exception {
 	con.close();
 	return findCardName;
 }
-*/
+
 }
