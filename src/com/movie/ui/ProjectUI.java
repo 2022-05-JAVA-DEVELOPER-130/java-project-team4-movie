@@ -1196,7 +1196,7 @@ public class ProjectUI extends JFrame {
 	
 	
 	public void seatList() {
-		seatService.
+	//	seatService
 		for(int i=0;i<15;i++) {
 			JButton btnNewButton_10 = new JButton("");
 			btnNewButton_10.setToolTipText(i+"");
