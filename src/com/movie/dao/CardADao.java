@@ -1,4 +1,4 @@
-package com.movie.정현;
+package com.movie.dao;
 
 
 import java.sql.Connection;
@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.movie.common.DataSource;
-import com.movie.dao.ReservationSQL;
+import com.movie.dto.CardA;
 import com.movie.dto.CardInfo;
 
 

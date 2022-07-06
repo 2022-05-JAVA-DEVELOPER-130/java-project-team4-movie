@@ -1,7 +1,7 @@
-package com.movie.정현;
+package com.movie.service;
 
-import com.movie.정현.CardADao;
-import com.movie.정현.CardA;
+import com.movie.dao.CardADao;
+import com.movie.dto.CardA;
 
 
 public class CardAService {

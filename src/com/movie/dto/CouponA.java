@@ -1,4 +1,4 @@
-package com.movie.정현;
+package com.movie.dto;
 
 public class CouponA {
 	private int coupon_no;

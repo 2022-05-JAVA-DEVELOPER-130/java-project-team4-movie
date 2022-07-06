@@ -1,4 +1,4 @@
-package com.movie.정현;
+package com.movie.dto;
 
 public class CardA {
 	String card_name;

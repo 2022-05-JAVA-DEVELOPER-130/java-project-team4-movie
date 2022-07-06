@@ -1,12 +1,12 @@
-package com.movie.정현;
+package com.movie.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.movie.common.DataSource;
+import com.movie.dto.CouponA;
 import com.movie.dto.Payment;
-import com.movie.정현.CouponA;
 
 public class CouponADao {
 	private DataSource dataSource;

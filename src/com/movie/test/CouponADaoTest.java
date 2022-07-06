@@ -1,7 +1,7 @@
-package com.movie.정현;
+package com.movie.test;
 
-import com.movie.정현.CouponADao;
-import com.movie.정현.CouponA;
+import com.movie.dao.CouponADao;
+import com.movie.dto.CouponA;
 
 
 public class CouponADaoTest {
