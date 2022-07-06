@@ -19,6 +19,7 @@ public class PaymentTestMain {
 		System.out.println(">>" + payment.deletebyCusId("junyeung"));
 
 		System.out.println("3.결제금액 출력");
+		System.out.println(">> "+ payment.selectPriceByCusID("jeonghun"));
 		
 		System.out.println("4. 모든 예약자 확인");
 		System.out.println(payment.selectAll());

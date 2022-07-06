@@ -21,7 +21,7 @@ public class PaymentDao {
 	}
 
 	/*
-	 * 주문전체삭제
+	 * cus_id 로 예매취소
 	 */
 	public int deleteByCusId(String cus_id) throws Exception {
 		Connection con = null;
@@ -46,7 +46,7 @@ public class PaymentDao {
 	}
 
 	/*
-	 * 주문 1건삭제
+	 * payment_no 로 예매취소
 	 */
 	public int deleteByPaymentNo(int payment_no) throws Exception {
 		Connection con = null;
@@ -104,7 +104,7 @@ public class PaymentDao {
 	}
 
 	/*
-	 * 예매내역(cus_id로 검색)
+	 * cus_id 로 예매내역 검색
 	 */
 	public ArrayList<Seat> list(String cus_id) throws Exception {
 		ArrayList<Seat> seatList = new ArrayList<Seat>();
@@ -164,28 +164,72 @@ public class PaymentDao {
 	}
 
 	public Payment showDetails(String cus_id) throws Exception {
-		Payment payment = null;
+		Payment payment = new Payment();
+		Movie movie = new Movie();
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(PaymentSQL.SELECT_BY_CUSID_ALL);
 		pstmt.setString(1, cus_id);
 		ResultSet rs = pstmt.executeQuery();
-	
-		if (rs.next()) {
-			payment = new Payment(rs.getInt("payment_no"), rs.getDate("payment_date"), rs.getString("card_name"),
-					rs.getInt("adult_member_count"), rs.getInt("child_member_count"), rs.getString("cus_id"), null);
+		ArrayList<Seat> aa = new ArrayList<Seat>(); 
+		if(rs.next()) {
+			int payment_no = rs.getInt("payment_no");
+			Date payment_date = rs.getDate("payment_date");
+			String card_name = rs.getString("card_name");
+			String cusId = rs.getString("cus_id");
+			int adult_price = rs.getInt("adult_price");
+			int child_price = rs.getInt("child_price");
+			int adult_member_count = rs.getInt("adult_member_count");
+			int child_member_count = rs.getInt("child_member_count");
+			int totalPrice = (adult_price*adult_member_count) + (child_price*child_member_count);
+			
+			
+			payment = new Payment(payment_no, payment_date, card_name, adult_member_count, child_member_count, cusId, totalPrice, aa);
+			System.out.print("예매번호 : " + payment_no + ", <p>결제일자 : " + payment_date + ", <p>카드 :" + card_name
+					+ ", <p>성인 수 : " + adult_member_count + ", <p>청소년 수 :" + child_member_count
+			+ ", <p>ID : " + cusId + "<p>좌석 : ");
 			do {
-				payment.getSeatList().add(new Seat(rs.getInt("seat_no"), rs.getInt("seat_arrange"),
-						rs.getInt("seat_valid"), rs.getString("hall_name"), rs.getString("cus_id"),
-						new Movie(rs.getString("hall_name"), rs.getInt("total_seat_count"), rs.getInt("remain_seat"),
-								rs.getString("m_name"), rs.getString("m_genre"), rs.getInt("m_positive_age"),
-								rs.getString("m_start_time"), rs.getString("m_end_time"), rs.getString("m_image"),
-								rs.getString("m_introduce"), rs.getInt("price_no"))));
-			} while (rs.next());
-		}
-
+				payment.getSeatList().add(new Seat(rs.getInt("seat_no"),
+													rs.getInt("seat_arrange"),
+													rs.getInt("seat_valid"),
+																		new Movie(rs.getString("hall_name"),
+																					rs.getString("m_name"),
+																					rs.getString("m_start_time"),
+																					rs.getString("m_end_time")
+																					)));
+				movie = new Movie(rs.getString("hall_name"),
+						rs.getString("m_name"),
+						rs.getString("m_start_time"),
+						rs.getString("m_end_time"));
+				System.out.print(rs.getInt("seat_no") + "번 ");
+				
+			}while(rs.next());
 		
+			System.out.println("<p>회차 : " + movie.getHallName() + "<p>영화이름 : " + movie.getM_Name() + "<p>시작시간" + movie.getM_Start_Time() + "<p>종료시간 : " + movie.getM_End_Time());
+			
+			
+		}
 		return payment;
-
+	}
+	
+	public int selectByPrice(String cus_id) throws Exception{
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(PaymentSQL.SELECT_PRICE_BY_CUSID);
+		pstmt.setString(1, cus_id);
+		ResultSet rs = pstmt.executeQuery();
+		int total_price=0;
+		if(rs.next()) {
+			
+			int adult_price = rs.getInt("adult_price");
+			int child_price = rs.getInt("child_price");
+			int adult_member_count = rs.getInt("adult_member_count");
+			int child_member_count = rs.getInt("child_member_count");
+			
+			
+			total_price = (adult_price*adult_member_count) + (child_price*child_member_count);
+			
+			
+		}
+		return total_price;
 	}
 	
 
