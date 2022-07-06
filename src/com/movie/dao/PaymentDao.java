@@ -236,6 +236,7 @@ public class PaymentDao {
 		PreparedStatement pstmt = con.prepareStatement(PaymentSQL.SELECT_PRICE_BY_CUSID);
 		pstmt.setString(1, id);
 		ResultSet rs = pstmt.executeQuery();
+		int total_price=0;
 		int discount_total_price = 0;
 		
 
@@ -245,10 +246,10 @@ public class PaymentDao {
 			int child_price = rs.getInt("child_price");
 			int adult_member_count = rs.getInt("adult_member_count");
 			int child_member_count = rs.getInt("child_member_count");
-			int coupon_effect = rs.getInt("coupon_effect");
 			
 			
-			discount_total_price = ((adult_price * adult_member_count) + (child_price * child_member_count))/coupon_effect;
+			total_price = (adult_price*adult_member_count) + (child_price*child_member_count);
+			discount_total_price = total_price-(total_price/10);
 
 		}
 		return discount_total_price;
